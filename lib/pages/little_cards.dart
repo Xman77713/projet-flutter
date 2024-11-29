@@ -9,27 +9,22 @@ class LittleCards extends StatelessWidget {
       body: Center(
         child: SizedBox(
           width: 200,
+          height: 250,
           child: Card(
             color: Colors.blueGrey,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 ClipRRect(
-                  borderRadius: const BorderRadius.vertical(
+                  borderRadius: BorderRadius.vertical(
                     top: Radius.circular(8),
                   ),
-                  child: Image.asset(
-                    'assets/titans.png',
-                    fit: BoxFit.cover,
-                    height: 200,
-                    width: double.infinity,
-                  ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
                     'Titans',
