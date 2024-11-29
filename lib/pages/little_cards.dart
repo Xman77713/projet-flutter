@@ -17,7 +17,6 @@ class LittleCards extends StatelessWidget {
             ),
             child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.vertical(
