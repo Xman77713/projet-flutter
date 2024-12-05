@@ -18,8 +18,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const ListInWidget(
-        imageUrl: 'https://example.com',
+        imageUrl:
+            'https://images.openfoodfacts.org/images/products/500/015/948/4695/front_fr.85.400.jpg',
         title: 'Flutter Demo Home Page',
+        nb: '1',
       ),
     );
   }
