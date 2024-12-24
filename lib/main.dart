@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projet_final/pages/little_cards.dart';
+import 'package:flutter_projet_final/pages/large_card_popular.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LittleCards(),
+      home: const LargeCardPopular(),
     );
   }
 }
