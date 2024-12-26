@@ -9,21 +9,24 @@ class LargeCardPopular extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(
+            16.0), // Espacement extérieur (autour du fond bleu)
         child: Container(
           decoration: BoxDecoration(
             color: AppColors.gray3,
             borderRadius: BorderRadius.circular(16),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
+          child: const Padding(
+            padding: EdgeInsets.all(8.0), // Réduit l'espace intérieur
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min, // Adapte la taille au contenu
               children: [
+                // Titre
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'Séries populaires',
                       style: TextStyle(
                         fontSize: 18,
@@ -32,22 +35,26 @@ class LargeCardPopular extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {
-                        // Action pour "Voir plus"
-                      },
-                      child: const Text(
-                        'Voir plus',
-                        style: TextStyle(color: Colors.white),
-                      ),
+                      onPressed: () {},
+                      child: Text('TextButton'),
                     ),
                   ],
                 ),
-                const SizedBox(height: 80),
-                const Expanded(
-                  child: LittleCards(),
-                ),
-                const Expanded(
-                  child: LittleCards(),
+                // Cartes
+                SizedBox(
+                  height: 242, // Hauteur adaptée aux cartes
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        LittleCards(),
+                        SizedBox(width: 16), // Espacement entre les cartes
+                        LittleCards(),
+                        SizedBox(width: 16),
+                        LittleCards(),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
