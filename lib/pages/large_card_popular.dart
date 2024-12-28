@@ -7,25 +7,35 @@ class LargeCardPopular extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(
-            16.0), // Espacement extérieur (autour du fond bleu)
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppColors.gray3,
-            borderRadius: BorderRadius.circular(16),
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            offset: Offset(0, 4),
+            blurRadius: 6,
           ),
-          child: const Padding(
-            padding: EdgeInsets.all(8.0), // Réduit l'espace intérieur
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min, // Adapte la taille au contenu
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Titre
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                const Row(
                   children: [
+                    CircleAvatar(
+                      radius: 6,
+                      backgroundColor: Colors.orange,
+                    ),
+                    SizedBox(width: 12),
                     Text(
                       'Séries populaires',
                       style: TextStyle(
@@ -34,31 +44,38 @@ class LargeCardPopular extends StatelessWidget {
                         color: Color.fromARGB(255, 255, 255, 255),
                       ),
                     ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text('TextButton'),
-                    ),
                   ],
                 ),
-                // Cartes
-                SizedBox(
-                  height: 242, // Hauteur adaptée aux cartes
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        LittleCards(),
-                        SizedBox(width: 16), // Espacement entre les cartes
-                        LittleCards(),
-                        SizedBox(width: 16),
-                        LittleCards(),
-                      ],
-                    ),
+                TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(AppColors.gray2),
+                    foregroundColor: WidgetStateProperty.all(Colors.white),
                   ),
+                  child: const Text('Voir plus'),
+                  onPressed: () {
+                    print('Bouton "Voir plus" appuyé');
+                  },
                 ),
               ],
             ),
-          ),
+            const SizedBox(
+              height: 242,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    LittleCards(),
+                    SizedBox(width: 5),
+                    LittleCards(),
+                    SizedBox(width: 5),
+                    LittleCards(),
+                    SizedBox(width: 5),
+                    LittleCards(),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
