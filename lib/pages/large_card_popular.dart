@@ -8,7 +8,7 @@ class LargeCardPopular extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 2),
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(16),
@@ -32,7 +32,7 @@ class LargeCardPopular extends StatelessWidget {
                 const Row(
                   children: [
                     CircleAvatar(
-                      radius: 6,
+                      radius: 5,
                       backgroundColor: Colors.orange,
                     ),
                     SizedBox(width: 12),

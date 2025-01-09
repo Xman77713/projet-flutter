@@ -7,7 +7,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.gray2,
       body: SingleChildScrollView(
         child: Column(
@@ -15,9 +15,10 @@ class HomePage extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.topLeft,
-              child: Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Text(
+              child: Container(
+                margin: const EdgeInsets.only(top: 40),
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
                   'Bienvenue !',
                   style: TextStyle(
                     fontSize: 32,
@@ -27,13 +28,13 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 242),
-            LargeCardPopular(),
-            SizedBox(height: 10),
-            LargeCardPopular(),
-            SizedBox(height: 10),
-            LargeCardPopular(),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
+            const LargeCardPopular(),
+            const SizedBox(height: 10),
+            const LargeCardPopular(),
+            const SizedBox(height: 10),
+            const LargeCardPopular(),
+            const SizedBox(height: 10),
           ],
         ),
       ),
