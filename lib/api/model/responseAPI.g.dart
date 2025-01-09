@@ -8,7 +8,7 @@ part of 'responseAPI.dart';
 
 OFFServerResponse _$OFFServerResponseFromJson(Map<String, dynamic> json) =>
     OFFServerResponse(
-      OFFResponse.fromJson(json['response'] as Map<String, dynamic>),
+      OFFSeries.fromJson(json['response'] as Map<String, dynamic>),
       json['error'],
     );
 
@@ -18,13 +18,12 @@ Map<String, dynamic> _$OFFServerResponseToJson(OFFServerResponse instance) =>
       'error': instance.error,
     };
 
-OFFResponse _$OFFResponseFromJson(Map<String, dynamic> json) => OFFResponse(
+OFFSeries _$OFFSeriesFromJson(Map<String, dynamic> json) => OFFSeries(
       json['name'] as String?,
-      json['altName'] as String?,
+      json['image'] as String?,
     );
 
-Map<String, dynamic> _$OFFResponseToJson(OFFResponse instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$OFFSeriesToJson(OFFSeries instance) => <String, dynamic>{
       'name': instance.name,
-      'altName': instance.altName,
+      'image': instance.image,
     };

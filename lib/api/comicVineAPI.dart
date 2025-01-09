@@ -9,15 +9,8 @@ part 'comicVineAPI.g.dart';
 abstract class ComicVineAPI {
   factory ComicVineAPI(Dio dio, {required String baseUrl}) = _ComicVineAPI;
 
-  @GET('/characters/')
-  Future<OFFServerResponse> getCharacters(
-    @Query('api_key') String apiKey,
-    @Query('format') String format,
-  );
-
-  @GET('/character/{id}/')
-  Future<OFFServerResponse> getCharacterDetails(
-    @Path('id') String characterId,
+  @GET('/series_list/')
+  Future<OFFServerResponse> getSeries(
     @Query('api_key') String apiKey,
     @Query('format') String format,
   );
@@ -39,12 +32,8 @@ class ComicVineAPIManager {
           baseUrl: 'https://comicvine.gamespot.com/api',
         );
 
-  Future<dynamic> getCharacters(String apiKey) async {
-    return api.getCharacters(apiKey, 'json');
-  }
-
-  Future<dynamic> getCharacterDetails(String id, String apiKey) async {
-    return api.getCharacterDetails(id, apiKey, 'json');
+  Future<OFFServerResponse> getSeries(String apiKey) async {
+    return api.getSeries(apiKey, 'json');
   }
 }
 

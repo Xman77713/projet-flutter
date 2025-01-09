@@ -5,7 +5,7 @@ part 'responseAPI.g.dart';
 @JsonSerializable()
 class OFFServerResponse {
   @JsonKey(name: 'response')
-  final OFFResponse response;
+  final OFFSeries response;
   @JsonKey(name: 'error')
   final dynamic error;
 
@@ -18,16 +18,16 @@ class OFFServerResponse {
 }
 
 @JsonSerializable()
-class OFFResponse {
+class OFFSeries {
   @JsonKey(name: 'name')
   final String? name;
-  @JsonKey(name: 'altName')
-  final String? altName;
+  @JsonKey(name: 'image')
+  final String? image;
 
-  OFFResponse(this.name, this.altName);
+  OFFSeries(this.name, this.image);
 
-  factory OFFResponse.fromJson(Map<String, dynamic> json) =>
-      _$OFFResponseFromJson(json);
+  factory OFFSeries.fromJson(Map<String, dynamic> json) =>
+      _$OFFSeriesFromJson(json);
 
-  Map<String, dynamic> toJson() => _$OFFResponseToJson(this);
+  Map<String, dynamic> toJson() => _$OFFSeriesToJson(this);
 }

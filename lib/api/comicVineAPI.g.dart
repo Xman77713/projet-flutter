@@ -22,7 +22,7 @@ class _ComicVineAPI implements ComicVineAPI {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<OFFServerResponse> getCharacters(
+  Future<OFFServerResponse> getSeries(
     String apiKey,
     String format,
   ) async {
@@ -40,47 +40,7 @@ class _ComicVineAPI implements ComicVineAPI {
     )
         .compose(
           _dio.options,
-          '/characters/',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late OFFServerResponse _value;
-    try {
-      _value = OFFServerResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<OFFServerResponse> getCharacterDetails(
-    String characterId,
-    String apiKey,
-    String format,
-  ) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'api_key': apiKey,
-      r'format': format,
-    };
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<OFFServerResponse>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          '/character/${characterId}/',
+          '/series_list/',
           queryParameters: queryParameters,
           data: _data,
         )
