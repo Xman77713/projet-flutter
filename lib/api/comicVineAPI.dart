@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_projet_final/api/model/responseAPI.dart';
+import 'package:flutter_projet_final/api/model/responseAPISeriesList.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
@@ -36,6 +36,3 @@ class ComicVineAPIManager {
     return api.getSeries(apiKey, 'json');
   }
 }
-
-//series_list/APIkey&field_list=image,name
-//baseUrl = https://api.comicvine.com

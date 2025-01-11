@@ -1,15 +1,16 @@
+import 'package:flutter_projet_final/api/model/responseAPIImageURL.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'responseAPI.g.dart';
+part 'responseAPISeriesList.g.dart';
 
 @JsonSerializable()
 class OFFServerResponse {
-  @JsonKey(name: 'response')
-  final OFFSeries response;
+  @JsonKey(name: 'results')
+  final List<OFFSeries>? results;
   @JsonKey(name: 'error')
-  final dynamic error;
+  final String? error;
 
-  OFFServerResponse(this.response, this.error);
+  OFFServerResponse(this.results, this.error);
 
   factory OFFServerResponse.fromJson(Map<String, dynamic> json) =>
       _$OFFServerResponseFromJson(json);
@@ -22,7 +23,7 @@ class OFFSeries {
   @JsonKey(name: 'name')
   final String? name;
   @JsonKey(name: 'image')
-  final String? image;
+  final ImageURL? image;
 
   OFFSeries(this.name, this.image);
 

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'responseAPI.dart';
+part of 'responseAPISeriesList.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -8,19 +8,23 @@ part of 'responseAPI.dart';
 
 OFFServerResponse _$OFFServerResponseFromJson(Map<String, dynamic> json) =>
     OFFServerResponse(
-      OFFSeries.fromJson(json['response'] as Map<String, dynamic>),
-      json['error'],
+      (json['results'] as List<dynamic>?)
+          ?.map((e) => OFFSeries.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      json['error'] as String?,
     );
 
 Map<String, dynamic> _$OFFServerResponseToJson(OFFServerResponse instance) =>
     <String, dynamic>{
-      'response': instance.response,
+      'results': instance.results,
       'error': instance.error,
     };
 
 OFFSeries _$OFFSeriesFromJson(Map<String, dynamic> json) => OFFSeries(
       json['name'] as String?,
-      json['image'] as String?,
+      json['image'] == null
+          ? null
+          : ImageURL.fromJson(json['image'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$OFFSeriesToJson(OFFSeries instance) => <String, dynamic>{

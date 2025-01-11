@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'api/comicVineAPI.dart';
+import 'api/model/responseAPISeriesList.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,21 +33,30 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final ComicVineAPIManager apiManager = ComicVineAPIManager();
-  String _apiResult = 'Appuie sur un bouton pour tester l\'API.';
+  List<OFFSeries> _seriesList = [];
+  String _error = '';
 
-  Future<void> _fetchCharacters() async {
+  Future<void> _fetchSeries() async {
     setState(() {
-      _apiResult = 'Chargement les series';
+      _error = '';
+      _seriesList = [];
     });
+
     try {
       final response = await apiManager
           .getSeries('793241465e20a2c4efd78bcfaa9df4356b780449');
-      setState(() {
-        _apiResult = response.toString();
-      });
+      if (response.results != null) {
+        setState(() {
+          _seriesList = response.results!;
+        });
+      } else {
+        setState(() {
+          _error = 'Aucune série trouvée ou erreur inconnue.';
+        });
+      }
     } catch (e) {
       setState(() {
-        _apiResult = 'Erreur : $e';
+        _error = 'Erreur : $e';
       });
     }
   }
@@ -67,18 +77,40 @@ class _MyHomePageState extends State<MyHomePage> {
                 'Résultat de l\'API :',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  _apiResult,
-                  textAlign: TextAlign.center,
+              if (_error.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    _error,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.red),
+                  ),
                 ),
-              ),
+              if (_seriesList.isNotEmpty)
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: _seriesList.length,
+                  itemBuilder: (context, index) {
+                    final series = _seriesList[index];
+                    return ListTile(
+                      leading: series.image?.smallUrl != null
+                          ? Image.network(
+                              series.image!.smallUrl!,
+                              width: 50,
+                              height: 50,
+                              fit: BoxFit.cover,
+                            )
+                          : const Icon(Icons.broken_image),
+                      title: Text(series.name ?? 'Nom inconnu'),
+                    );
+                  },
+                ),
               ElevatedButton(
-                onPressed: _fetchCharacters,
+                onPressed: _fetchSeries,
                 child: const Text('Charger les séries'),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
             ],
           ),
         ),
