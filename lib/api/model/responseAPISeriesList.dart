@@ -4,18 +4,18 @@ import 'package:json_annotation/json_annotation.dart';
 part 'responseAPISeriesList.g.dart';
 
 @JsonSerializable()
-class OFFServerResponse {
+class OFFServerResponseSeriesList {
   @JsonKey(name: 'results')
   final List<OFFSeries>? results;
   @JsonKey(name: 'error')
   final String? error;
 
-  OFFServerResponse(this.results, this.error);
+  OFFServerResponseSeriesList(this.results, this.error);
 
-  factory OFFServerResponse.fromJson(Map<String, dynamic> json) =>
-      _$OFFServerResponseFromJson(json);
+  factory OFFServerResponseSeriesList.fromJson(Map<String, dynamic> json) =>
+      _$OFFServerResponseSeriesListFromJson(json);
 
-  Map<String, dynamic> toJson() => _$OFFServerResponseToJson(this);
+  Map<String, dynamic> toJson() => _$OFFServerResponseSeriesListToJson(this);
 }
 
 @JsonSerializable()

@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_projet_final/api/model/responseAPIIssuesList.dart';
+import 'package:flutter_projet_final/api/model/responseAPIMoviesList.dart';
 import 'package:flutter_projet_final/api/model/responseAPISeriesList.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -10,7 +12,19 @@ abstract class ComicVineAPI {
   factory ComicVineAPI(Dio dio, {required String baseUrl}) = _ComicVineAPI;
 
   @GET('/series_list/')
-  Future<OFFServerResponse> getSeries(
+  Future<OFFServerResponseSeriesList> getSeries(
+    @Query('api_key') String apiKey,
+    @Query('format') String format,
+  );
+
+  @GET('/movies/')
+  Future<OFFServerResponseMoviesList> getMovies(
+    @Query('api_key') String apiKey,
+    @Query('format') String format,
+  );
+
+  @GET('/issues/')
+  Future<OFFServerResponseIssuesList> getIssues(
     @Query('api_key') String apiKey,
     @Query('format') String format,
   );
@@ -32,7 +46,15 @@ class ComicVineAPIManager {
           baseUrl: 'https://comicvine.gamespot.com/api',
         );
 
-  Future<OFFServerResponse> getSeries(String apiKey) async {
+  Future<OFFServerResponseSeriesList> getSeries(String apiKey) async {
     return api.getSeries(apiKey, 'json');
+  }
+
+  Future<OFFServerResponseMoviesList> getMovies(String apiKey) async {
+    return api.getMovies(apiKey, 'json');
+  }
+
+  Future<OFFServerResponseIssuesList> getIssues(String apiKey) async {
+    return api.getIssues(apiKey, 'json');
   }
 }

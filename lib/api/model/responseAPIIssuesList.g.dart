@@ -1,35 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'responseAPISeriesList.dart';
+part of 'responseAPIIssuesList.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-OFFServerResponseSeriesList _$OFFServerResponseSeriesListFromJson(
+OFFServerResponseIssuesList _$OFFServerResponseIssuesListFromJson(
         Map<String, dynamic> json) =>
-    OFFServerResponseSeriesList(
+    OFFServerResponseIssuesList(
       (json['results'] as List<dynamic>?)
-          ?.map((e) => OFFSeries.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => OFFIssues.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['error'] as String?,
     );
 
-Map<String, dynamic> _$OFFServerResponseSeriesListToJson(
-        OFFServerResponseSeriesList instance) =>
+Map<String, dynamic> _$OFFServerResponseIssuesListToJson(
+        OFFServerResponseIssuesList instance) =>
     <String, dynamic>{
       'results': instance.results,
       'error': instance.error,
     };
 
-OFFSeries _$OFFSeriesFromJson(Map<String, dynamic> json) => OFFSeries(
+OFFIssues _$OFFIssuesFromJson(Map<String, dynamic> json) => OFFIssues(
       json['name'] as String?,
       json['image'] == null
           ? null
           : ImageURL.fromJson(json['image'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$OFFSeriesToJson(OFFSeries instance) => <String, dynamic>{
+Map<String, dynamic> _$OFFIssuesToJson(OFFIssues instance) => <String, dynamic>{
       'name': instance.name,
       'image': instance.image,
     };

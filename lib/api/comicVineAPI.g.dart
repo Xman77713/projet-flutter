@@ -22,7 +22,7 @@ class _ComicVineAPI implements ComicVineAPI {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<OFFServerResponse> getSeries(
+  Future<OFFServerResponseSeriesList> getSeries(
     String apiKey,
     String format,
   ) async {
@@ -33,7 +33,7 @@ class _ComicVineAPI implements ComicVineAPI {
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<OFFServerResponse>(Options(
+    final _options = _setStreamType<OFFServerResponseSeriesList>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -50,9 +50,87 @@ class _ComicVineAPI implements ComicVineAPI {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late OFFServerResponse _value;
+    late OFFServerResponseSeriesList _value;
     try {
-      _value = OFFServerResponse.fromJson(_result.data!);
+      _value = OFFServerResponseSeriesList.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<OFFServerResponseMoviesList> getMovies(
+    String apiKey,
+    String format,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'format': format,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<OFFServerResponseMoviesList>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/movies/',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late OFFServerResponseMoviesList _value;
+    try {
+      _value = OFFServerResponseMoviesList.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<OFFServerResponseIssuesList> getIssues(
+    String apiKey,
+    String format,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'api_key': apiKey,
+      r'format': format,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<OFFServerResponseIssuesList>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/issues/',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late OFFServerResponseIssuesList _value;
+    try {
+      _value = OFFServerResponseIssuesList.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

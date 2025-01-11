@@ -1,35 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'responseAPISeriesList.dart';
+part of 'responseAPIMoviesList.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-OFFServerResponseSeriesList _$OFFServerResponseSeriesListFromJson(
+OFFServerResponseMoviesList _$OFFServerResponseMoviesListFromJson(
         Map<String, dynamic> json) =>
-    OFFServerResponseSeriesList(
+    OFFServerResponseMoviesList(
       (json['results'] as List<dynamic>?)
-          ?.map((e) => OFFSeries.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => OFFMovies.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['error'] as String?,
     );
 
-Map<String, dynamic> _$OFFServerResponseSeriesListToJson(
-        OFFServerResponseSeriesList instance) =>
+Map<String, dynamic> _$OFFServerResponseMoviesListToJson(
+        OFFServerResponseMoviesList instance) =>
     <String, dynamic>{
       'results': instance.results,
       'error': instance.error,
     };
 
-OFFSeries _$OFFSeriesFromJson(Map<String, dynamic> json) => OFFSeries(
+OFFMovies _$OFFMoviesFromJson(Map<String, dynamic> json) => OFFMovies(
       json['name'] as String?,
       json['image'] == null
           ? null
           : ImageURL.fromJson(json['image'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$OFFSeriesToJson(OFFSeries instance) => <String, dynamic>{
+Map<String, dynamic> _$OFFMoviesToJson(OFFMovies instance) => <String, dynamic>{
       'name': instance.name,
       'image': instance.image,
     };
