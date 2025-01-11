@@ -24,8 +24,10 @@ class OFFMovies {
   final String? name;
   @JsonKey(name: 'image')
   final ImageURL? image;
+  @JsonKey(name: 'id')
+  final int? id;
 
-  OFFMovies(this.name, this.image);
+  OFFMovies(this.name, this.image, this.id);
 
   factory OFFMovies.fromJson(Map<String, dynamic> json) =>
       _$OFFMoviesFromJson(json);

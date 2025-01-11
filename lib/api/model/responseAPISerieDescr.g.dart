@@ -1,28 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'responseAPIMoviesList.dart';
+part of 'responseAPISerieDescr.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-OFFServerResponseMoviesList _$OFFServerResponseMoviesListFromJson(
+OFFServerResponseSerieDescr _$OFFServerResponseSerieDescrFromJson(
         Map<String, dynamic> json) =>
-    OFFServerResponseMoviesList(
-      (json['results'] as List<dynamic>?)
-          ?.map((e) => OFFMovies.fromJson(e as Map<String, dynamic>))
-          .toList(),
+    OFFServerResponseSerieDescr(
+      json['results'] == null
+          ? null
+          : OFFSerieDescr.fromJson(json['results'] as Map<String, dynamic>),
       json['error'] as String?,
     );
 
-Map<String, dynamic> _$OFFServerResponseMoviesListToJson(
-        OFFServerResponseMoviesList instance) =>
+Map<String, dynamic> _$OFFServerResponseSerieDescrToJson(
+        OFFServerResponseSerieDescr instance) =>
     <String, dynamic>{
       'results': instance.results,
       'error': instance.error,
     };
 
-OFFMovies _$OFFMoviesFromJson(Map<String, dynamic> json) => OFFMovies(
+OFFSerieDescr _$OFFSerieDescrFromJson(Map<String, dynamic> json) =>
+    OFFSerieDescr(
       json['name'] as String?,
       json['image'] == null
           ? null
@@ -30,7 +31,8 @@ OFFMovies _$OFFMoviesFromJson(Map<String, dynamic> json) => OFFMovies(
       (json['id'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$OFFMoviesToJson(OFFMovies instance) => <String, dynamic>{
+Map<String, dynamic> _$OFFSerieDescrToJson(OFFSerieDescr instance) =>
+    <String, dynamic>{
       'name': instance.name,
       'image': instance.image,
       'id': instance.id,

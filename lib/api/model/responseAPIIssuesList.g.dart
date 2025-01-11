@@ -27,9 +27,11 @@ OFFIssues _$OFFIssuesFromJson(Map<String, dynamic> json) => OFFIssues(
       json['image'] == null
           ? null
           : ImageURL.fromJson(json['image'] as Map<String, dynamic>),
+      (json['id'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$OFFIssuesToJson(OFFIssues instance) => <String, dynamic>{
       'name': instance.name,
       'image': instance.image,
+      'id': instance.id,
     };

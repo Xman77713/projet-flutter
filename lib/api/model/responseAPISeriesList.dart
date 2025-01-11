@@ -24,8 +24,10 @@ class OFFSeries {
   final String? name;
   @JsonKey(name: 'image')
   final ImageURL? image;
+  @JsonKey(name: 'id')
+  final int? id;
 
-  OFFSeries(this.name, this.image);
+  OFFSeries(this.name, this.image, this.id);
 
   factory OFFSeries.fromJson(Map<String, dynamic> json) =>
       _$OFFSeriesFromJson(json);

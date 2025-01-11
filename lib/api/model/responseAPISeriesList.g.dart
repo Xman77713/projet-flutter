@@ -27,9 +27,11 @@ OFFSeries _$OFFSeriesFromJson(Map<String, dynamic> json) => OFFSeries(
       json['image'] == null
           ? null
           : ImageURL.fromJson(json['image'] as Map<String, dynamic>),
+      (json['id'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$OFFSeriesToJson(OFFSeries instance) => <String, dynamic>{
       'name': instance.name,
       'image': instance.image,
+      'id': instance.id,
     };

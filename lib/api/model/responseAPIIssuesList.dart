@@ -24,8 +24,10 @@ class OFFIssues {
   final String? name;
   @JsonKey(name: 'image')
   final ImageURL? image;
+  @JsonKey(name: 'id')
+  final int? id;
 
-  OFFIssues(this.name, this.image);
+  OFFIssues(this.name, this.image, this.id);
 
   factory OFFIssues.fromJson(Map<String, dynamic> json) =>
       _$OFFIssuesFromJson(json);
