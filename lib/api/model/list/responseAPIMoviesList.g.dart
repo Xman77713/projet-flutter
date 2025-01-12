@@ -28,10 +28,16 @@ OFFMovies _$OFFMoviesFromJson(Map<String, dynamic> json) => OFFMovies(
           ? null
           : ImageURL.fromJson(json['image'] as Map<String, dynamic>),
       (json['id'] as num?)?.toInt(),
+      json['runtime'] as String?,
+      json['date_added'] == null
+          ? null
+          : DateTime.parse(json['date_added'] as String),
     );
 
 Map<String, dynamic> _$OFFMoviesToJson(OFFMovies instance) => <String, dynamic>{
       'name': instance.name,
       'image': instance.image,
       'id': instance.id,
+      'runtime': instance.runtime,
+      'date_added': instance.date_added?.toIso8601String(),
     };

@@ -1,4 +1,5 @@
-import 'package:flutter_projet_final/api/model/responseAPIImageURL.dart';
+import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
+import 'package:flutter_projet_final/api/model/utils/responseAPIPublisher.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'responseAPISeriesList.g.dart';
@@ -26,8 +27,15 @@ class OFFSeries {
   final ImageURL? image;
   @JsonKey(name: 'id')
   final int? id;
+  @JsonKey(name: 'count_of_episodes')
+  final int? count_of_episodes;
+  @JsonKey(name: 'publisher')
+  final Publisher? publisher;
+  @JsonKey(name: 'date_added')
+  final DateTime? date_added;
 
-  OFFSeries(this.name, this.image, this.id);
+  OFFSeries(this.name, this.image, this.id, this.count_of_episodes,
+      this.publisher, this.date_added);
 
   factory OFFSeries.fromJson(Map<String, dynamic> json) =>
       _$OFFSeriesFromJson(json);

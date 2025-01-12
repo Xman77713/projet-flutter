@@ -23,15 +23,25 @@ Map<String, dynamic> _$OFFServerResponseIssuesListToJson(
     };
 
 OFFIssues _$OFFIssuesFromJson(Map<String, dynamic> json) => OFFIssues(
-      json['name'] as String?,
+      json['volume'] == null
+          ? null
+          : NameComics.fromJson(json['volume'] as Map<String, dynamic>),
       json['image'] == null
           ? null
           : ImageURL.fromJson(json['image'] as Map<String, dynamic>),
       (json['id'] as num?)?.toInt(),
+      json['issue_number'] as String?,
+      json['date_added'] == null
+          ? null
+          : DateTime.parse(json['date_added'] as String),
+      json['name'] as String?,
     );
 
 Map<String, dynamic> _$OFFIssuesToJson(OFFIssues instance) => <String, dynamic>{
-      'name': instance.name,
+      'volume': instance.volume,
       'image': instance.image,
       'id': instance.id,
+      'issue_number': instance.issue_number,
+      'date_added': instance.date_added?.toIso8601String(),
+      'name': instance.name,
     };

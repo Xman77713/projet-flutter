@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projet_final/api/model/responseAPISerieDescr.dart';
-import 'package:flutter_projet_final/api/model/responseAPISeriesList.dart';
-import 'api/comicVineAPI.dart';
+import 'package:flutter_projet_final/api/comicVineAPI.dart';
+import 'package:flutter_projet_final/api/model/descr/responseAPISerieDescr.dart';
+import 'package:flutter_projet_final/api/model/list/responseAPISeriesList.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,12 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ComicVine API Demo',
+      title: 'ComicVine Series',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'ComicVine API Test'),
+      home: const MyHomePage(title: 'Liste des séries'),
     );
   }
 }
@@ -75,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               const Text(
-                'Résultat de l\'API :',
+                'Liste des séries :',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               if (_error.isNotEmpty)
@@ -93,19 +93,22 @@ class _MyHomePageState extends State<MyHomePage> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: _seriesList.length,
                   itemBuilder: (context, index) {
-                    final series = _seriesList[index];
+                    final serie = _seriesList[index];
+
                     return ListTile(
-                      leading: series.image?.smallUrl != null
+                      leading: serie.image?.smallUrl != null
                           ? Image.network(
-                              series.image!.smallUrl!,
+                              serie.image!.smallUrl!,
                               width: 50,
                               height: 50,
                               fit: BoxFit.cover,
                             )
                           : const Icon(Icons.broken_image),
-                      title: Text(series.name ?? 'Nom inconnu'),
-                      subtitle: Text('ID: ${series.id ?? 'Inconnu'}'),
-                      // Affichage de l'ID en sous-titre
+                      title: Text(serie.name ?? 'Nom inconnu'),
+                      subtitle: Text(
+                        'ID: ${serie.id ?? 'Inconnu'}\n'
+                        'Épisodes: ${serie.count_of_episodes ?? 'Inconnu'}',
+                      ),
                       trailing: IconButton(
                         icon: const Icon(Icons.info),
                         onPressed: () {
@@ -114,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => SerieDetailsPage(
-                                serieId: series.id!,
+                                serieId: serie.id!,
                               ),
                             ),
                           );
@@ -123,6 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                 ),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _fetchSeries,
                 child: const Text('Charger les séries'),
@@ -155,10 +159,9 @@ class _SerieDetailsPageState extends State<SerieDetailsPage> {
     _fetchSerieDetails(widget.serieId);
   }
 
-  // Fonction pour récupérer les détails d'une série
   Future<void> _fetchSerieDetails(int id) async {
     setState(() {
-      _serieDetails = null; // Réinitialiser les détails précédents
+      _serieDetails = null;
       _error = '';
     });
 
@@ -204,9 +207,14 @@ class _SerieDetailsPageState extends State<SerieDetailsPage> {
               if (_serieDetails != null) ...[
                 Text(
                   'Nom de la série : ${_serieDetails?.name ?? "Inconnu"}',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 Text('ID de la série : ${_serieDetails?.id ?? "Inconnu"}'),
+                Text(
+                    'Nombre d\'épisodes : ${_serieDetails?.count_of_episodes ?? "Inconnu"}'),
+                Text(
+                    'Description : ${_serieDetails?.description ?? "Aucune description"}'),
                 if (_serieDetails?.image != null)
                   Image.network(
                     _serieDetails!.image!.smallUrl ?? '',
@@ -214,11 +222,24 @@ class _SerieDetailsPageState extends State<SerieDetailsPage> {
                     width: 100,
                     fit: BoxFit.cover,
                   ),
+                if (_serieDetails?.publisher != null)
+                  Text(
+                      'Éditeur : ${_serieDetails?.publisher?.name ?? "Inconnu"}'),
+                if (_serieDetails?.characters != null &&
+                    _serieDetails!.characters!.isNotEmpty)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Personnages :'),
+                      ..._serieDetails!.characters!
+                          .map((character) => Text(character.name ?? "Inconnu"))
+                          .toList(),
+                    ],
+                  ),
               ],
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Retour à la page principale
                   Navigator.pop(context);
                 },
                 child: const Text('Retour'),

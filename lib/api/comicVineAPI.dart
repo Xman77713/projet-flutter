@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_projet_final/api/model/responseAPIIssuesList.dart';
-import 'package:flutter_projet_final/api/model/responseAPIMoviesList.dart';
-import 'package:flutter_projet_final/api/model/responseAPISerieDescr.dart';
-import 'package:flutter_projet_final/api/model/responseAPISeriesList.dart';
+import 'package:flutter_projet_final/api/model/list/responseAPIIssuesList.dart';
+import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
+import 'package:flutter_projet_final/api/model/descr/responseAPISerieDescr.dart';
+import 'package:flutter_projet_final/api/model/list/responseAPISeriesList.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 

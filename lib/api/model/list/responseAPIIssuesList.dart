@@ -1,5 +1,7 @@
-import 'package:flutter_projet_final/api/model/responseAPIImageURL.dart';
+import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../utils/responseAPINameComics.dart';
 
 part 'responseAPIIssuesList.g.dart';
 
@@ -20,14 +22,21 @@ class OFFServerResponseIssuesList {
 
 @JsonSerializable()
 class OFFIssues {
-  @JsonKey(name: 'name')
-  final String? name;
+  @JsonKey(name: 'volume')
+  final NameComics? volume;
   @JsonKey(name: 'image')
   final ImageURL? image;
   @JsonKey(name: 'id')
   final int? id;
+  @JsonKey(name: 'issue_number')
+  final String? issue_number;
+  @JsonKey(name: 'date_added')
+  final DateTime? date_added;
+  @JsonKey(name: 'name')
+  final String? name;
 
-  OFFIssues(this.name, this.image, this.id);
+  OFFIssues(this.volume, this.image, this.id, this.issue_number,
+      this.date_added, this.name);
 
   factory OFFIssues.fromJson(Map<String, dynamic> json) =>
       _$OFFIssuesFromJson(json);

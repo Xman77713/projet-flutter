@@ -1,5 +1,8 @@
-import 'package:flutter_projet_final/api/model/responseAPIImageURL.dart';
+import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
+import 'package:flutter_projet_final/api/model/utils/responseAPIPublisher.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../utils/responseAPICharacter.dart';
 
 part 'responseAPISerieDescr.g.dart';
 
@@ -26,27 +29,26 @@ class OFFSerieDescr {
   final ImageURL? image;
   @JsonKey(name: 'id')
   final int? id;
-
-  // @JsonKey(name: 'description')
-  // final String? description;
-  // @JsonKey(name: 'publisher')
-  // final String? publisher;
-  // @JsonKey(name: 'count_of_episode')
-  // final int? count_of_episode;
-  // @JsonKey(name: 'characters_credits')
-  // final String? characters_credits;
-  // @JsonKey(name: 'date_added')
-  // final String? date_added;
+  @JsonKey(name: 'description')
+  final String? description;
+  @JsonKey(name: 'publisher')
+  final Publisher? publisher;
+  @JsonKey(name: 'count_of_episodes')
+  final int? count_of_episodes;
+  @JsonKey(name: 'characters')
+  final List<Character>? characters;
+  @JsonKey(name: 'date_added')
+  final String? date_added;
 
   OFFSerieDescr(
     this.name,
     this.image,
     this.id,
-    // this.description,
-    // this.publisher,
-    // this.count_of_episode,
-    // this.characters_credits,
-    // this.date_added);
+    this.description,
+    this.publisher,
+    this.count_of_episodes,
+    this.characters,
+    this.date_added,
   );
 
   factory OFFSerieDescr.fromJson(Map<String, dynamic> json) =>
