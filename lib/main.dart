@@ -1,63 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projet_final/api/comicVineAPI.dart';
-import 'package:flutter_projet_final/api/model/descr/responseAPISerieDescr.dart';
-import 'package:flutter_projet_final/api/model/list/responseAPISeriesList.dart';
+import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
+import 'package:flutter_projet_final/api/model/descr/responseAPIMovieDescr.dart';
+
+import 'api/comicVineAPI.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ComicVine Series',
+      title: 'Movie App',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Liste des séries'),
+      home: MoviesListPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
+class MoviesListPage extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MoviesListPageState createState() => _MoviesListPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MoviesListPageState extends State<MoviesListPage> {
   final ComicVineAPIManager apiManager = ComicVineAPIManager();
-  List<OFFSeries> _seriesList = [];
+  List<OFFMovies> _movies = [];
   String _error = '';
 
-  Future<void> _fetchSeries() async {
+  @override
+  void initState() {
+    super.initState();
+    _fetchMovies();
+  }
+
+  Future<void> _fetchMovies() async {
     setState(() {
+      _movies = [];
       _error = '';
-      _seriesList = [];
     });
 
     try {
       final response = await apiManager
-          .getSeries('793241465e20a2c4efd78bcfaa9df4356b780449');
-      if (response.results != null) {
-        setState(() {
-          _seriesList = response.results!;
-        });
-      } else {
-        setState(() {
-          _error = 'Aucune série trouvée ou erreur inconnue.';
-        });
-      }
+          .getMovies('793241465e20a2c4efd78bcfaa9df4356b780449');
+      setState(() {
+        _movies = response.results ?? [];
+      });
     } catch (e) {
       setState(() {
-        _error = 'Erreur : $e';
+        _error = 'Erreur lors de la récupération des films : $e';
       });
     }
   }
@@ -66,18 +60,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: const Text('Liste des Films'),
       ),
       body: Center(
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text(
-                'Liste des séries :',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
               if (_error.isNotEmpty)
                 Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -87,50 +75,44 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: const TextStyle(color: Colors.red),
                   ),
                 ),
-              if (_seriesList.isNotEmpty)
+              if (_movies.isNotEmpty)
                 ListView.builder(
                   shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: _seriesList.length,
+                  itemCount: _movies.length,
                   itemBuilder: (context, index) {
-                    final serie = _seriesList[index];
-
-                    return ListTile(
-                      leading: serie.image?.smallUrl != null
-                          ? Image.network(
-                              serie.image!.smallUrl!,
-                              width: 50,
-                              height: 50,
-                              fit: BoxFit.cover,
-                            )
-                          : const Icon(Icons.broken_image),
-                      title: Text(serie.name ?? 'Nom inconnu'),
-                      subtitle: Text(
-                        'ID: ${serie.id ?? 'Inconnu'}\n'
-                        'Épisodes: ${serie.count_of_episodes ?? 'Inconnu'}',
-                      ),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.info),
-                        onPressed: () {
-                          // Navigue vers la page de détails
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SerieDetailsPage(
-                                serieId: serie.id!,
+                    final movie = _movies[index];
+                    return Card(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 15),
+                      child: ListTile(
+                        leading: movie.image != null
+                            ? Image.network(
+                                movie.image!.smallUrl ?? '',
+                                width: 50,
+                                height: 75,
+                                fit: BoxFit.cover,
+                              )
+                            : const SizedBox(),
+                        title: Text(movie.name ?? 'Inconnu'),
+                        subtitle: Text(
+                            'ID: ${movie.id} - Durée: ${movie.runtime ?? 'Inconnue'}'),
+                        trailing: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    MovieDetailsPage(movieId: movie.id!),
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                          child: const Text('Détails'),
+                        ),
                       ),
                     );
                   },
                 ),
               const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _fetchSeries,
-                child: const Text('Charger les séries'),
-              ),
             ],
           ),
         ),
@@ -139,47 +121,43 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class SerieDetailsPage extends StatefulWidget {
-  final int serieId;
+class MovieDetailsPage extends StatefulWidget {
+  final int movieId;
 
-  const SerieDetailsPage({super.key, required this.serieId});
+  const MovieDetailsPage({super.key, required this.movieId});
 
   @override
-  State<SerieDetailsPage> createState() => _SerieDetailsPageState();
+  State<MovieDetailsPage> createState() => _MovieDetailsPageState();
 }
 
-class _SerieDetailsPageState extends State<SerieDetailsPage> {
+class _MovieDetailsPageState extends State<MovieDetailsPage> {
   final ComicVineAPIManager apiManager = ComicVineAPIManager();
-  OFFSerieDescr? _serieDetails;
+  OFFMovieDescr? _movieDetails;
   String _error = '';
 
   @override
   void initState() {
     super.initState();
-    _fetchSerieDetails(widget.serieId);
+    _fetchMovieDetails(widget.movieId);
   }
 
-  Future<void> _fetchSerieDetails(int id) async {
+  Future<void> _fetchMovieDetails(int id) async {
     setState(() {
-      _serieDetails = null;
+      _movieDetails = null;
       _error = '';
     });
 
     try {
-      final response = await apiManager.getSerieDescr(
-          '793241465e20a2c4efd78bcfaa9df4356b780449', id);
-      if (response.results != null) {
-        setState(() {
-          _serieDetails = response.results!;
-        });
-      } else {
-        setState(() {
-          _error = 'Détails de la série non trouvés.';
-        });
-      }
+      final response = await apiManager.getMovieDescr(
+        '793241465e20a2c4efd78bcfaa9df4356b780449',
+        id,
+      );
+      setState(() {
+        _movieDetails = response.results;
+      });
     } catch (e) {
       setState(() {
-        _error = 'Erreur : $e';
+        _error = 'Erreur lors de la récupération des détails du film : $e';
       });
     }
   }
@@ -188,7 +166,7 @@ class _SerieDetailsPageState extends State<SerieDetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Détails de la série'),
+        title: const Text('Détails du Film'),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -204,38 +182,59 @@ class _SerieDetailsPageState extends State<SerieDetailsPage> {
                     style: const TextStyle(color: Colors.red),
                   ),
                 ),
-              if (_serieDetails != null) ...[
+              if (_movieDetails != null) ...[
                 Text(
-                  'Nom de la série : ${_serieDetails?.name ?? "Inconnu"}',
+                  'Nom : ${_movieDetails?.name ?? "Inconnu"}',
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 18),
                 ),
-                Text('ID de la série : ${_serieDetails?.id ?? "Inconnu"}'),
-                Text(
-                    'Nombre d\'épisodes : ${_serieDetails?.count_of_episodes ?? "Inconnu"}'),
-                Text(
-                    'Description : ${_serieDetails?.description ?? "Aucune description"}'),
-                if (_serieDetails?.image != null)
+                Text('ID : ${_movieDetails?.id ?? "Inconnu"}'),
+                Text('Durée : ${_movieDetails?.runtime ?? "Inconnue"}'),
+                if (_movieDetails?.description != null)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                        _movieDetails!.description ?? 'Pas de description'),
+                  ),
+                if (_movieDetails?.image != null)
                   Image.network(
-                    _serieDetails!.image!.smallUrl ?? '',
+                    _movieDetails!.image!.smallUrl ?? '',
                     height: 100,
                     width: 100,
                     fit: BoxFit.cover,
                   ),
-                if (_serieDetails?.publisher != null)
+                if (_movieDetails?.characters != null &&
+                    _movieDetails!.characters!.isNotEmpty) ...[
+                  const SizedBox(height: 10),
+                  const Text('Personnages:',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  ..._movieDetails!.characters!
+                      .map((character) => Text(character.name ?? 'Inconnu'))
+                      .toList(),
+                ],
+                if (_movieDetails?.studios != null &&
+                    _movieDetails!.studios!.isNotEmpty) ...[
+                  const SizedBox(height: 10),
+                  const Text('Studios:',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  ..._movieDetails!.studios!
+                      .map((studio) => Text(studio.name ?? 'Inconnu'))
+                      .toList(),
+                ],
+                if (_movieDetails?.producers != null &&
+                    _movieDetails!.producers!.isNotEmpty) ...[
+                  const SizedBox(height: 10),
+                  const Text('Producteurs:',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  ..._movieDetails!.producers!
+                      .map((producer) => Text(producer.name ?? 'Inconnu'))
+                      .toList(),
+                ],
+                if (_movieDetails?.budget != null)
+                  Text('Budget : ${_movieDetails?.budget ?? "Inconnu"}'),
+                if (_movieDetails?.box_office_revenue != null)
                   Text(
-                      'Éditeur : ${_serieDetails?.publisher?.name ?? "Inconnu"}'),
-                if (_serieDetails?.characters != null &&
-                    _serieDetails!.characters!.isNotEmpty)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Personnages :'),
-                      ..._serieDetails!.characters!
-                          .map((character) => Text(character.name ?? "Inconnu"))
-                          .toList(),
-                    ],
-                  ),
+                      'Box office : ${_movieDetails?.box_office_revenue ?? "Inconnu"}'),
               ],
               const SizedBox(height: 20),
               ElevatedButton(

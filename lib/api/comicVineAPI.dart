@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_projet_final/api/model/descr/responseAPIMovieDescr.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPIIssuesList.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
 import 'package:flutter_projet_final/api/model/descr/responseAPISerieDescr.dart';
@@ -36,6 +37,13 @@ abstract class ComicVineAPI {
     @Query('format') String format,
     @Path('id') int id,
   );
+
+  @GET('/movie/{id}/')
+  Future<OFFServerResponseMovieDescr> getMovieDescr(
+    @Query('api_key') String apiKey,
+    @Query('format') String format,
+    @Path('id') int id,
+  );
 }
 
 class ComicVineAPIManager {
@@ -69,5 +77,10 @@ class ComicVineAPIManager {
   Future<OFFServerResponseSerieDescr> getSerieDescr(
       String apiKey, int id) async {
     return api.getSerieDescr(apiKey, 'json', id);
+  }
+
+  Future<OFFServerResponseMovieDescr> getMovieDescr(
+      String apiKey, int id) async {
+    return api.getMovieDescr(apiKey, 'json', id);
   }
 }

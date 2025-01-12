@@ -38,7 +38,7 @@ class OFFSerieDescr {
   @JsonKey(name: 'characters')
   final List<Character>? characters;
   @JsonKey(name: 'date_added')
-  final String? date_added;
+  final DateTime? date_added;
 
   OFFSerieDescr(
     this.name,
