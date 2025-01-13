@@ -1,117 +1,71 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projet_final/api/comicVineAPI.dart';
-import 'package:flutter_projet_final/api/model/descr/responseAPIPersonDescr.dart';
+import 'package:flutter_projet_final/pages/home_page.dart';
+import 'package:flutter_projet_final/pages/large_card_popular.dart';
+import 'package:flutter_projet_final/pages/liste_movies.dart';
+import 'package:flutter_projet_final/res/app_colors.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Détails de la Personne',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: PersonDetailsPage(personId: 1251),
+      title: 'Flutter Demo',
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+          scaffoldBackgroundColor: AppColors.gray2),
+      home: const ListeMovies(),
     );
   }
 }
 
-class PersonDetailsPage extends StatefulWidget {
-  final int personId;
-
-  const PersonDetailsPage({Key? key, required this.personId}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+  final String title;
 
   @override
-  State<PersonDetailsPage> createState() => _PersonDetailsPageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _PersonDetailsPageState extends State<PersonDetailsPage> {
-  final ComicVineAPIManager apiManager = ComicVineAPIManager();
-  OFFPersonDescr? _personDetails;
-  String _error = '';
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    _fetchPersonDetails(widget.personId);
-  }
-
-  Future<void> _fetchPersonDetails(int id) async {
-    try {
-      final response = await apiManager.getPersonDescr(
-          '793241465e20a2c4efd78bcfaa9df4356b780449', id);
-      setState(() {
-        _personDetails = response.results;
-      });
-    } catch (e) {
-      setState(() {
-        _error = 'Erreur lors de la récupération des détails : $e';
-      });
-    }
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Détails de la Personne'),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
       ),
       body: Center(
-        child: _error.isNotEmpty
-            ? Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  _error,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.red),
-                ),
-              )
-            : _personDetails != null
-                ? SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          if (_personDetails!.image != null) ...[
-                            Center(
-                              child: Image.network(
-                                _personDetails!.image!.smallUrl ?? '',
-                                width: 200,
-                                height: 200,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            const SizedBox(height: 16),
-                            Text(
-                              'Small URL : ${_personDetails!.image!.smallUrl ?? "Non disponible"}',
-                              style: const TextStyle(fontSize: 16),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              'Medium URL : ${_personDetails!.image!.mediumUrl ?? "Non disponible"}',
-                              style: const TextStyle(fontSize: 16),
-                            ),
-                          ],
-                          const SizedBox(height: 16),
-                          Text(
-                            _personDetails!.name ?? 'Nom inconnu',
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            'ID : ${_personDetails!.id ?? "Inconnu"}',
-                            style: const TextStyle(fontSize: 16),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                : const CircularProgressIndicator(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
       ),
     );
   }
