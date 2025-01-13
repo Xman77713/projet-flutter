@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/pages/home_page.dart';
 import 'package:flutter_projet_final/pages/large_card_popular.dart';
+import 'package:flutter_projet_final/pages/liste_movies.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
           scaffoldBackgroundColor: AppColors.gray2),
-      home: const HomePage(),
+      home: const ListeMovies(),
     );
   }
 }
