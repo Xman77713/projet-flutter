@@ -7,6 +7,10 @@ import 'package:flutter_projet_final/api/model/list/responseAPISeriesList.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
+import 'model/descr/responseAPICharacterDescr.dart';
+import 'model/descr/responseAPIIssueDescr.dart';
+import 'model/descr/responseAPIPersonDescr.dart';
+
 part 'comicVineAPI.g.dart';
 
 @RestApi()
@@ -38,8 +42,29 @@ abstract class ComicVineAPI {
     @Path('id') int id,
   );
 
-  @GET('/movie/{id}/')
+  @GET('/movie/4025-{id}/')
   Future<OFFServerResponseMovieDescr> getMovieDescr(
+    @Query('api_key') String apiKey,
+    @Query('format') String format,
+    @Path('id') int id,
+  );
+
+  @GET('/issue/4000-{id}/')
+  Future<OFFServerResponseIssueDescr> getIssueDescr(
+    @Query('api_key') String apiKey,
+    @Query('format') String format,
+    @Path('id') int id,
+  );
+
+  @GET('/person/4040-{id}/')
+  Future<OFFServerResponsePersonDescr> getPersonDescr(
+    @Query('api_key') String apiKey,
+    @Query('format') String format,
+    @Path('id') int id,
+  );
+
+  @GET('/character/4005-{id}/')
+  Future<OFFServerResponseCharacterDescr> getCharacterDescr(
     @Query('api_key') String apiKey,
     @Query('format') String format,
     @Path('id') int id,
@@ -82,5 +107,20 @@ class ComicVineAPIManager {
   Future<OFFServerResponseMovieDescr> getMovieDescr(
       String apiKey, int id) async {
     return api.getMovieDescr(apiKey, 'json', id);
+  }
+
+  Future<OFFServerResponseIssueDescr> getIssueDescr(
+      String apiKey, int id) async {
+    return api.getIssueDescr(apiKey, 'json', id);
+  }
+
+  Future<OFFServerResponsePersonDescr> getPersonDescr(
+      String apiKey, int id) async {
+    return api.getPersonDescr(apiKey, 'json', id);
+  }
+
+  Future<OFFServerResponseCharacterDescr> getCharacterDescr(
+      String apiKey, int id) async {
+    return api.getCharacterDescr(apiKey, 'json', id);
   }
 }

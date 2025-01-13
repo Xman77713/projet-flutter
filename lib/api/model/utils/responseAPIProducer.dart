@@ -11,8 +11,12 @@ class Producer {
 
   Producer(this.name, this.id);
 
-  factory Producer.fromJson(Map<String, dynamic> json) =>
-      _$ProducerFromJson(json);
+  factory Producer.fromJson(Map<String, dynamic> json) {
+    return Producer(
+      json['name'] as String? ?? 'Unknown Producer',
+      json['id'] as int? ?? -1,
+    );
+  }
 
   Map<String, dynamic> toJson() => _$ProducerToJson(this);
 }
