@@ -48,7 +48,7 @@ class LargeCardPopular extends StatelessWidget {
                 ),
                 TextButton(
                   style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all(AppColors.gray2),
+                    backgroundColor: WidgetStateProperty.all(AppColors.grey2),
                     foregroundColor: WidgetStateProperty.all(Colors.white),
                   ),
                   child: const Text('Voir plus'),

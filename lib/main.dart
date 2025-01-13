@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
-          scaffoldBackgroundColor: AppColors.gray2),
+          scaffoldBackgroundColor: AppColors.grey2),
       home: const ListeMovies(),
     );
   }
@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
+
   final String title;
 
   @override
