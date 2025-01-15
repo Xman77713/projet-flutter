@@ -7,69 +7,32 @@ class ListeMovies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black26,
-            offset: Offset(0, 4),
-            blurRadius: 6,
-          ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  child: Row(
-                    children: [
-                      SizedBox(width: 12),
-                      SizedBox(height: 180),
-                      Flexible(
-                        child: Text(
-                          'Films les plus populaires',
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                          ),
-                          softWrap: true,
-                          overflow: TextOverflow.visible,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: AppColors.white,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Color.fromARGB(255, 255, 255, 255),
-                    offset: Offset(0, 4),
-                    blurRadius: 6,
-                  ),
-                ],
+      color: Theme.of(context).scaffoldBackgroundColor,
+      padding: const EdgeInsets.all(16),
+      child: Center(
+        child: Container(
+          height: 180,
+          decoration: BoxDecoration(
+            color: AppColors.gray3,
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black26,
+                offset: Offset(0, 4),
+                blurRadius: 6,
               ),
-            ),
-            Row(
+            ],
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: AppColors.orange,
+                    color: Colors.orange,
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: const Text(
@@ -77,63 +40,93 @@ class ListeMovies extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontSize: 16,
                     ),
                   ),
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: 12),
                 ClipRRect(
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(10),
-                  ),
+                  borderRadius: BorderRadius.circular(12),
                   child: Image.network(
                     'https://i0.wp.com/www.filmspourenfants.net/wp-content/uploads/2018/10/titans-a.jpg?fit=333%2C446&ssl=1',
-                    height: 163,
-                    width: 128.86,
+                    height: 150,
+                    width: 140,
                     fit: BoxFit.cover,
                   ),
                 ),
                 const SizedBox(width: 12),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        'Titans',
+                const Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Agents of Shield',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 17,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                    SizedBox(height: 50),
-                    Padding(
-                      padding: EdgeInsets.only(left: 8.0, bottom: 8.0),
-                      child: Text(
-                        '162 minutes',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
+                      SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.movie,
+                            color: Colors.white70,
+                            size: 16,
+                          ),
+                          SizedBox(width: 6),
+                          Text(
+                            'Marvel',
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 8.0, bottom: 8.0),
-                      child: Text(
-                        '2009',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
+                      SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.calendar_today,
+                            color: Colors.white70,
+                            size: 16,
+                          ),
+                          SizedBox(width: 6),
+                          Text(
+                            '2013',
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                      SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.tv,
+                            color: Colors.white70,
+                            size: 16,
+                          ),
+                          SizedBox(width: 6),
+                          Text(
+                            '136 épisodes',
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
