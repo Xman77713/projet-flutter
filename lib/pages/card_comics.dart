@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
-class CardMovies extends StatelessWidget {
-  const CardMovies({super.key});
+class CardComics extends StatelessWidget {
+  const CardComics({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,8 @@ class CardMovies extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       child: Center(
         child: Container(
-          height: 180,
+          height: 196,
+          width: 359,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 26, 49, 73),
             borderRadius: BorderRadius.circular(20),
@@ -28,8 +29,8 @@ class CardMovies extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.network(
-                          'https://i0.wp.com/www.filmspourenfants.net/wp-content/uploads/2018/10/titans-a.jpg?fit=333%2C446&ssl=1',
-                          height: 118,
+                          'https://m.media-amazon.com/images/I/91eUJGiJrTL._UF1000,1000_QL80_.jpg',
+                          height: 163,
                           width: 129,
                           fit: BoxFit.cover,
                         ),
@@ -62,24 +63,33 @@ class CardMovies extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Agents of Shield',
+                        'The Silver Surfer',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 17,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 60),
+                      SizedBox(height: 20),
+                      Text(
+                        'In the hands of ... Mephisto',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 30),
                       Row(
                         children: [
                           Icon(
-                            Icons.theaters,
+                            Icons.book,
                             color: AppColors.gray,
                             size: 17,
                           ),
                           SizedBox(width: 6),
                           Text(
-                            '162 minutes',
+                            'N°16',
                             style: TextStyle(
                               color: AppColors.gray,
                               fontSize: 12,
@@ -97,7 +107,7 @@ class CardMovies extends StatelessWidget {
                           ),
                           SizedBox(width: 6),
                           Text(
-                            '2009',
+                            'Mai 1970',
                             style: TextStyle(
                               color: AppColors.gray,
                               fontSize: 12,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
-class CardMovies extends StatelessWidget {
-  const CardMovies({super.key});
+class CardSeries extends StatelessWidget {
+  const CardSeries({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,8 @@ class CardMovies extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       child: Center(
         child: Container(
-          height: 180,
+          height: 162,
+          width: 359,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 26, 49, 73),
             borderRadius: BorderRadius.circular(20),
@@ -28,8 +29,8 @@ class CardMovies extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.network(
-                          'https://i0.wp.com/www.filmspourenfants.net/wp-content/uploads/2018/10/titans-a.jpg?fit=333%2C446&ssl=1',
-                          height: 118,
+                          'https://lh6.googleusercontent.com/proxy/4HcFYRNNfZRWgdocSS1mVMW_RDmfPy6PIGyhw1IXoXwZGDY3HkG0a3mUSn5Om-qoMAZVHHGoHqknt28PnZNHSPr5LVzj-r2MBINGg21RWJOjNZ2CIOBB2g4Bgn0FS3779ndQnNem6o-rg3bjYyw4',
+                          height: 131,
                           width: 129,
                           fit: BoxFit.cover,
                         ),
@@ -65,21 +66,21 @@ class CardMovies extends StatelessWidget {
                         'Agents of Shield',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 18,
+                          fontSize: 17,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 60),
+                      SizedBox(height: 30),
                       Row(
                         children: [
                           Icon(
-                            Icons.theaters,
+                            Icons.movie_edit,
                             color: AppColors.gray,
                             size: 17,
                           ),
                           SizedBox(width: 6),
                           Text(
-                            '162 minutes',
+                            'Marvel',
                             style: TextStyle(
                               color: AppColors.gray,
                               fontSize: 12,
@@ -87,7 +88,25 @@ class CardMovies extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 8),
+                      SizedBox(height: 7),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.tv_outlined,
+                            color: AppColors.gray,
+                            size: 17,
+                          ),
+                          SizedBox(width: 6),
+                          Text(
+                            '136 épisodes',
+                            style: TextStyle(
+                              color: AppColors.gray,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 7),
                       Row(
                         children: [
                           Icon(
@@ -97,7 +116,7 @@ class CardMovies extends StatelessWidget {
                           ),
                           SizedBox(width: 6),
                           Text(
-                            '2009',
+                            'Mai 1970',
                             style: TextStyle(
                               color: AppColors.gray,
                               fontSize: 12,
