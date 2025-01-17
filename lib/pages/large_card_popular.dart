@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projet_final/model/list/issuesListModel.dart';
+import 'package:flutter_projet_final/model/list/moviesListModel.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 import '../model/list/seriesListModel.dart';
 import 'little_cards.dart';
@@ -6,32 +8,49 @@ import 'little_cards.dart';
 class LargeCardPopular extends StatelessWidget {
   final String title;
   final SeriesListModel? seriesList;
-  final SeriesListModel? issueList;
-  final SeriesListModel? movieList;
+  final IssuesListModel? issuesList;
+  final MoviesListModel? moviesList;
 
-  final List<String> data = ["serie 1", "serie 2", "serie 3", "serie 4"];
+  const LargeCardPopular({
+    super.key,
+    required this.title,
+    this.seriesList,
+    this.issuesList,
+    this.moviesList,
+  });
 
-  LargeCardPopular(
-      {super.key,
-      required this.title,
-      this.seriesList,
-      this.issueList,
-      this.movieList});
-
-  List<Map<String, String?>> extractNameAndImageUrl(
-      SeriesListModel seriesList) {
-    // Utiliser .map() pour créer une nouvelle liste de Map contenant 'name' et 'imageUrl'
-    return seriesList.seriesListModel.map((serie) {
-      return {
-        'name': serie.name, // Nom de la série
-        'imageUrl': serie.image?.smallUrl, // URL de l'image
-      };
-    }).toList(); // Retourner la liste finale
+  List<Map<String, String?>> extractNameImageList() {
+    if (seriesList != null) {
+      return seriesList!.seriesListModel.map((serie) {
+        return {
+          'name': serie.name,
+          'imageUrl': serie.image?.smallUrl,
+        };
+      }).toList();
+    }
+    if (issuesList != null) {
+      return issuesList!.issuesListModel.map((issue) {
+        return {
+          'name': issue.nameSaga,
+          'imageUrl': issue.image?.smallUrl,
+        };
+      }).toList();
+    }
+    if (moviesList != null) {
+      return moviesList!.moviesListModel.map((movie) {
+        return {
+          'name': movie.name,
+          'imageUrl': movie.image?.smallUrl,
+        };
+      }).toList();
+    } else {
+      return [];
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String?>> seriesData = extractNameAndImageUrl(seriesList!);
+    List<Map<String, String?>> data = extractNameImageList();
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 2),
@@ -94,9 +113,8 @@ class LargeCardPopular extends StatelessWidget {
                         (index) => Padding(
                           padding: const EdgeInsets.only(right: 5.0),
                           child: LittleCards(
-                            title: seriesData[index]['name'] ??
-                                "Nom non disponible",
-                            imageUrl: seriesData[index]['imageUrl'] ??
+                            title: data[index]['name'] ?? "Nom non disponible",
+                            imageUrl: data[index]['imageUrl'] ??
                                 "", // Si le composant LittleCards accepte des données
                           ),
                         ),

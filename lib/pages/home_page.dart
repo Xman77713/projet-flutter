@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_projet_final/model/list/issuesListModel.dart';
+import 'package:flutter_projet_final/model/list/moviesListModel.dart';
 import 'package:flutter_projet_final/pages/large_card_popular.dart';
 import 'package:flutter_projet_final/pages/seriesListBloc.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
@@ -48,13 +50,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _tabPosition = 0;
-  late SeriesListState state;
+  late HomePageState state;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => SeriesListBloc(),
-      child: BlocBuilder<SeriesListBloc, SeriesListState>(
+      child: BlocBuilder<SeriesListBloc, HomePageState>(
         builder: (BuildContext context, state) {
           return switch (state) {
             ProductNotifierLoadingState() => const Scaffold(
@@ -62,19 +64,23 @@ class _HomePageState extends State<HomePage> {
                   child: CircularProgressIndicator.adaptive(),
                 ),
               ),
-            SeriesListNotifierErrorState() => Scaffold(
+            HomePageNotifierErrorState() => Scaffold(
                 body: Center(
                   child: Text(state.error.toString(),
                       style: TextStyle(color: Colors.white)),
                 ),
               ),
-            SeriesListNotifierSuccessState() => Scaffold(
+            HomePageNotifierSuccessState() => Scaffold(
                 body: Stack(
                   children: [
                     Positioned.fill(
                       child: Offstage(
                         offstage: _tabPosition != 0,
-                        child: ProductPageTab0(seriesList: state.seriesList),
+                        child: ProductPageTab0(
+                          seriesList: state.seriesList,
+                          issuesList: state.issuesList,
+                          moviesList: state.moviesList,
+                        ),
                       ),
                     ),
                     Positioned.fill(
@@ -139,6 +145,8 @@ class _HomePageState extends State<HomePage> {
       case 0:
         return ProductPageTab0(
           seriesList: state.seriesList,
+          issuesList: state.issuesList,
+          moviesList: state.moviesList,
         );
       case 1:
         return const ProductPageTab1();
@@ -156,8 +164,14 @@ class _HomePageState extends State<HomePage> {
 
 class ProductPageTab0 extends StatelessWidget {
   final SeriesListModel seriesList;
+  final IssuesListModel issuesList;
+  final MoviesListModel moviesList;
 
-  const ProductPageTab0({super.key, required this.seriesList});
+  const ProductPageTab0(
+      {super.key,
+      required this.seriesList,
+      required this.issuesList,
+      required this.moviesList});
 
   @override
   Widget build(BuildContext context) {
@@ -190,12 +204,12 @@ class ProductPageTab0 extends StatelessWidget {
             const SizedBox(height: 10),
             LargeCardPopular(
               title: "Comics populaires",
-              seriesList: seriesList,
+              issuesList: issuesList,
             ),
             const SizedBox(height: 10),
             LargeCardPopular(
               title: "Films populaires",
-              seriesList: seriesList,
+              moviesList: moviesList,
             ),
             const SizedBox(height: 10),
           ],

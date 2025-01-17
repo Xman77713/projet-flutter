@@ -1,47 +1,68 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projet_final/api/comicVineAPI.dart';
+import 'package:flutter_projet_final/api/model/list/responseAPIIssuesList.dart';
+import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPISeriesList.dart';
+import 'package:flutter_projet_final/model/list/issuesListModel.dart';
+import 'package:flutter_projet_final/model/list/moviesListModel.dart';
 
 import '../model/list/seriesListModel.dart';
 
-abstract class SeriesListEvent {}
+abstract class HomePageEvent {}
 
-class LoadProductEvent extends SeriesListEvent {}
+class LoadDataEvent extends HomePageEvent {}
 
-class SeriesListBloc extends Bloc<SeriesListEvent, SeriesListState> {
+class SeriesListBloc extends Bloc<HomePageEvent, HomePageState> {
   SeriesListBloc() : super(ProductNotifierLoadingState()) {
-    on<LoadProductEvent>(_loadSeriesList);
-    add(LoadProductEvent());
+    on<LoadDataEvent>(_loadDataList);
+    add(LoadDataEvent());
   }
 
-  Future<void> _loadSeriesList(
-    SeriesListEvent event,
-    Emitter<SeriesListState> emit,
+  Future<void> _loadDataList(
+    HomePageEvent event,
+    Emitter<HomePageState> emit,
   ) async {
     try {
-      final OFFServerResponseSeriesList response = await ComicVineAPIManager()
-          .getSeries('793241465e20a2c4efd78bcfaa9df4356b780449');
-      emit(SeriesListNotifierSuccessState(response.getSeriesList()));
+      final OFFServerResponseSeriesList responseSeriesList =
+          await ComicVineAPIManager()
+              .getSeries('793241465e20a2c4efd78bcfaa9df4356b780449');
+      final OFFServerResponseIssuesList responseIssuesList =
+          await ComicVineAPIManager()
+              .getIssues('793241465e20a2c4efd78bcfaa9df4356b780449');
+      final OFFServerResponseMoviesList responseMoviesList =
+          await ComicVineAPIManager()
+              .getMovies('793241465e20a2c4efd78bcfaa9df4356b780449');
+      emit(HomePageNotifierSuccessState(
+          responseSeriesList.getSeriesList(),
+          responseIssuesList.getIssuesList(),
+          responseMoviesList.getMoviesList()));
     } catch (e) {
-      emit(SeriesListNotifierErrorState(e));
+      emit(HomePageNotifierErrorState(e));
     }
   }
 }
 
-sealed class SeriesListState {
+sealed class HomePageState {
   get seriesList => null;
+
+  get issuesList => null;
+
+  get moviesList => null;
 }
 
-class ProductNotifierLoadingState extends SeriesListState {}
+class ProductNotifierLoadingState extends HomePageState {}
 
-class SeriesListNotifierSuccessState extends SeriesListState {
+class HomePageNotifierSuccessState extends HomePageState {
   final SeriesListModel seriesList;
+  final IssuesListModel issuesList;
+  final MoviesListModel moviesList;
 
-  SeriesListNotifierSuccessState(this.seriesList);
+  HomePageNotifierSuccessState(
+      this.seriesList, this.issuesList, this.moviesList);
 }
 
-class SeriesListNotifierErrorState extends SeriesListState {
+class HomePageNotifierErrorState extends HomePageState {
   final dynamic error;
 
-  SeriesListNotifierErrorState(this.error);
+  HomePageNotifierErrorState(this.error);
 }
