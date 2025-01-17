@@ -1,0 +1,20 @@
+import 'utils/publisherModel.dart';
+import 'utils/imageUrlModel.dart';
+
+class SeriesListModel {
+  final List<SerieModel> seriesListModel;
+
+  SeriesListModel(this.seriesListModel);
+}
+
+class SerieModel {
+  final String? name;
+  final ImageUrlModel? image;
+  final int? id;
+  final int? count_of_episodes;
+  final PublisherModel? publisher;
+  final DateTime? date_added;
+
+  SerieModel(this.name, this.image, this.id, this.count_of_episodes,
+      this.publisher, this.date_added);
+}

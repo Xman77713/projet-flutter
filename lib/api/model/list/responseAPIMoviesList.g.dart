@@ -9,10 +9,10 @@ part of 'responseAPIMoviesList.dart';
 OFFServerResponseMoviesList _$OFFServerResponseMoviesListFromJson(
         Map<String, dynamic> json) =>
     OFFServerResponseMoviesList(
-      (json['results'] as List<dynamic>?)
-          ?.map((e) => OFFMovies.fromJson(e as Map<String, dynamic>))
+      (json['results'] as List<dynamic>)
+          .map((e) => OFFMovies.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['error'] as String?,
+      json['error'] as String,
     );
 
 Map<String, dynamic> _$OFFServerResponseMoviesListToJson(

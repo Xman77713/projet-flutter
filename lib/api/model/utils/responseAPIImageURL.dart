@@ -1,3 +1,4 @@
+import 'package:flutter_projet_final/model/utils/imageUrlModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'responseAPIImageURL.g.dart';
@@ -15,4 +16,6 @@ class ImageURL {
       _$ImageURLFromJson(json);
 
   Map<String, dynamic> toJson() => _$ImageURLToJson(this);
+
+  ImageUrlModel getImageUrl() => ImageUrlModel(smallUrl, mediumUrl);
 }

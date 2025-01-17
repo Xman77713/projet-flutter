@@ -9,10 +9,8 @@ part of 'responseAPICharacterDescr.dart';
 OFFServerResponseCharacterDescr _$OFFServerResponseCharacterDescrFromJson(
         Map<String, dynamic> json) =>
     OFFServerResponseCharacterDescr(
-      json['results'] == null
-          ? null
-          : OFFCharacterDescr.fromJson(json['results'] as Map<String, dynamic>),
-      json['error'] as String?,
+      OFFCharacterDescr.fromJson(json['results'] as Map<String, dynamic>),
+      json['error'] as String,
     );
 
 Map<String, dynamic> _$OFFServerResponseCharacterDescrToJson(

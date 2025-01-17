@@ -10,9 +10,9 @@ part 'responseAPIMovieDescr.g.dart';
 @JsonSerializable()
 class OFFServerResponseMovieDescr {
   @JsonKey(name: 'results')
-  final OFFMovieDescr? results;
+  final OFFMovieDescr results;
   @JsonKey(name: 'error')
-  final String? error;
+  final String error;
 
   OFFServerResponseMovieDescr(this.results, this.error);
 

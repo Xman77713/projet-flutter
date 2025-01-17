@@ -9,10 +9,8 @@ part of 'responseAPIPersonDescr.dart';
 OFFServerResponsePersonDescr _$OFFServerResponsePersonDescrFromJson(
         Map<String, dynamic> json) =>
     OFFServerResponsePersonDescr(
-      json['results'] == null
-          ? null
-          : OFFPersonDescr.fromJson(json['results'] as Map<String, dynamic>),
-      json['error'] as String?,
+      OFFPersonDescr.fromJson(json['results'] as Map<String, dynamic>),
+      json['error'] as String,
     );
 
 Map<String, dynamic> _$OFFServerResponsePersonDescrToJson(

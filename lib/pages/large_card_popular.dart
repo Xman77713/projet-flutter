@@ -1,12 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
+import 'package:flutter_projet_final/model/seriesListModel.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import '../api/model/list/responseAPISeriesList.dart';
 import 'little_cards.dart';
 
 class LargeCardPopular extends StatelessWidget {
-  const LargeCardPopular({super.key});
+  final String title;
+  final SeriesListModel? seriesList;
+  final SeriesListModel? issueList;
+  final SeriesListModel? movieList;
+
+  final List<String> data = ["serie 1", "serie 2", "serie 3", "serie 4"];
+
+  LargeCardPopular(
+      {super.key,
+      required this.title,
+      this.seriesList,
+      this.issueList,
+      this.movieList});
+
+  List<Map<String, String?>> extractNameAndImageUrl(
+      SeriesListModel seriesList) {
+    // Utiliser .map() pour créer une nouvelle liste de Map contenant 'name' et 'imageUrl'
+    return seriesList.seriesListModel.map((serie) {
+      return {
+        'name': serie.name, // Nom de la série
+        'imageUrl': serie.image?.smallUrl, // URL de l'image
+      };
+    }).toList(); // Retourner la liste finale
+  }
 
   @override
   Widget build(BuildContext context) {
+    List<Map<String, String?>> seriesData = extractNameAndImageUrl(seriesList!);
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 2),
       decoration: BoxDecoration(
@@ -29,16 +57,16 @@ class LargeCardPopular extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Row(
+                Row(
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 5,
                       backgroundColor: Colors.orange,
                     ),
-                    SizedBox(width: 12),
+                    const SizedBox(width: 12),
                     Text(
-                      'Séries populaires',
-                      style: TextStyle(
+                      title,
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 255, 255, 255),
@@ -58,23 +86,24 @@ class LargeCardPopular extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 242,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    LittleCards(),
-                    SizedBox(width: 5),
-                    LittleCards(),
-                    SizedBox(width: 5),
-                    LittleCards(),
-                    SizedBox(width: 5),
-                    LittleCards(),
-                  ],
-                ),
-              ),
-            ),
+            SizedBox(
+                height: 242,
+                child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(
+                        100,
+                        (index) => Padding(
+                          padding: const EdgeInsets.only(right: 5.0),
+                          child: LittleCards(
+                            title: seriesData[index]['name'] ??
+                                "Nom non disponible",
+                            imageUrl: seriesData[index]['imageUrl'] ??
+                                "", // Si le composant LittleCards accepte des données
+                          ),
+                        ),
+                      ),
+                    )))
           ],
         ),
       ),

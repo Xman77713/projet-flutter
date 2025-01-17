@@ -8,9 +8,9 @@ part 'responseAPIIssuesList.g.dart';
 @JsonSerializable()
 class OFFServerResponseIssuesList {
   @JsonKey(name: 'results')
-  final List<OFFIssues>? results;
+  final List<OFFIssues> results;
   @JsonKey(name: 'error')
-  final String? error;
+  final String error;
 
   OFFServerResponseIssuesList(this.results, this.error);
 
@@ -23,7 +23,7 @@ class OFFServerResponseIssuesList {
 @JsonSerializable()
 class OFFIssues {
   @JsonKey(name: 'volume')
-  final NameComics? volume;
+  final NameComics? name;
   @JsonKey(name: 'image')
   final ImageURL? image;
   @JsonKey(name: 'id')
@@ -33,10 +33,10 @@ class OFFIssues {
   @JsonKey(name: 'date_added')
   final DateTime? date_added;
   @JsonKey(name: 'name')
-  final String? name;
+  final String? nameSaga;
 
-  OFFIssues(this.volume, this.image, this.id, this.issue_number,
-      this.date_added, this.name);
+  OFFIssues(this.name, this.image, this.id, this.issue_number, this.date_added,
+      this.nameSaga);
 
   factory OFFIssues.fromJson(Map<String, dynamic> json) =>
       _$OFFIssuesFromJson(json);

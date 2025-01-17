@@ -1,3 +1,4 @@
+import 'package:flutter_projet_final/model/utils/publisherModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'responseAPIPublisher.g.dart';
@@ -13,4 +14,6 @@ class Publisher {
       _$PublisherFromJson(json);
 
   Map<String, dynamic> toJson() => _$PublisherToJson(this);
+
+  PublisherModel getPublisher() => PublisherModel(name);
 }

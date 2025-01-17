@@ -6,9 +6,9 @@ part 'responseAPICharacterDescr.g.dart';
 @JsonSerializable()
 class OFFServerResponseCharacterDescr {
   @JsonKey(name: 'results')
-  final OFFCharacterDescr? results;
+  final OFFCharacterDescr results;
   @JsonKey(name: 'error')
-  final String? error;
+  final String error;
 
   OFFServerResponseCharacterDescr(this.results, this.error);
 

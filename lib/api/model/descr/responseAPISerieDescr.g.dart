@@ -9,10 +9,8 @@ part of 'responseAPISerieDescr.dart';
 OFFServerResponseSerieDescr _$OFFServerResponseSerieDescrFromJson(
         Map<String, dynamic> json) =>
     OFFServerResponseSerieDescr(
-      json['results'] == null
-          ? null
-          : OFFSerieDescr.fromJson(json['results'] as Map<String, dynamic>),
-      json['error'] as String?,
+      OFFSerieDescr.fromJson(json['results'] as Map<String, dynamic>),
+      json['error'] as String,
     );
 
 Map<String, dynamic> _$OFFServerResponseSerieDescrToJson(

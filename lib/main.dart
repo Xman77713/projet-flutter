@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projet_final/pages/home_page.dart';
 import 'package:flutter_projet_final/pages/large_card_popular.dart';
 import 'package:flutter_projet_final/pages/liste_movies.dart';
+import 'package:flutter_projet_final/pages/seriesListBloc.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
 void main() {
@@ -19,7 +21,10 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
           scaffoldBackgroundColor: AppColors.grey2),
-      home: const ListeMovies(),
+      home: BlocProvider(
+        create: (_) => SeriesListBloc(),
+        child: HomePage(),
+      ),
     );
   }
 }

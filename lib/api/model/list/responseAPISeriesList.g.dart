@@ -9,10 +9,10 @@ part of 'responseAPISeriesList.dart';
 OFFServerResponseSeriesList _$OFFServerResponseSeriesListFromJson(
         Map<String, dynamic> json) =>
     OFFServerResponseSeriesList(
-      (json['results'] as List<dynamic>?)
-          ?.map((e) => OFFSeries.fromJson(e as Map<String, dynamic>))
+      (json['results'] as List<dynamic>)
+          .map((e) => OFFSeries.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['error'] as String?,
+      json['error'] as String,
     );
 
 Map<String, dynamic> _$OFFServerResponseSeriesListToJson(

@@ -6,9 +6,9 @@ part 'responseAPIPersonDescr.g.dart';
 @JsonSerializable()
 class OFFServerResponsePersonDescr {
   @JsonKey(name: 'results')
-  final OFFPersonDescr? results;
+  final OFFPersonDescr results;
   @JsonKey(name: 'error')
-  final String? error;
+  final String error;
 
   OFFServerResponsePersonDescr(this.results, this.error);
 

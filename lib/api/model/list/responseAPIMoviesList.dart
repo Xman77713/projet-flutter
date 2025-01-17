@@ -6,9 +6,9 @@ part 'responseAPIMoviesList.g.dart';
 @JsonSerializable()
 class OFFServerResponseMoviesList {
   @JsonKey(name: 'results')
-  final List<OFFMovies>? results;
+  final List<OFFMovies> results;
   @JsonKey(name: 'error')
-  final String? error;
+  final String error;
 
   OFFServerResponseMoviesList(this.results, this.error);
 

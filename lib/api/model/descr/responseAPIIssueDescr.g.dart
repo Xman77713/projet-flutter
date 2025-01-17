@@ -9,10 +9,8 @@ part of 'responseAPIIssueDescr.dart';
 OFFServerResponseIssueDescr _$OFFServerResponseIssueDescrFromJson(
         Map<String, dynamic> json) =>
     OFFServerResponseIssueDescr(
-      json['results'] == null
-          ? null
-          : OFFIssueDescr.fromJson(json['results'] as Map<String, dynamic>),
-      json['error'] as String?,
+      OFFIssueDescr.fromJson(json['results'] as Map<String, dynamic>),
+      json['error'] as String,
     );
 
 Map<String, dynamic> _$OFFServerResponseIssueDescrToJson(
@@ -25,6 +23,9 @@ Map<String, dynamic> _$OFFServerResponseIssueDescrToJson(
 OFFIssueDescr _$OFFIssueDescrFromJson(Map<String, dynamic> json) =>
     OFFIssueDescr(
       json['name'] as String?,
+      json['volume'] == null
+          ? null
+          : NameComics.fromJson(json['volume'] as Map<String, dynamic>),
       json['image'] == null
           ? null
           : ImageURL.fromJson(json['image'] as Map<String, dynamic>),
@@ -42,7 +43,8 @@ OFFIssueDescr _$OFFIssueDescrFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$OFFIssueDescrToJson(OFFIssueDescr instance) =>
     <String, dynamic>{
-      'name': instance.name,
+      'name': instance.nameSaga,
+      'volume': instance.name,
       'image': instance.image,
       'id': instance.id,
       'runtime': instance.runtime,

@@ -2,6 +2,7 @@ import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../utils/responseAPICharacter.dart';
+import '../utils/responseAPINameComics.dart';
 import '../utils/responseAPIPersonCredits.dart';
 
 part 'responseAPIIssueDescr.g.dart';
@@ -9,9 +10,9 @@ part 'responseAPIIssueDescr.g.dart';
 @JsonSerializable()
 class OFFServerResponseIssueDescr {
   @JsonKey(name: 'results')
-  final OFFIssueDescr? results;
+  final OFFIssueDescr results;
   @JsonKey(name: 'error')
-  final String? error;
+  final String error;
 
   OFFServerResponseIssueDescr(this.results, this.error);
 
@@ -24,7 +25,9 @@ class OFFServerResponseIssueDescr {
 @JsonSerializable()
 class OFFIssueDescr {
   @JsonKey(name: 'name')
-  final String? name;
+  final String? nameSaga;
+  @JsonKey(name: 'volume')
+  final NameComics? name;
   @JsonKey(name: 'image')
   final ImageURL? image;
   @JsonKey(name: 'id')
@@ -41,15 +44,15 @@ class OFFIssueDescr {
   final List<PersonCredits>? person_credits;
 
   OFFIssueDescr(
-    this.name,
-    this.image,
-    this.id,
-    this.runtime,
-    this.description,
-    this.characters_credits,
-    this.date_added,
-    this.person_credits,
-  );
+      this.nameSaga,
+      this.name,
+      this.image,
+      this.id,
+      this.runtime,
+      this.description,
+      this.characters_credits,
+      this.date_added,
+      this.person_credits);
 
   factory OFFIssueDescr.fromJson(Map<String, dynamic> json) =>
       _$OFFIssueDescrFromJson(json);

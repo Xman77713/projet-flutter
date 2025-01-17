@@ -9,10 +9,10 @@ part of 'responseAPIIssuesList.dart';
 OFFServerResponseIssuesList _$OFFServerResponseIssuesListFromJson(
         Map<String, dynamic> json) =>
     OFFServerResponseIssuesList(
-      (json['results'] as List<dynamic>?)
-          ?.map((e) => OFFIssues.fromJson(e as Map<String, dynamic>))
+      (json['results'] as List<dynamic>)
+          .map((e) => OFFIssues.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['error'] as String?,
+      json['error'] as String,
     );
 
 Map<String, dynamic> _$OFFServerResponseIssuesListToJson(
@@ -38,10 +38,10 @@ OFFIssues _$OFFIssuesFromJson(Map<String, dynamic> json) => OFFIssues(
     );
 
 Map<String, dynamic> _$OFFIssuesToJson(OFFIssues instance) => <String, dynamic>{
-      'volume': instance.volume,
+      'volume': instance.name,
       'image': instance.image,
       'id': instance.id,
       'issue_number': instance.issue_number,
       'date_added': instance.date_added?.toIso8601String(),
-      'name': instance.name,
+      'name': instance.nameSaga,
     };

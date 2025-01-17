@@ -9,10 +9,8 @@ part of 'responseAPIMovieDescr.dart';
 OFFServerResponseMovieDescr _$OFFServerResponseMovieDescrFromJson(
         Map<String, dynamic> json) =>
     OFFServerResponseMovieDescr(
-      json['results'] == null
-          ? null
-          : OFFMovieDescr.fromJson(json['results'] as Map<String, dynamic>),
-      json['error'] as String?,
+      OFFMovieDescr.fromJson(json['results'] as Map<String, dynamic>),
+      json['error'] as String,
     );
 
 Map<String, dynamic> _$OFFServerResponseMovieDescrToJson(
