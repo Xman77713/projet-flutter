@@ -1,3 +1,4 @@
+import 'package:flutter_projet_final/model/utils/characterModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'responseAPICharacter.g.dart';
@@ -15,4 +16,6 @@ class Character {
       _$CharacterFromJson(json);
 
   Map<String, dynamic> toJson() => _$CharacterToJson(this);
+
+  CharacterModel getCharacter() => CharacterModel(name, id);
 }

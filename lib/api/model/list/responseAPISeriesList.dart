@@ -1,10 +1,8 @@
 import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
 import 'package:flutter_projet_final/api/model/utils/responseAPIPublisher.dart';
-import 'package:flutter_projet_final/model/utils/imageUrlModel.dart';
-import 'package:flutter_projet_final/model/utils/publisherModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../model/seriesListModel.dart';
+import '../../../model/list/seriesListModel.dart';
 
 part 'responseAPISeriesList.g.dart';
 

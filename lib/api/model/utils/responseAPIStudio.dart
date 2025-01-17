@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../model/utils/studioModel.dart';
+
 part 'responseAPIStudio.g.dart';
 
 @JsonSerializable()
@@ -19,4 +21,6 @@ class Studio {
   }
 
   Map<String, dynamic> toJson() => _$StudioToJson(this);
+
+  Studiomodel getStudio() => Studiomodel(name, id);
 }

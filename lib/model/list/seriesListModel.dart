@@ -1,5 +1,5 @@
-import 'utils/publisherModel.dart';
-import 'utils/imageUrlModel.dart';
+import '../utils/imageUrlModel.dart';
+import '../utils/publisherModel.dart';
 
 class SeriesListModel {
   final List<SerieModel> seriesListModel;

@@ -1,3 +1,4 @@
+import 'package:flutter_projet_final/model/utils/nameComicsModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'responseAPINameComics.g.dart';
@@ -13,4 +14,6 @@ class NameComics {
       _$NameComicsFromJson(json);
 
   Map<String, dynamic> toJson() => _$NameComicsToJson(this);
+
+  NameComicsModel getNameComics() => NameComicsModel(name);
 }

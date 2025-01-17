@@ -1,9 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projet_final/api/comicVineAPI.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPISeriesList.dart';
-import 'package:flutter_projet_final/model/seriesListModel.dart';
 
-import '../model/seriesListModel.dart';
+import '../model/list/seriesListModel.dart';
 
 abstract class SeriesListEvent {}
 

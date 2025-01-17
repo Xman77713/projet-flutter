@@ -1,5 +1,5 @@
-import 'utils/imageUrlModel.dart';
-import 'utils/nameComicModel.dart';
+import '../utils/imageUrlModel.dart';
+import '../utils/nameComicsModel.dart';
 
 class IssuesListModel {
   final List<IssueModel> issuesListModel;
@@ -8,7 +8,7 @@ class IssuesListModel {
 }
 
 class IssueModel {
-  final NameComicModel? name;
+  final NameComicsModel? name;
   final ImageUrlModel? image;
   final int? id;
   final String? issue_number;

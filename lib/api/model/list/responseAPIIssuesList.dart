@@ -1,4 +1,5 @@
 import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
+import 'package:flutter_projet_final/model/list/issuesListModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../utils/responseAPINameComics.dart';
@@ -18,6 +19,9 @@ class OFFServerResponseIssuesList {
       _$OFFServerResponseIssuesListFromJson(json);
 
   Map<String, dynamic> toJson() => _$OFFServerResponseIssuesListToJson(this);
+
+  IssuesListModel getIssuesList() =>
+      IssuesListModel(results.map((issue) => issue.getIssue()).toList());
 }
 
 @JsonSerializable()
@@ -42,4 +46,7 @@ class OFFIssues {
       _$OFFIssuesFromJson(json);
 
   Map<String, dynamic> toJson() => _$OFFIssuesToJson(this);
+
+  IssueModel getIssue() => IssueModel(name?.getNameComics(),
+      image?.getImageUrl(), id, issue_number, date_added, nameSaga);
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
-import 'package:flutter_projet_final/model/seriesListModel.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
-import '../api/model/list/responseAPISeriesList.dart';
+import '../model/list/seriesListModel.dart';
 import 'little_cards.dart';
 
 class LargeCardPopular extends StatelessWidget {

@@ -1,16 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_projet_final/api/model/list/responseAPIIssuesList.dart';
-import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
-import 'package:flutter_projet_final/api/model/list/responseAPISeriesList.dart';
-import 'package:flutter_projet_final/model/seriesListModel.dart';
 import 'package:flutter_projet_final/pages/large_card_popular.dart';
 import 'package:flutter_projet_final/pages/seriesListBloc.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
 import '../api/comicVineAPI.dart';
-import '../model/seriesListModel.dart';
+import '../model/list/seriesListModel.dart';
 
 class HomePage extends StatefulWidget {
   final ComicVineAPI comicVineAPI =

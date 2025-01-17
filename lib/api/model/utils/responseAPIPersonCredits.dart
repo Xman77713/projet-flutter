@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../model/utils/personCreditsModel.dart';
+
 part 'responseAPIPersonCredits.g.dart';
 
 @JsonSerializable()
@@ -17,4 +19,6 @@ class PersonCredits {
       _$PersonCreditsFromJson(json);
 
   Map<String, dynamic> toJson() => _$PersonCreditsToJson(this);
+
+  PersonCreditsModel getPersonCredits() => PersonCreditsModel(name, id, role);
 }

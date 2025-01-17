@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../model/utils/producerModel.dart';
+
 part 'responseAPIProducer.g.dart';
 
 @JsonSerializable()
@@ -19,4 +21,6 @@ class Producer {
   }
 
   Map<String, dynamic> toJson() => _$ProducerToJson(this);
+
+  ProducerModel getProducer() => ProducerModel(name, id);
 }
