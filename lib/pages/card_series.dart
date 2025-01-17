@@ -75,14 +75,14 @@ class CardSeries extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.movie_edit,
-                            color: AppColors.gray,
+                            color: AppColors.grey,
                             size: 17,
                           ),
                           SizedBox(width: 6),
                           Text(
                             'Marvel',
                             style: TextStyle(
-                              color: AppColors.gray,
+                              color: AppColors.grey,
                               fontSize: 12,
                             ),
                           ),
@@ -93,14 +93,14 @@ class CardSeries extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.tv_outlined,
-                            color: AppColors.gray,
+                            color: AppColors.grey,
                             size: 17,
                           ),
                           SizedBox(width: 6),
                           Text(
                             '136 épisodes',
                             style: TextStyle(
-                              color: AppColors.gray,
+                              color: AppColors.grey,
                               fontSize: 12,
                             ),
                           ),
@@ -111,14 +111,14 @@ class CardSeries extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.calendar_today,
-                            color: AppColors.gray,
+                            color: AppColors.grey,
                             size: 17,
                           ),
                           SizedBox(width: 6),
                           Text(
                             'Mai 1970',
                             style: TextStyle(
-                              color: AppColors.gray,
+                              color: AppColors.grey,
                               fontSize: 12,
                             ),
                           ),

@@ -6,6 +6,9 @@ import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPISeriesList.dart';
 import 'package:flutter_projet_final/model/seriesListModel.dart';
 import 'package:flutter_projet_final/pages/large_card_popular.dart';
+import 'package:flutter_projet_final/pages/list_comics.dart';
+import 'package:flutter_projet_final/pages/list_movies.dart';
+import 'package:flutter_projet_final/pages/list_series.dart';
 import 'package:flutter_projet_final/pages/seriesListBloc.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
@@ -69,7 +72,7 @@ class _HomePageState extends State<HomePage> {
             SeriesListNotifierErrorState() => Scaffold(
                 body: Center(
                   child: Text(state.error.toString(),
-                      style: TextStyle(color: Colors.white)),
+                      style: const TextStyle(color: Colors.white)),
                 ),
               ),
             SeriesListNotifierSuccessState() => Scaffold(
@@ -78,25 +81,25 @@ class _HomePageState extends State<HomePage> {
                     Positioned.fill(
                       child: Offstage(
                         offstage: _tabPosition != 0,
-                        child: ProductPageTab0(seriesList: state.seriesList),
+                        child: HomePageTab(seriesList: state.seriesList),
                       ),
                     ),
                     Positioned.fill(
                       child: Offstage(
                         offstage: _tabPosition != 1,
-                        child: const ProductPageTab1(),
+                        child: const ComicsPageTab(),
                       ),
                     ),
                     Positioned.fill(
                       child: Offstage(
                         offstage: _tabPosition != 2,
-                        child: const ProductPageTab2(),
+                        child: const SeriePageTab(),
                       ),
                     ),
                     Positioned.fill(
                       child: Offstage(
                         offstage: _tabPosition != 3,
-                        child: const ProductPageTab3(),
+                        child: const MoviePageTab(),
                       ),
                     ),
                   ],
@@ -141,27 +144,27 @@ class _HomePageState extends State<HomePage> {
   Widget get body {
     switch (_tabPosition) {
       case 0:
-        return ProductPageTab0(
+        return HomePageTab(
           seriesList: state.seriesList,
         );
       case 1:
-        return const ProductPageTab1();
+        return const ComicsPageTab();
       case 2:
-        return const ProductPageTab2();
+        return const SeriePageTab();
       case 3:
-        return const ProductPageTab3();
+        return const MoviePageTab();
       case 4:
-        return const ProductPageTab4();
+        return const SearchPageTab();
       default:
         throw Exception();
     }
   }
 }
 
-class ProductPageTab0 extends StatelessWidget {
+class HomePageTab extends StatelessWidget {
   final SeriesListModel seriesList;
 
-  const ProductPageTab0({super.key, required this.seriesList});
+  const HomePageTab({super.key, required this.seriesList});
 
   @override
   Widget build(BuildContext context) {
@@ -209,47 +212,35 @@ class ProductPageTab0 extends StatelessWidget {
   }
 }
 
-class ProductPageTab1 extends StatelessWidget {
-  const ProductPageTab1({super.key});
+class ComicsPageTab extends StatelessWidget {
+  const ComicsPageTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Comics", style: TextStyle(color: Colors.white)),
-      ),
-    );
+    return const Scaffold(body: ListComics());
   }
 }
 
-class ProductPageTab2 extends StatelessWidget {
-  const ProductPageTab2({super.key});
+class SeriePageTab extends StatelessWidget {
+  const SeriePageTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Séries", style: TextStyle(color: Colors.white)),
-      ),
-    );
+    return const Scaffold(body: ListSeries());
   }
 }
 
-class ProductPageTab3 extends StatelessWidget {
-  const ProductPageTab3({super.key});
+class MoviePageTab extends StatelessWidget {
+  const MoviePageTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text("Films", style: TextStyle(color: Colors.white)),
-      ),
-    );
+    return const Scaffold(body: ListMovies());
   }
 }
 
-class ProductPageTab4 extends StatelessWidget {
-  const ProductPageTab4({super.key});
+class SearchPageTab extends StatelessWidget {
+  const SearchPageTab({super.key});
 
   @override
   Widget build(BuildContext context) {
