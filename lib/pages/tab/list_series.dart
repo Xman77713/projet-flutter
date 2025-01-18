@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projet_final/pages/card_comics.dart';
 import 'package:flutter_projet_final/pages/card_series.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
