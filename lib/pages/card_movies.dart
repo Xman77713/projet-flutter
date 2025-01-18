@@ -62,7 +62,7 @@ class CardMovies extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Agents of Shield',
+                        'Watchmen',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
