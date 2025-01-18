@@ -31,7 +31,7 @@ class LargeCardPopular extends StatelessWidget {
     if (issuesList != null) {
       return issuesList!.issuesListModel.map((issue) {
         return {
-          'name': issue.nameSaga,
+          'name': issue.name?.name,
           'imageUrl': issue.image?.smallUrl,
         };
       }).toList();
