@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/model/list/issuesListModel.dart';
 import 'package:flutter_projet_final/model/list/moviesListModel.dart';
+import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
+import 'package:flutter_projet_final/model/seriesListModel.dart';
+import 'package:flutter_projet_final/pages/list_comics.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import '../model/list/issuesListModel.dart';
+import '../model/list/moviesListModel.dart';
 import '../model/list/seriesListModel.dart';
 import 'little_cards.dart';
 
@@ -98,7 +103,11 @@ class LargeCardPopular extends StatelessWidget {
                   ),
                   child: const Text('Voir plus'),
                   onPressed: () {
-                    print('Bouton "Voir plus" appuyé');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ListComics()),
+                    );
                   },
                 ),
               ],

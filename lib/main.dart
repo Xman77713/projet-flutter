@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_projet_final/pages/card_comics.dart';
+import 'package:flutter_projet_final/pages/card_series.dart';
+import 'package:flutter_projet_final/pages/first_bloc_details_movies.dart';
 import 'package:flutter_projet_final/pages/home_page.dart';
 import 'package:flutter_projet_final/pages/large_card_popular.dart';
-import 'package:flutter_projet_final/pages/liste_movies.dart';
+import 'package:flutter_projet_final/pages/list_movies.dart';
 import 'package:flutter_projet_final/pages/seriesListBloc.dart';
+import 'package:flutter_projet_final/pages/card_movies.dart';
+import 'package:flutter_projet_final/pages/list_comics.dart';
+import 'package:flutter_projet_final/pages/list_movies.dart';
+import 'package:flutter_projet_final/pages/list_series.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
 void main() {
@@ -23,7 +30,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: AppColors.grey2),
       home: BlocProvider(
         create: (_) => SeriesListBloc(),
-        child: HomePage(),
+        child: FirstBlocDetailsMovies(),
       ),
     );
   }
