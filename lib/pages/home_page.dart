@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projet_final/model/list/issuesListModel.dart';
 import 'package:flutter_projet_final/model/list/moviesListModel.dart';
 import 'package:flutter_projet_final/pages/large_card_popular.dart';
-import 'package:flutter_projet_final/pages/list_comics.dart';
-import 'package:flutter_projet_final/pages/list_movies.dart';
-import 'package:flutter_projet_final/pages/list_series.dart';
-import 'package:flutter_projet_final/pages/seriesListBloc.dart';
+import 'package:flutter_projet_final/pages/tab/list_comics.dart';
+import 'package:flutter_projet_final/pages/tab/list_movies.dart';
+import 'package:flutter_projet_final/pages/tab/list_series.dart';
+import 'package:flutter_projet_final/pages/blocs/HomePageBloc.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
 import '../api/comicVineAPI.dart';
@@ -53,16 +53,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _tabPosition = 0;
-  late HomePageState state;
+  HomePageState? state;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => SeriesListBloc(),
-      child: BlocBuilder<SeriesListBloc, HomePageState>(
+      create: (_) => LoadDataBloc(),
+      child: BlocBuilder<LoadDataBloc, HomePageState>(
         builder: (BuildContext context, state) {
           return switch (state) {
-            ProductNotifierLoadingState() => const Scaffold(
+            HomePageNotifierLoadingState() => const Scaffold(
                 body: Center(
                   child: CircularProgressIndicator.adaptive(),
                 ),
@@ -147,9 +147,9 @@ class _HomePageState extends State<HomePage> {
     switch (_tabPosition) {
       case 0:
         return HomePageTab(
-          seriesList: state.seriesList,
-          issuesList: state.issuesList,
-          moviesList: state.moviesList,
+          seriesList: state?.seriesList,
+          issuesList: state?.issuesList,
+          moviesList: state?.moviesList,
         );
       case 1:
         return const ComicsPageTab();
@@ -166,9 +166,9 @@ class _HomePageState extends State<HomePage> {
 }
 
 class HomePageTab extends StatelessWidget {
-  final SeriesListModel seriesList;
-  final IssuesListModel issuesList;
-  final MoviesListModel moviesList;
+  final SeriesListModelHP seriesList;
+  final IssuesListModelHP issuesList;
+  final MoviesListModelHP moviesList;
 
   const HomePageTab(
       {super.key,

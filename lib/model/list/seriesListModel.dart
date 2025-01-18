@@ -18,3 +18,16 @@ class SerieModel {
   SerieModel(this.name, this.image, this.id, this.count_of_episodes,
       this.publisher, this.date_added);
 }
+
+class SeriesListModelHP {
+  final List<SerieModelHP> seriesListModelHP;
+
+  SeriesListModelHP(this.seriesListModelHP);
+}
+
+class SerieModelHP {
+  final String? name;
+  final ImageUrlModel? image;
+
+  SerieModelHP(this.name, this.image);
+}

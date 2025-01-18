@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/model/list/issuesListModel.dart';
 import 'package:flutter_projet_final/model/list/moviesListModel.dart';
-import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
-import 'package:flutter_projet_final/model/seriesListModel.dart';
-import 'package:flutter_projet_final/pages/list_comics.dart';
+import 'package:flutter_projet_final/model/list/seriesListModel.dart';
+import 'package:flutter_projet_final/pages/tab/list_comics.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
-import '../model/list/issuesListModel.dart';
-import '../model/list/moviesListModel.dart';
-import '../model/list/seriesListModel.dart';
 import 'little_cards.dart';
 
 class LargeCardPopular extends StatelessWidget {
   final String title;
-  final SeriesListModel? seriesList;
-  final IssuesListModel? issuesList;
-  final MoviesListModel? moviesList;
+  final SeriesListModelHP? seriesList;
+  final IssuesListModelHP? issuesList;
+  final MoviesListModelHP? moviesList;
 
   const LargeCardPopular({
     super.key,
@@ -26,7 +22,7 @@ class LargeCardPopular extends StatelessWidget {
 
   List<Map<String, String?>> extractNameImageList() {
     if (seriesList != null) {
-      return seriesList!.seriesListModel.map((serie) {
+      return seriesList!.seriesListModelHP.map((serie) {
         return {
           'name': serie.name,
           'imageUrl': serie.image?.smallUrl,
@@ -34,7 +30,7 @@ class LargeCardPopular extends StatelessWidget {
       }).toList();
     }
     if (issuesList != null) {
-      return issuesList!.issuesListModel.map((issue) {
+      return issuesList!.issuesListModelHP.map((issue) {
         return {
           'name': issue.name?.name,
           'imageUrl': issue.image?.smallUrl,
@@ -42,7 +38,7 @@ class LargeCardPopular extends StatelessWidget {
       }).toList();
     }
     if (moviesList != null) {
-      return moviesList!.moviesListModel.map((movie) {
+      return moviesList!.moviesListModelHP.map((movie) {
         return {
           'name': movie.name,
           'imageUrl': movie.image?.smallUrl,
@@ -118,13 +114,12 @@ class LargeCardPopular extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: List.generate(
-                        100,
+                        20,
                         (index) => Padding(
                           padding: const EdgeInsets.only(right: 5.0),
                           child: LittleCards(
-                            title: data[index]['name'] ?? "Nom non disponible",
-                            imageUrl: data[index]['imageUrl'] ??
-                                "", // Si le composant LittleCards accepte des données
+                            title: data[index]['name'] ?? "Nom indisponible",
+                            imageUrl: data[index]['imageUrl'] ?? "",
                           ),
                         ),
                       ),

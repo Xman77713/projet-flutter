@@ -18,3 +18,16 @@ class IssueModel {
   IssueModel(this.name, this.image, this.id, this.issue_number, this.date_added,
       this.nameSaga);
 }
+
+class IssuesListModelHP {
+  final List<IssueModelHP> issuesListModelHP;
+
+  IssuesListModelHP(this.issuesListModelHP);
+}
+
+class IssueModelHP {
+  final NameComicsModel? name;
+  final ImageUrlModel? image;
+
+  IssueModelHP(this.name, this.image);
+}

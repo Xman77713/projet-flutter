@@ -22,6 +22,9 @@ class OFFServerResponseSeriesList {
 
   SeriesListModel getSeriesList() =>
       SeriesListModel(results.map((serie) => serie.getSerie()).toList());
+
+  SeriesListModelHP getSeriesListHP() =>
+      SeriesListModelHP(results.map((serie) => serie.getSerieHP()).toList());
 }
 
 @JsonSerializable()
@@ -49,4 +52,6 @@ class OFFSeries {
 
   SerieModel getSerie() => SerieModel(name, image?.getImageUrl(), id,
       count_of_episodes, publisher?.getPublisher(), date_added);
+
+  SerieModelHP getSerieHP() => SerieModelHP(name, image?.getImageUrl());
 }

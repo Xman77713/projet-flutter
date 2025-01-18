@@ -20,6 +20,9 @@ class OFFServerResponseMoviesList {
 
   MoviesListModel getMoviesList() =>
       MoviesListModel(results.map((movie) => movie.getMovie()).toList());
+
+  MoviesListModelHP getMoviesListHP() =>
+      MoviesListModelHP(results.map((movie) => movie.getMovieHP()).toList());
 }
 
 @JsonSerializable()
@@ -44,4 +47,6 @@ class OFFMovies {
 
   MovieModel getMovie() =>
       MovieModel(name, image?.getImageUrl(), id, runtime, date_added);
+
+  MoviesModelHP getMovieHP() => MoviesModelHP(name, image?.getImageUrl());
 }

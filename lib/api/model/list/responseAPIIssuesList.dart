@@ -22,6 +22,9 @@ class OFFServerResponseIssuesList {
 
   IssuesListModel getIssuesList() =>
       IssuesListModel(results.map((issue) => issue.getIssue()).toList());
+
+  IssuesListModelHP getIssuesListHP() =>
+      IssuesListModelHP(results.map((issue) => issue.getIssueHP()).toList());
 }
 
 @JsonSerializable()
@@ -49,4 +52,7 @@ class OFFIssues {
 
   IssueModel getIssue() => IssueModel(name?.getNameComics(),
       image?.getImageUrl(), id, issue_number, date_added, nameSaga);
+
+  IssueModelHP getIssueHP() =>
+      IssueModelHP(name?.getNameComics(), image?.getImageUrl());
 }

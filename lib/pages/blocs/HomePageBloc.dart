@@ -6,14 +6,14 @@ import 'package:flutter_projet_final/api/model/list/responseAPISeriesList.dart';
 import 'package:flutter_projet_final/model/list/issuesListModel.dart';
 import 'package:flutter_projet_final/model/list/moviesListModel.dart';
 
-import '../model/list/seriesListModel.dart';
+import '../../model/list/seriesListModel.dart';
 
 abstract class HomePageEvent {}
 
 class LoadDataEvent extends HomePageEvent {}
 
-class SeriesListBloc extends Bloc<HomePageEvent, HomePageState> {
-  SeriesListBloc() : super(ProductNotifierLoadingState()) {
+class LoadDataBloc extends Bloc<HomePageEvent, HomePageState> {
+  LoadDataBloc() : super(HomePageNotifierLoadingState()) {
     on<LoadDataEvent>(_loadDataList);
     add(LoadDataEvent());
   }
@@ -33,9 +33,9 @@ class SeriesListBloc extends Bloc<HomePageEvent, HomePageState> {
           await ComicVineAPIManager()
               .getMovies('793241465e20a2c4efd78bcfaa9df4356b780449');
       emit(HomePageNotifierSuccessState(
-          responseSeriesList.getSeriesList(),
-          responseIssuesList.getIssuesList(),
-          responseMoviesList.getMoviesList()));
+          responseSeriesList.getSeriesListHP(),
+          responseIssuesList.getIssuesListHP(),
+          responseMoviesList.getMoviesListHP()));
     } catch (e) {
       emit(HomePageNotifierErrorState(e));
     }
@@ -50,12 +50,12 @@ sealed class HomePageState {
   get moviesList => null;
 }
 
-class ProductNotifierLoadingState extends HomePageState {}
+class HomePageNotifierLoadingState extends HomePageState {}
 
 class HomePageNotifierSuccessState extends HomePageState {
-  final SeriesListModel seriesList;
-  final IssuesListModel issuesList;
-  final MoviesListModel moviesList;
+  final SeriesListModelHP seriesList;
+  final IssuesListModelHP issuesList;
+  final MoviesListModelHP moviesList;
 
   HomePageNotifierSuccessState(
       this.seriesList, this.issuesList, this.moviesList);
