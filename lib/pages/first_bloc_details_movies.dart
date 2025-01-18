@@ -1,5 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_projet_final/pages/second_bloc_details_movies_people.dart';
+import 'package:flutter_projet_final/pages/second_bloc_details_movies_synopsis.dart'; // Assurez-vous d'importer le bon fichier
 import 'package:flutter_projet_final/res/app_colors.dart';
 
 class FirstBlocDetailsMovies extends StatelessWidget {
@@ -8,7 +10,6 @@ class FirstBlocDetailsMovies extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.grey1,
       appBar: AppBar(
         backgroundColor: AppColors.grey1,
         title: const Row(
@@ -49,8 +50,8 @@ class FirstBlocDetailsMovies extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   child: Image.network(
                     'https://i0.wp.com/www.filmspourenfants.net/wp-content/uploads/2018/10/titans-a.jpg?fit=333%2C446&ssl=1',
-                    height: 180,
-                    width: 129,
+                    height: 127,
+                    width: 95,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -58,7 +59,7 @@ class FirstBlocDetailsMovies extends StatelessWidget {
                 const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 60),
+                    SizedBox(height: 40),
                     Row(
                       children: [
                         Icon(
@@ -98,6 +99,12 @@ class FirstBlocDetailsMovies extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          const Positioned(
+            top: 300,
+            left: 0,
+            right: 0,
+            child: SecondBlocDetailsMoviesPeople(),
           ),
         ],
       ),

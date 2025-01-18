@@ -12,6 +12,7 @@ class CardMovies extends StatelessWidget {
       child: Center(
         child: Container(
           height: 180,
+          width: 359,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 26, 49, 73),
             borderRadius: BorderRadius.circular(20),
