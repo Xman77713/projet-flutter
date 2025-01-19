@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_projet_final/pages/home_page.dart';
 import 'package:flutter_projet_final/pages/blocs/HomePageBloc.dart';
+import 'package:flutter_projet_final/pages/home_page.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
 void main() {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: AppColors.grey2),
       home: BlocProvider(
         create: (_) => LoadDataBloc(),
-        child: HomePage(),
+        child: const HomePage(),
       ),
     );
   }

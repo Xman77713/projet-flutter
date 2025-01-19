@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projet_final/model/list/moviesListModel.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
 class CardMovies extends StatelessWidget {
-  const CardMovies({super.key});
+  final MovieModel movie;
+  final int index;
+
+  const CardMovies({super.key, required this.movie, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,7 @@ class CardMovies extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.network(
-                          'https://i0.wp.com/www.filmspourenfants.net/wp-content/uploads/2018/10/titans-a.jpg?fit=333%2C446&ssl=1',
+                          movie.getImageUrl().mediumUrl ?? 'Image indisponible',
                           height: 118,
                           width: 129,
                           fit: BoxFit.cover,
@@ -44,9 +48,9 @@ class CardMovies extends StatelessWidget {
                           color: Colors.orange,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: const Text(
-                          '#1',
-                          style: TextStyle(
+                        child: Text(
+                          '#$index',
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 22,
@@ -57,48 +61,48 @@ class CardMovies extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(width: 14),
-                const Expanded(
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Watchmen',
-                        style: TextStyle(
+                        movie.name ?? 'Nom indisponible',
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 60),
+                      const SizedBox(height: 60),
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.theaters,
                             color: AppColors.grey,
                             size: 17,
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Text(
-                            '162 minutes',
-                            style: TextStyle(
+                            '${movie.runtime ?? 'XX'} minutes',
+                            style: const TextStyle(
                               color: AppColors.grey,
                               fontSize: 12,
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.calendar_today,
                             color: AppColors.grey,
                             size: 17,
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Text(
-                            '2009',
-                            style: TextStyle(
+                            movie.date_added.toString().split(' ')[0],
+                            style: const TextStyle(
                               color: AppColors.grey,
                               fontSize: 12,
                             ),

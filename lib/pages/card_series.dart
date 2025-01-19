@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projet_final/model/list/seriesListModel.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
 class CardSeries extends StatelessWidget {
-  const CardSeries({super.key});
+  final SerieModel serie;
+  final int index;
+
+  const CardSeries({super.key, required this.serie, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class CardSeries extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.network(
-                          'https://lh6.googleusercontent.com/proxy/4HcFYRNNfZRWgdocSS1mVMW_RDmfPy6PIGyhw1IXoXwZGDY3HkG0a3mUSn5Om-qoMAZVHHGoHqknt28PnZNHSPr5LVzj-r2MBINGg21RWJOjNZ2CIOBB2g4Bgn0FS3779ndQnNem6o-rg3bjYyw4',
+                          serie.getImageUrl().smallUrl ?? 'Image indisponible',
                           height: 131,
                           width: 129,
                           fit: BoxFit.cover,
@@ -45,9 +49,9 @@ class CardSeries extends StatelessWidget {
                           color: Colors.orange,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: const Text(
-                          '#1',
-                          style: TextStyle(
+                        child: Text(
+                          '#$index',
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 22,
@@ -58,66 +62,66 @@ class CardSeries extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(width: 14),
-                const Expanded(
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Agents of Shield',
-                        style: TextStyle(
+                        serie.name ?? 'Nom indisponible',
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.movie_edit,
                             color: AppColors.grey,
                             size: 17,
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Text(
-                            'Marvel',
-                            style: TextStyle(
+                            serie.publisher?.name ?? 'Publisher indisponible',
+                            style: const TextStyle(
                               color: AppColors.grey,
                               fontSize: 12,
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 7),
+                      const SizedBox(height: 7),
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.tv_outlined,
                             color: AppColors.grey,
                             size: 17,
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Text(
-                            '136 épisodes',
-                            style: TextStyle(
+                            '${serie.count_of_episodes ?? 'XX'} épisodes',
+                            style: const TextStyle(
                               color: AppColors.grey,
                               fontSize: 12,
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 7),
+                      const SizedBox(height: 7),
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.calendar_today,
                             color: AppColors.grey,
                             size: 17,
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Text(
-                            'Mai 1970',
-                            style: TextStyle(
+                            serie.date_added.toString().split(' ')[0],
+                            style: const TextStyle(
                               color: AppColors.grey,
                               fontSize: 12,
                             ),

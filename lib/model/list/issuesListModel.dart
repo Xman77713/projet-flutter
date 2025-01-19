@@ -17,6 +17,9 @@ class IssueModel {
 
   IssueModel(this.name, this.image, this.id, this.issue_number, this.date_added,
       this.nameSaga);
+
+  ImageUrlModel getImageUrl() =>
+      ImageUrlModel(image?.mediumUrl, image?.smallUrl);
 }
 
 class IssuesListModelHP {

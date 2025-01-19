@@ -17,6 +17,9 @@ class SerieModel {
 
   SerieModel(this.name, this.image, this.id, this.count_of_episodes,
       this.publisher, this.date_added);
+
+  ImageUrlModel getImageUrl() =>
+      ImageUrlModel(image?.mediumUrl, image?.smallUrl);
 }
 
 class SeriesListModelHP {

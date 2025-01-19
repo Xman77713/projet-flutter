@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projet_final/model/list/issuesListModel.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
 class CardComics extends StatelessWidget {
-  const CardComics({super.key});
+  final IssueModel issue;
+  final int index;
+
+  const CardComics({super.key, required this.issue, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class CardComics extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.network(
-                          'https://m.media-amazon.com/images/I/91eUJGiJrTL._UF1000,1000_QL80_.jpg',
+                          issue.getImageUrl().mediumUrl ?? 'Image indisponible',
                           height: 163,
                           width: 129,
                           fit: BoxFit.cover,
@@ -45,9 +49,9 @@ class CardComics extends StatelessWidget {
                           color: Colors.orange,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: const Text(
-                          '#1',
-                          style: TextStyle(
+                        child: Text(
+                          '#$index',
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 22,
@@ -58,29 +62,29 @@ class CardComics extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(width: 14),
-                const Expanded(
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'The Silver Surfer',
-                        style: TextStyle(
+                        issue.name?.name ?? 'Nom indisponible',
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Text(
-                        'In the hands of ... Mephisto',
-                        style: TextStyle(
+                        issue.nameSaga ?? 'Nom saga indisponible',
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 30),
-                      Row(
+                      const SizedBox(height: 30),
+                      const Row(
                         children: [
                           Icon(
                             Icons.book,
@@ -97,18 +101,18 @@ class CardComics extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.calendar_today,
                             color: AppColors.grey,
                             size: 17,
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Text(
-                            'Mai 1970',
-                            style: TextStyle(
+                            issue.date_added.toString().split(' ')[0],
+                            style: const TextStyle(
                               color: AppColors.grey,
                               fontSize: 12,
                             ),

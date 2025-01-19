@@ -1,23 +1,18 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projet_final/model/list/issuesListModel.dart';
 import 'package:flutter_projet_final/model/list/moviesListModel.dart';
+import 'package:flutter_projet_final/pages/blocs/HomePageBloc.dart';
 import 'package:flutter_projet_final/pages/large_card_popular.dart';
 import 'package:flutter_projet_final/pages/tab/list_comics.dart';
 import 'package:flutter_projet_final/pages/tab/list_movies.dart';
 import 'package:flutter_projet_final/pages/tab/list_series.dart';
-import 'package:flutter_projet_final/pages/blocs/HomePageBloc.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
-import '../api/comicVineAPI.dart';
 import '../model/list/seriesListModel.dart';
 
 class HomePage extends StatefulWidget {
-  final ComicVineAPI comicVineAPI =
-      ComicVineAPI(Dio(), baseUrl: 'https://comicvine.gamespot.com/api');
-
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
