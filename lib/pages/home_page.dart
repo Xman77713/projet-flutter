@@ -99,6 +99,12 @@ class _HomePageState extends State<HomePage> {
                         child: const MoviePageTab(),
                       ),
                     ),
+                    Positioned.fill(
+                      child: Offstage(
+                        offstage: _tabPosition != 4,
+                        child: const SearchPageTab(),
+                      ),
+                    ),
                   ],
                 ),
                 bottomNavigationBar: NavigationBar(
