@@ -117,6 +117,7 @@ class FirstBlocDetailsMovies extends StatelessWidget {
               labelColor: Colors.white,
               unselectedLabelColor: AppColors.grey,
               indicatorWeight: 6.0,
+              labelStyle: TextStyle(fontSize: 17),
             ),
             const Expanded(
               child: TabBarView(
