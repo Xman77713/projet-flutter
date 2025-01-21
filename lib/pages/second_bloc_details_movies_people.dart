@@ -20,7 +20,6 @@ class SecondBlocDetailsMoviesPeople extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(30.0),
             child: SingleChildScrollView(
-              // Ajout de SingleChildScrollView
               child: Column(
                 children: [
                   Row(
