@@ -84,14 +84,14 @@ class CardComics extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.book,
-                            color: AppColors.grey,
+                            color: AppColors.bottomBarUnselectedText,
                             size: 17,
                           ),
                           SizedBox(width: 6),
                           Text(
                             'N°16',
                             style: TextStyle(
-                              color: AppColors.grey,
+                              color: AppColors.bottomBarUnselectedText,
                               fontSize: 12,
                             ),
                           ),
@@ -102,14 +102,14 @@ class CardComics extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.calendar_today,
-                            color: AppColors.grey,
+                            color: AppColors.bottomBarUnselectedText,
                             size: 17,
                           ),
                           SizedBox(width: 6),
                           Text(
                             'Mai 1970',
                             style: TextStyle(
-                              color: AppColors.grey,
+                              color: AppColors.bottomBarUnselectedText,
                               fontSize: 12,
                             ),
                           ),

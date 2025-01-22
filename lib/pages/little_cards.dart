@@ -13,7 +13,7 @@ class LittleCards extends StatelessWidget {
       width: 180,
       height: 242,
       child: Card(
-        color: AppColors.green,
+        color: AppColors.cardElementBackground,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -31,11 +31,14 @@ class LittleCards extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                title,
-                style: const TextStyle(color: Colors.white, fontSize: 16),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(7.0),
+                child: Text(
+                  title,
+                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
           ],

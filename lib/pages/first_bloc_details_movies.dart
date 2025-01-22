@@ -115,7 +115,7 @@ class FirstBlocDetailsMovies extends StatelessWidget {
               ],
               indicatorColor: AppColors.orange,
               labelColor: Colors.white,
-              unselectedLabelColor: AppColors.grey,
+              unselectedLabelColor: AppColors.bottomBarUnselectedText,
               indicatorWeight: 6.0,
               labelStyle: TextStyle(fontSize: 17),
             ),

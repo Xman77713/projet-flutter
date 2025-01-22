@@ -11,7 +11,7 @@ class FirstBlocDetailsMovies extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.grey1,
+        backgroundColor: AppColors.bottomBarUnselectedText,
         title: const Row(
           children: [
             Icon(Icons.arrow_back_ios, color: Colors.white),

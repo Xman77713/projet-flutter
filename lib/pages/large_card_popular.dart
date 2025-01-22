@@ -39,7 +39,7 @@ class LargeCardPopular extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 2),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(16),
         boxShadow: const [
           BoxShadow(
@@ -62,7 +62,7 @@ class LargeCardPopular extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 5,
-                      backgroundColor: Colors.orange,
+                      backgroundColor: AppColors.orange,
                     ),
                     const SizedBox(width: 12),
                     Text(
@@ -77,7 +77,8 @@ class LargeCardPopular extends StatelessWidget {
                 ),
                 TextButton(
                   style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all(AppColors.grey2),
+                    backgroundColor:
+                        WidgetStateProperty.all(AppColors.bottomBarBackground),
                     foregroundColor: WidgetStateProperty.all(Colors.white),
                   ),
                   child: const Text('Voir plus'),

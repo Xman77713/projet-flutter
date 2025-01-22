@@ -75,14 +75,14 @@ class CardMovies extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.theaters,
-                            color: AppColors.grey,
+                            color: AppColors.bottomBarUnselectedText,
                             size: 17,
                           ),
                           SizedBox(width: 6),
                           Text(
                             '162 minutes',
                             style: TextStyle(
-                              color: AppColors.grey,
+                              color: AppColors.bottomBarUnselectedText,
                               fontSize: 12,
                             ),
                           ),
@@ -93,14 +93,14 @@ class CardMovies extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.calendar_today,
-                            color: AppColors.grey,
+                            color: AppColors.bottomBarUnselectedText,
                             size: 17,
                           ),
                           SizedBox(width: 6),
                           Text(
                             '2009',
                             style: TextStyle(
-                              color: AppColors.grey,
+                              color: AppColors.bottomBarUnselectedText,
                               fontSize: 12,
                             ),
                           ),

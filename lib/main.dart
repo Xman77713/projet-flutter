@@ -28,10 +28,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
-          scaffoldBackgroundColor: AppColors.grey2),
+          scaffoldBackgroundColor: AppColors.screenBackground),
       home: BlocProvider(
         create: (_) => SeriesListBloc(),
-        child: const FirstBlocDetailsMovies(),
+        child: HomePage(),
       ),
     );
   }
