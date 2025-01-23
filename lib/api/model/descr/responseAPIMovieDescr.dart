@@ -1,10 +1,10 @@
 import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
 import 'package:flutter_projet_final/model/descr/movieDescrModel.dart';
-import 'package:flutter_projet_final/model/utils/characterModel.dart';
 import 'package:flutter_projet_final/model/utils/producerModel.dart';
-import 'package:flutter_projet_final/model/utils/studioModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../model/utils/characterModel.dart';
+import '../../../model/utils/studioModel.dart';
 import '../utils/responseAPICharacter.dart';
 import '../utils/responseAPIProducer.dart';
 import '../utils/responseAPIStudio.dart';
@@ -72,18 +72,25 @@ class OFFMovieDescr {
 
   Map<String, dynamic> toJson() => _$OFFMovieDescrToJson(this);
 
+  ListCharacterModel getCharactersList() => ListCharacterModel(
+      characters!.map((char) => char.getCharacter()).toList());
+
+  ListStudiosModel getStudiosList() =>
+      ListStudiosModel(studios!.map((stud) => stud.getStudio()).toList());
+
+  ListProducersModel getProducersList() => ListProducersModel(
+      producers!.map((produ) => produ.getProducer()).toList());
+
   MovieDModel getMovieD() => MovieDModel(
       name,
       image?.getImageUrl(),
       id,
       runtime,
       description,
-      characters?.cast<CharacterModel>(),
+      getCharactersList(),
       date_added,
-      // studios.getStudios(),
-      // producers.getProducers(),
-      studios?.cast<StudioModel>(),
-      producers?.cast<ProducerModel>(),
+      getStudiosList(),
+      getProducersList(),
       budget,
       box_office_revenue);
 }

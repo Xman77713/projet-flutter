@@ -10,21 +10,21 @@ class MovieDescrModel {
   MovieDescrModel(this.movieDModel);
 }
 
-
 class MovieDModel {
   final String? name;
   final ImageUrlModel? image;
   final int? id;
   final String? runtime;
   final String? description;
-  final List<CharacterModel>? characters;
+  final ListCharacterModel? characters;
   final DateTime? date_added;
-  final List<StudioModel>? studios;
-  final List<ProducerModel>? producers;
+  final ListStudiosModel? studios;
+  final ListProducersModel? producers;
   final String? budget;
   final String? box_office_revenue;
 
-  MovieDModel(this.name,
+  MovieDModel(
+      this.name,
       this.image,
       this.id,
       this.runtime,
