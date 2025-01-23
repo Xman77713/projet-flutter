@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projet_final/api/comicVineAPI.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
-import 'package:flutter_projet_final/model/list/moviesListModel.dart';
+
+import '../../model/list/moviesListModel.dart';
 
 abstract class MoviesListPageEvent {}
 

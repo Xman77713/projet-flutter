@@ -2,7 +2,7 @@ import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
 import 'package:flutter_projet_final/api/model/utils/responseAPIPublisher.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../model/list/seriesListModel.dart';
+import '../../../interface/model/list/seriesListModel.dart';
 
 part 'responseAPISeriesList.g.dart';
 

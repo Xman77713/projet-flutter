@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_projet_final/pages/blocs/seriesPageBloc.dart';
-import 'package:flutter_projet_final/pages/card_series.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+
+import '../blocs/seriesPageBloc.dart';
+import '../card/card_series.dart';
 
 class ListSeries extends StatefulWidget {
   const ListSeries({super.key});
@@ -33,7 +34,7 @@ class _ListSeriesState extends State<ListSeries> {
                   ),
                 ),
               SeriesListPageNotifierSuccessState() => Scaffold(
-                  backgroundColor: AppColors.grey2,
+                  backgroundColor: AppColors.screenBackground,
                   body: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

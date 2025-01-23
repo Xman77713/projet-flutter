@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projet_final/model/list/seriesListModel.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+
+import '../../model/list/seriesListModel.dart';
 
 class CardSeries extends StatelessWidget {
   final SerieModel serie;
@@ -79,32 +80,32 @@ class CardSeries extends StatelessWidget {
                         children: [
                           const Icon(
                             Icons.movie_edit,
-                            color: AppColors.grey,
+                            color: AppColors.bottomBarUnselectedText,
                             size: 17,
                           ),
                           const SizedBox(width: 6),
                           Text(
                             serie.publisher?.name ?? 'Publisher indisponible',
                             style: const TextStyle(
-                              color: AppColors.grey,
+                              color: AppColors.bottomBarUnselectedText,
                               fontSize: 12,
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 7),
+                      SizedBox(height: 7),
                       Row(
                         children: [
                           const Icon(
                             Icons.tv_outlined,
-                            color: AppColors.grey,
+                            color: AppColors.bottomBarUnselectedText,
                             size: 17,
                           ),
                           const SizedBox(width: 6),
                           Text(
                             '${serie.count_of_episodes ?? 'XX'} épisodes',
                             style: const TextStyle(
-                              color: AppColors.grey,
+                              color: AppColors.bottomBarUnselectedText,
                               fontSize: 12,
                             ),
                           ),
@@ -115,14 +116,14 @@ class CardSeries extends StatelessWidget {
                         children: [
                           const Icon(
                             Icons.calendar_today,
-                            color: AppColors.grey,
+                            color: AppColors.bottomBarUnselectedText,
                             size: 17,
                           ),
                           const SizedBox(width: 6),
                           Text(
                             serie.date_added.toString().split(' ')[0],
                             style: const TextStyle(
-                              color: AppColors.grey,
+                              color: AppColors.bottomBarUnselectedText,
                               fontSize: 12,
                             ),
                           ),

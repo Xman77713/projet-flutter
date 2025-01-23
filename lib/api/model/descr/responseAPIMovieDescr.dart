@@ -1,6 +1,10 @@
 import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../interface/model/descr/movieDescrModel.dart';
+import '../../../interface/model/utils/characterModel.dart';
+import '../../../interface/model/utils/producerModel.dart';
+import '../../../interface/model/utils/studioModel.dart';
 import '../utils/responseAPICharacter.dart';
 import '../utils/responseAPIProducer.dart';
 import '../utils/responseAPIStudio.dart';
@@ -20,6 +24,8 @@ class OFFServerResponseMovieDescr {
       _$OFFServerResponseMovieDescrFromJson(json);
 
   Map<String, dynamic> toJson() => _$OFFServerResponseMovieDescrToJson(this);
+
+  MovieDescrModel getMovieDescr() => MovieDescrModel(results.getMovieD());
 }
 
 @JsonSerializable()
@@ -65,4 +71,26 @@ class OFFMovieDescr {
       _$OFFMovieDescrFromJson(json);
 
   Map<String, dynamic> toJson() => _$OFFMovieDescrToJson(this);
+
+  ListCharacterModel getCharactersList() => ListCharacterModel(
+      characters!.map((char) => char.getCharacter()).toList());
+
+  ListStudiosModel getStudiosList() =>
+      ListStudiosModel(studios!.map((stud) => stud.getStudio()).toList());
+
+  ListProducersModel getProducersList() => ListProducersModel(
+      producers!.map((produ) => produ.getProducer()).toList());
+
+  MovieDModel getMovieD() => MovieDModel(
+      name,
+      image?.getImageUrl(),
+      id,
+      runtime,
+      description,
+      getCharactersList(),
+      date_added,
+      getStudiosList(),
+      getProducersList(),
+      budget,
+      box_office_revenue);
 }

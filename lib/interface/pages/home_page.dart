@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_projet_final/model/list/issuesListModel.dart';
-import 'package:flutter_projet_final/model/list/moviesListModel.dart';
-import 'package:flutter_projet_final/pages/blocs/HomePageBloc.dart';
-import 'package:flutter_projet_final/pages/large_card_popular.dart';
-import 'package:flutter_projet_final/pages/tab/list_comics.dart';
-import 'package:flutter_projet_final/pages/tab/list_movies.dart';
-import 'package:flutter_projet_final/pages/tab/list_series.dart';
+import 'package:flutter_projet_final/interface/pages/tabHomePage/list_comics.dart';
+import 'package:flutter_projet_final/interface/pages/tabHomePage/list_movies.dart';
+import 'package:flutter_projet_final/interface/pages/tabHomePage/list_series.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
+import '../model/list/issuesListModel.dart';
+import '../model/list/moviesListModel.dart';
 import '../model/list/seriesListModel.dart';
+import 'blocs/HomePageBloc.dart';
+import 'card/large_card_popular.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.grey2,
+      backgroundColor: AppColors.screenBackground,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,6 +78,7 @@ class _HomePageState extends State<HomePage> {
                           seriesList: state.seriesList,
                           issuesList: state.issuesList,
                           moviesList: state.moviesList,
+                          setTab: _setTab,
                         ),
                       ),
                     ),
@@ -107,41 +108,76 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                bottomNavigationBar: NavigationBar(
-                  destinations: const [
-                    NavigationDestination(
-                      icon: Icon(Icons.home),
-                      label: 'Accueil',
+                bottomNavigationBar: NavigationBarTheme(
+                  data: NavigationBarThemeData(
+                    backgroundColor: AppColors.bottomBarBackground,
+                    indicatorColor: const Color.fromARGB(255, 255, 0, 0),
+                    labelTextStyle: WidgetStateProperty.all(
+                      const TextStyle(
+                        color: AppColors.bottomBarUnselectedText,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    NavigationDestination(
-                      icon: Icon(Icons.menu_book_outlined),
-                      label: 'Comics',
-                    ),
-                    NavigationDestination(
-                      icon: Icon(Icons.live_tv_outlined),
-                      label: 'Séries',
-                    ),
-                    NavigationDestination(
-                      icon: Icon(Icons.local_movies),
-                      label: 'Films',
-                    ),
-                    NavigationDestination(
-                      icon: Icon(Icons.search),
-                      label: 'Recherche',
-                    ),
-                  ],
-                  selectedIndex: _tabPosition,
-                  onDestinationSelected: (int position) {
-                    setState(() {
-                      _tabPosition = position;
-                    });
-                  },
+                  ),
+                  child: NavigationBar(
+                    indicatorColor: AppColors.bottomBarSelectedBackground,
+                    destinations: const [
+                      NavigationDestination(
+                        icon: Icon(
+                          Icons.home,
+                          color: AppColors.bottomBarUnselectedText,
+                        ),
+                        label: 'Accueil',
+                      ),
+                      NavigationDestination(
+                        icon: Icon(
+                          Icons.menu_book_outlined,
+                          color: AppColors.bottomBarUnselectedText,
+                        ),
+                        label: 'Comics',
+                      ),
+                      NavigationDestination(
+                        icon: Icon(
+                          Icons.live_tv_outlined,
+                          color: AppColors.bottomBarUnselectedText,
+                        ),
+                        label: 'Séries',
+                      ),
+                      NavigationDestination(
+                        icon: Icon(
+                          Icons.local_movies,
+                          color: AppColors.bottomBarUnselectedText,
+                        ),
+                        label: 'Films',
+                      ),
+                      NavigationDestination(
+                        icon: Icon(
+                          Icons.search,
+                          color: AppColors.bottomBarUnselectedText,
+                        ),
+                        label: 'Recherche',
+                      ),
+                    ],
+                    selectedIndex: _tabPosition,
+                    onDestinationSelected: (int position) {
+                      setState(() {
+                        _tabPosition = position;
+                      });
+                    },
+                  ),
                 ),
               )
           };
         },
       ),
     );
+  }
+
+  void _setTab(int position) {
+    setState(() {
+      _tabPosition = position;
+    });
   }
 
   Widget get body {
@@ -151,6 +187,7 @@ class _HomePageState extends State<HomePage> {
           seriesList: state?.seriesList,
           issuesList: state?.issuesList,
           moviesList: state?.moviesList,
+          setTab: (int tabPosition) {},
         );
       case 1:
         return const ComicsPageTab();
@@ -170,17 +207,19 @@ class HomePageTab extends StatelessWidget {
   final SeriesListModelHP seriesList;
   final IssuesListModelHP issuesList;
   final MoviesListModelHP moviesList;
+  final void Function(int tabPosition) setTab;
 
   const HomePageTab(
       {super.key,
       required this.seriesList,
       required this.issuesList,
-      required this.moviesList});
+      required this.moviesList,
+      required this.setTab});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.grey2,
+      backgroundColor: AppColors.screenBackground,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -204,16 +243,19 @@ class HomePageTab extends StatelessWidget {
             LargeCardPopular(
               title: "Séries populaires",
               seriesList: seriesList,
+              setTab: setTab,
             ),
             const SizedBox(height: 10),
             LargeCardPopular(
               title: "Comics populaires",
               issuesList: issuesList,
+              setTab: setTab,
             ),
             const SizedBox(height: 10),
             LargeCardPopular(
               title: "Films populaires",
               moviesList: moviesList,
+              setTab: setTab,
             ),
             const SizedBox(height: 10),
           ],

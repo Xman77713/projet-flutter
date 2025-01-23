@@ -1,39 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_projet_final/pages/blocs/moviesPageBloc.dart';
-import 'package:flutter_projet_final/pages/card_movies.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
-class ListMovies extends StatefulWidget {
-  const ListMovies({super.key});
+import '../blocs/issuesPageBloc.dart';
+import '../card/card_comics.dart';
+
+class ListComics extends StatefulWidget {
+  const ListComics({super.key});
 
   @override
-  State<ListMovies> createState() => _ListMoviesState();
+  State<ListComics> createState() => _ListComicsState();
 }
 
-class _ListMoviesState extends State<ListMovies> {
-  MoviesListPageState? state;
+class _ListComicsState extends State<ListComics> {
+  IssuesListPageState? state;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (_) => LoadDataMoviesListBloc(),
-        child: BlocBuilder<LoadDataMoviesListBloc, MoviesListPageState>(
+        create: (_) => LoadDataIssuesListBloc(),
+        child: BlocBuilder<LoadDataIssuesListBloc, IssuesListPageState>(
           builder: (BuildContext context, state) {
             return switch (state) {
-              MoviesListPageNotifierLoadingState() => const Scaffold(
+              IssuesListPageNotifierLoadingState() => const Scaffold(
                   body: Center(
                     child: CircularProgressIndicator.adaptive(),
                   ),
                 ),
-              MoviesListPageNotifierErrorState() => Scaffold(
+              IssuesListPageNotifierErrorState() => Scaffold(
                   body: Center(
                     child: Text(state.error.toString(),
                         style: const TextStyle(color: Colors.white)),
                   ),
                 ),
-              MoviesListPageNotifierSuccessState() => Scaffold(
-                  backgroundColor: AppColors.grey2,
+              IssuesListPageNotifierSuccessState() => Scaffold(
+                  backgroundColor: AppColors.screenBackground,
                   body: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,7 +45,7 @@ class _ListMoviesState extends State<ListMovies> {
                             margin: const EdgeInsets.only(top: 40),
                             padding: const EdgeInsets.all(16.0),
                             child: const Text(
-                              'Films les plus populaires',
+                              'Comics les plus populaires',
                               style: TextStyle(
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold,
@@ -63,9 +64,9 @@ class _ListMoviesState extends State<ListMovies> {
                                     (index) => Padding(
                                       padding:
                                           const EdgeInsets.only(right: 5.0),
-                                      child: CardMovies(
-                                        movie: state
-                                            .moviesList.moviesListModel[index],
+                                      child: CardComics(
+                                        issue: state
+                                            .issuesList.issuesListModel[index],
                                         index: index + 1,
                                       ),
                                     ),

@@ -1,5 +1,6 @@
-import 'package:flutter_projet_final/model/utils/imageUrlModel.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../../../interface/model/utils/imageUrlModel.dart';
 
 part 'responseAPIImageURL.g.dart';
 

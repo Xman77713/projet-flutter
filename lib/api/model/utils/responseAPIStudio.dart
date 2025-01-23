@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../model/utils/studioModel.dart';
+import '../../../interface/model/utils/studioModel.dart';
 
 part 'responseAPIStudio.g.dart';
 
@@ -22,5 +22,5 @@ class Studio {
 
   Map<String, dynamic> toJson() => _$StudioToJson(this);
 
-  Studiomodel getStudio() => Studiomodel(name, id);
+  StudioModel getStudio() => StudioModel(name, id);
 }

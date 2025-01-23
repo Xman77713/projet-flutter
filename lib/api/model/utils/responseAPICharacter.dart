@@ -1,5 +1,6 @@
-import 'package:flutter_projet_final/model/utils/characterModel.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../../../interface/model/utils/characterModel.dart';
 
 part 'responseAPICharacter.g.dart';
 

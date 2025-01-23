@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projet_final/model/list/issuesListModel.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+
+import '../../model/list/issuesListModel.dart';
 
 class CardComics extends StatelessWidget {
   final IssueModel issue;
@@ -88,14 +89,14 @@ class CardComics extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.book,
-                            color: AppColors.grey,
+                            color: AppColors.bottomBarUnselectedText,
                             size: 17,
                           ),
                           SizedBox(width: 6),
                           Text(
                             'N°16',
                             style: TextStyle(
-                              color: AppColors.grey,
+                              color: AppColors.bottomBarUnselectedText,
                               fontSize: 12,
                             ),
                           ),
@@ -106,14 +107,14 @@ class CardComics extends StatelessWidget {
                         children: [
                           const Icon(
                             Icons.calendar_today,
-                            color: AppColors.grey,
+                            color: AppColors.bottomBarUnselectedText,
                             size: 17,
                           ),
                           const SizedBox(width: 6),
                           Text(
                             issue.date_added.toString().split(' ')[0],
                             style: const TextStyle(
-                              color: AppColors.grey,
+                              color: AppColors.bottomBarUnselectedText,
                               fontSize: 12,
                             ),
                           ),

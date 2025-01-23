@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import '../../../model/utils/personCreditsModel.dart';
+import '../../../interface/model/utils/personCreditsModel.dart';
 
 part 'responseAPIPersonCredits.g.dart';
 

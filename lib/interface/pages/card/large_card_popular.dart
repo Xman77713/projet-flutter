@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projet_final/model/list/issuesListModel.dart';
-import 'package:flutter_projet_final/model/list/moviesListModel.dart';
-import 'package:flutter_projet_final/model/list/seriesListModel.dart';
-import 'package:flutter_projet_final/pages/tab/list_comics.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+
+import '../../model/list/issuesListModel.dart';
+import '../../model/list/moviesListModel.dart';
+import '../../model/list/seriesListModel.dart';
 import 'little_cards.dart';
 
 class LargeCardPopular extends StatelessWidget {
@@ -12,9 +12,12 @@ class LargeCardPopular extends StatelessWidget {
   final IssuesListModelHP? issuesList;
   final MoviesListModelHP? moviesList;
 
+  final void Function(int tabPosition) setTab;
+
   const LargeCardPopular({
     super.key,
     required this.title,
+    required this.setTab,
     this.seriesList,
     this.issuesList,
     this.moviesList,
@@ -56,7 +59,7 @@ class LargeCardPopular extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 2),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(16),
         boxShadow: const [
           BoxShadow(
@@ -79,7 +82,7 @@ class LargeCardPopular extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 5,
-                      backgroundColor: Colors.orange,
+                      backgroundColor: AppColors.orange,
                     ),
                     const SizedBox(width: 12),
                     Text(
@@ -94,36 +97,41 @@ class LargeCardPopular extends StatelessWidget {
                 ),
                 TextButton(
                   style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all(AppColors.grey2),
+                    backgroundColor:
+                        WidgetStateProperty.all(AppColors.bottomBarBackground),
                     foregroundColor: WidgetStateProperty.all(Colors.white),
                   ),
                   child: const Text('Voir plus'),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ListComics()),
-                    );
+                    if (seriesList != null) {
+                      setTab(2);
+                    } else if (issuesList != null) {
+                      setTab(1);
+                    } else if (moviesList != null) {
+                      setTab(3);
+                    }
                   },
                 ),
               ],
             ),
             SizedBox(
-                height: 242,
-                child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: List.generate(
-                        20,
-                        (index) => Padding(
-                          padding: const EdgeInsets.only(right: 5.0),
-                          child: LittleCards(
-                            title: data[index]['name'] ?? "Nom indisponible",
-                            imageUrl: data[index]['imageUrl'] ?? "",
-                          ),
-                        ),
+              height: 242,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: List.generate(
+                    data.length,
+                    (index) => Padding(
+                      padding: const EdgeInsets.only(right: 5.0),
+                      child: LittleCards(
+                        title: data[index]['name'] ?? "Nom non disponible",
+                        imageUrl: data[index]['imageUrl'] ?? "",
                       ),
-                    )))
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
