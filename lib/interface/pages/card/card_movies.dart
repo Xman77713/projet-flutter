@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projet_final/model/list/moviesListModel.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
-import 'package:go_router/go_router.dart';
+
+import '../../model/list/moviesListModel.dart';
 
 class CardMovies extends StatelessWidget {
   final MovieModel movie;
@@ -119,28 +119,6 @@ class CardMovies extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
-                //TODO à enlever
-                const Spacer(),
-                // Bouton pour aller à la page des détails
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orange,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                    onPressed: () {
-                      // Navigation vers la page des détails
-                      context.push('/movie/${movie.id}');
-                    },
-                    child: const Text(
-                      'Détails',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
                 ),
               ],
             ),

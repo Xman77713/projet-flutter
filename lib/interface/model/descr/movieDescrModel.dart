@@ -1,8 +1,7 @@
-import 'package:flutter_projet_final/model/utils/characterModel.dart';
-import 'package:flutter_projet_final/model/utils/producerModel.dart';
-import 'package:flutter_projet_final/model/utils/studioModel.dart';
-
+import '../utils/characterModel.dart';
 import '../utils/imageUrlModel.dart';
+import '../utils/producerModel.dart';
+import '../utils/studioModel.dart';
 
 class MovieDescrModel {
   final MovieDModel movieDModel;

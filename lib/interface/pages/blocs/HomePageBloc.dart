@@ -3,9 +3,9 @@ import 'package:flutter_projet_final/api/comicVineAPI.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPIIssuesList.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPISeriesList.dart';
-import 'package:flutter_projet_final/model/list/issuesListModel.dart';
-import 'package:flutter_projet_final/model/list/moviesListModel.dart';
 
+import '../../model/list/issuesListModel.dart';
+import '../../model/list/moviesListModel.dart';
 import '../../model/list/seriesListModel.dart';
 
 abstract class HomePageEvent {}

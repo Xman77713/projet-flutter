@@ -1,10 +1,10 @@
 import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
-import 'package:flutter_projet_final/model/descr/movieDescrModel.dart';
-import 'package:flutter_projet_final/model/utils/producerModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../model/utils/characterModel.dart';
-import '../../../model/utils/studioModel.dart';
+import '../../../interface/model/descr/movieDescrModel.dart';
+import '../../../interface/model/utils/characterModel.dart';
+import '../../../interface/model/utils/producerModel.dart';
+import '../../../interface/model/utils/studioModel.dart';
 import '../utils/responseAPICharacter.dart';
 import '../utils/responseAPIProducer.dart';
 import '../utils/responseAPIStudio.dart';

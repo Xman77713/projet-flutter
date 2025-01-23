@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../model/utils/producerModel.dart';
+import '../../../interface/model/utils/producerModel.dart';
 
 part 'responseAPIProducer.g.dart';
 

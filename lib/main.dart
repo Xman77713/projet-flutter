@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_projet_final/pages/blocs/HomePageBloc.dart';
-import 'package:flutter_projet_final/pages/first_bloc_details_movies.dart';
-import 'package:flutter_projet_final/pages/home_page.dart';
-import 'package:flutter_projet_final/pages/large_card_popular.dart';
-import 'package:flutter_projet_final/pages/list_movies.dart';
-import 'package:flutter_projet_final/pages/second_bloc_details_movies_synopsis.dart';
-import 'package:flutter_projet_final/pages/seriesListBloc.dart';
-import 'package:flutter_projet_final/pages/card_movies.dart';
-import 'package:flutter_projet_final/pages/list_comics.dart';
-import 'package:flutter_projet_final/pages/list_movies.dart';
-import 'package:flutter_projet_final/pages/list_series.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 import 'package:go_router/go_router.dart';
+
+import 'interface/pages/blocs/HomePageBloc.dart';
+import 'interface/pages/first_bloc_details_movies.dart';
+import 'interface/pages/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,7 +26,7 @@ class MyApp extends StatelessWidget {
               path: '/movie/:id',
               builder: (BuildContext context, GoRouterState state) {
                 final movieId = int.parse(state.pathParameters['id']!);
-                return MovieDetailsPage(movieId: movieId);
+                return FirstBlocDetailsMovies(movieId: movieId);
               })
         ])
   ]);
@@ -45,7 +38,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
-          scaffoldBackgroundColor: AppColors.grey2),
+          scaffoldBackgroundColor: AppColors.screenBackground),
       routerConfig: _router,
     );
   }

@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projet_final/api/comicVineAPI.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPIIssuesList.dart';
-import 'package:flutter_projet_final/model/list/issuesListModel.dart';
+
+import '../../model/list/issuesListModel.dart';
 
 abstract class IssuesListPageEvent {}
 

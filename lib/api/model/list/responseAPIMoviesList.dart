@@ -1,6 +1,7 @@
 import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
-import 'package:flutter_projet_final/model/list/moviesListModel.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../../../interface/model/list/moviesListModel.dart';
 
 part 'responseAPIMoviesList.g.dart';
 

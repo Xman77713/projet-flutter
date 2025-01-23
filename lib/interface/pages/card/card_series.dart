@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projet_final/model/list/issuesListModel.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
-class CardComics extends StatelessWidget {
-  final IssueModel issue;
+import '../../model/list/seriesListModel.dart';
+
+class CardSeries extends StatelessWidget {
+  final SerieModel serie;
   final int index;
 
-  const CardComics({super.key, required this.issue, required this.index});
+  const CardSeries({super.key, required this.serie, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class CardComics extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       child: Center(
         child: Container(
-          height: 196,
+          height: 162,
           width: 359,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 26, 49, 73),
@@ -33,8 +34,8 @@ class CardComics extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: Image.network(
-                          issue.getImageUrl().mediumUrl ?? 'Image indisponible',
-                          height: 163,
+                          serie.getImageUrl().smallUrl ?? 'Image indisponible',
+                          height: 131,
                           width: 129,
                           fit: BoxFit.cover,
                         ),
@@ -67,41 +68,50 @@ class CardComics extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        issue.name?.name ?? 'Nom indisponible',
+                        serie.name ?? 'Nom indisponible',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 20),
-                      Text(
-                        issue.nameSaga ?? 'Nom saga indisponible',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
                       const SizedBox(height: 30),
-                      const Row(
+                      Row(
                         children: [
-                          Icon(
-                            Icons.book,
+                          const Icon(
+                            Icons.movie_edit,
                             color: AppColors.bottomBarUnselectedText,
                             size: 17,
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Text(
-                            'N°16',
-                            style: TextStyle(
+                            serie.publisher?.name ?? 'Publisher indisponible',
+                            style: const TextStyle(
                               color: AppColors.bottomBarUnselectedText,
                               fontSize: 12,
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: 7),
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.tv_outlined,
+                            color: AppColors.bottomBarUnselectedText,
+                            size: 17,
+                          ),
+                          const SizedBox(width: 6),
+                          Text(
+                            '${serie.count_of_episodes ?? 'XX'} épisodes',
+                            style: const TextStyle(
+                              color: AppColors.bottomBarUnselectedText,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 7),
                       Row(
                         children: [
                           const Icon(
@@ -111,7 +121,7 @@ class CardComics extends StatelessWidget {
                           ),
                           const SizedBox(width: 6),
                           Text(
-                            issue.date_added.toString().split(' ')[0],
+                            serie.date_added.toString().split(' ')[0],
                             style: const TextStyle(
                               color: AppColors.bottomBarUnselectedText,
                               fontSize: 12,

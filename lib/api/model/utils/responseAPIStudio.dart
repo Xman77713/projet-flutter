@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../model/utils/studioModel.dart';
+import '../../../interface/model/utils/studioModel.dart';
 
 part 'responseAPIStudio.g.dart';
 

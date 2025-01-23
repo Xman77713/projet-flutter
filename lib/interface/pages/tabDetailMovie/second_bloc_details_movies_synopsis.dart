@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_projet_final/res/app_colors.dart';
 
 class SecondBlocDetailsMoviesSynopsis extends StatelessWidget {
   const SecondBlocDetailsMoviesSynopsis({super.key});

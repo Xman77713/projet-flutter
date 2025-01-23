@@ -1,7 +1,7 @@
 import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
-import 'package:flutter_projet_final/model/list/issuesListModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../interface/model/list/issuesListModel.dart';
 import '../utils/responseAPINameComics.dart';
 
 part 'responseAPIIssuesList.g.dart';

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_projet_final/model/list/issuesListModel.dart';
-import 'package:flutter_projet_final/model/list/moviesListModel.dart';
-import 'package:flutter_projet_final/pages/blocs/HomePageBloc.dart';
-import 'package:flutter_projet_final/pages/large_card_popular.dart';
-import 'package:flutter_projet_final/pages/tab/list_comics.dart';
-import 'package:flutter_projet_final/pages/tab/list_movies.dart';
-import 'package:flutter_projet_final/pages/tab/list_series.dart';
+import 'package:flutter_projet_final/interface/pages/tabHomePage/list_comics.dart';
+import 'package:flutter_projet_final/interface/pages/tabHomePage/list_movies.dart';
+import 'package:flutter_projet_final/interface/pages/tabHomePage/list_series.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 
+import '../model/list/issuesListModel.dart';
+import '../model/list/moviesListModel.dart';
 import '../model/list/seriesListModel.dart';
+import 'blocs/HomePageBloc.dart';
+import 'card/large_card_popular.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -78,6 +78,7 @@ class _HomePageState extends State<HomePage> {
                           seriesList: state.seriesList,
                           issuesList: state.issuesList,
                           moviesList: state.moviesList,
+                          setTab: _setTab,
                         ),
                       ),
                     ),
@@ -173,6 +174,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _setTab(int position) {
+    setState(() {
+      _tabPosition = position;
+    });
+  }
+
   Widget get body {
     switch (_tabPosition) {
       case 0:
@@ -180,6 +187,7 @@ class _HomePageState extends State<HomePage> {
           seriesList: state?.seriesList,
           issuesList: state?.issuesList,
           moviesList: state?.moviesList,
+          setTab: (int tabPosition) {},
         );
       case 1:
         return const ComicsPageTab();
@@ -199,12 +207,14 @@ class HomePageTab extends StatelessWidget {
   final SeriesListModelHP seriesList;
   final IssuesListModelHP issuesList;
   final MoviesListModelHP moviesList;
+  final void Function(int tabPosition) setTab;
 
   const HomePageTab(
       {super.key,
       required this.seriesList,
       required this.issuesList,
-      required this.moviesList});
+      required this.moviesList,
+      required this.setTab});
 
   @override
   Widget build(BuildContext context) {
@@ -233,16 +243,19 @@ class HomePageTab extends StatelessWidget {
             LargeCardPopular(
               title: "Séries populaires",
               seriesList: seriesList,
+              setTab: setTab,
             ),
             const SizedBox(height: 10),
             LargeCardPopular(
               title: "Comics populaires",
               issuesList: issuesList,
+              setTab: setTab,
             ),
             const SizedBox(height: 10),
             LargeCardPopular(
               title: "Films populaires",
               moviesList: moviesList,
+              setTab: setTab,
             ),
             const SizedBox(height: 10),
           ],
