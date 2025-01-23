@@ -13,14 +13,25 @@ import 'package:flutter_projet_final/pages/list_comics.dart';
 import 'package:flutter_projet_final/pages/list_movies.dart';
 import 'package:flutter_projet_final/pages/list_series.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
+// final GoRouter _router = Gorouter(routes: [
+//   GoRoute(
+//        path: '/series'
+//    builder: (BuildContext context, GoRouterState state) => BlocProvider(
+//               create: (_) => LoadDataBloc(),
+//               child:  const ListSeries(),
+//             ),
+//       )
+
+// ]);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,6 +47,26 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+// class MyApp extends StatelessWidget {
+//   final GoRouter _router = GoRouter(
+//     routes: [
+//       GoRoute(
+//         path: '/series',
+//         builder: (BuildContext context, GoRouterState state) => BlocProvider(
+//           create: (_) => LoadDataBloc(),
+//           child: const ListSeries(),
+//         ),
+//       ),
+//     ],
+//   );
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp.router(
+//       routerConfig: _router,
+//     );
+//   }
+// }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});

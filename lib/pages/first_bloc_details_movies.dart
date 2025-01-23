@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_projet_final/pages/list_movies.dart';
 import 'package:flutter_projet_final/pages/second_bloc_details_movies_infos.dart';
 import 'package:flutter_projet_final/pages/second_bloc_details_movies_people.dart';
 import 'package:flutter_projet_final/pages/second_bloc_details_movies_synopsis.dart';
@@ -15,11 +16,19 @@ class FirstBlocDetailsMovies extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 2, 8, 14),
-          title: const Row(
+          title: Row(
             children: [
-              Icon(Icons.arrow_back_ios, color: Colors.white),
-              SizedBox(width: 8),
-              Text(
+              IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ListMovies()));
+                  },
+                  icon: const Icon(Icons.arrow_back_ios,
+                      color: AppColors.bottomBarUnselectedText)),
+              const SizedBox(width: 8),
+              const Text(
                 'Watchmen',
                 style: TextStyle(
                   color: Colors.white,

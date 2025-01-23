@@ -3,6 +3,7 @@ import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
 import 'package:flutter_projet_final/model/seriesListModel.dart';
 import 'package:flutter_projet_final/pages/list_comics.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import 'package:go_router/go_router.dart';
 import '../api/model/list/responseAPISeriesList.dart';
 import 'little_cards.dart';
 
@@ -83,11 +84,9 @@ class LargeCardPopular extends StatelessWidget {
                   ),
                   child: const Text('Voir plus'),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ListComics()),
-                    );
+                    context.push('/series');
+                    context.push('/comics');
+                    context.push('/movies');
                   },
                 ),
               ],
