@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.grey2,
+      backgroundColor: AppColors.screenBackground,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,35 +107,64 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                bottomNavigationBar: NavigationBar(
-                  destinations: const [
-                    NavigationDestination(
-                      icon: Icon(Icons.home),
-                      label: 'Accueil',
+                bottomNavigationBar: NavigationBarTheme(
+                  data: NavigationBarThemeData(
+                    backgroundColor: AppColors.bottomBarBackground,
+                    indicatorColor: const Color.fromARGB(255, 255, 0, 0),
+                    labelTextStyle: WidgetStateProperty.all(
+                      const TextStyle(
+                        color: AppColors.bottomBarUnselectedText,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                    NavigationDestination(
-                      icon: Icon(Icons.menu_book_outlined),
-                      label: 'Comics',
-                    ),
-                    NavigationDestination(
-                      icon: Icon(Icons.live_tv_outlined),
-                      label: 'Séries',
-                    ),
-                    NavigationDestination(
-                      icon: Icon(Icons.local_movies),
-                      label: 'Films',
-                    ),
-                    NavigationDestination(
-                      icon: Icon(Icons.search),
-                      label: 'Recherche',
-                    ),
-                  ],
-                  selectedIndex: _tabPosition,
-                  onDestinationSelected: (int position) {
-                    setState(() {
-                      _tabPosition = position;
-                    });
-                  },
+                  ),
+                  child: NavigationBar(
+                    indicatorColor: AppColors.bottomBarSelectedBackground,
+                    destinations: const [
+                      NavigationDestination(
+                        icon: Icon(
+                          Icons.home,
+                          color: AppColors.bottomBarUnselectedText,
+                        ),
+                        label: 'Accueil',
+                      ),
+                      NavigationDestination(
+                        icon: Icon(
+                          Icons.menu_book_outlined,
+                          color: AppColors.bottomBarUnselectedText,
+                        ),
+                        label: 'Comics',
+                      ),
+                      NavigationDestination(
+                        icon: Icon(
+                          Icons.live_tv_outlined,
+                          color: AppColors.bottomBarUnselectedText,
+                        ),
+                        label: 'Séries',
+                      ),
+                      NavigationDestination(
+                        icon: Icon(
+                          Icons.local_movies,
+                          color: AppColors.bottomBarUnselectedText,
+                        ),
+                        label: 'Films',
+                      ),
+                      NavigationDestination(
+                        icon: Icon(
+                          Icons.search,
+                          color: AppColors.bottomBarUnselectedText,
+                        ),
+                        label: 'Recherche',
+                      ),
+                    ],
+                    selectedIndex: _tabPosition,
+                    onDestinationSelected: (int position) {
+                      setState(() {
+                        _tabPosition = position;
+                      });
+                    },
+                  ),
                 ),
               )
           };
@@ -180,7 +209,7 @@ class HomePageTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.grey2,
+      backgroundColor: AppColors.screenBackground,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

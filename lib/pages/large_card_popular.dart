@@ -4,6 +4,8 @@ import 'package:flutter_projet_final/model/list/moviesListModel.dart';
 import 'package:flutter_projet_final/model/list/seriesListModel.dart';
 import 'package:flutter_projet_final/pages/tab/list_comics.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import 'package:go_router/go_router.dart';
+import '../api/model/list/responseAPISeriesList.dart';
 import 'little_cards.dart';
 
 class LargeCardPopular extends StatelessWidget {
@@ -56,7 +58,7 @@ class LargeCardPopular extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 2),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(16),
         boxShadow: const [
           BoxShadow(
@@ -79,7 +81,7 @@ class LargeCardPopular extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 5,
-                      backgroundColor: Colors.orange,
+                      backgroundColor: AppColors.orange,
                     ),
                     const SizedBox(width: 12),
                     Text(
@@ -94,16 +96,15 @@ class LargeCardPopular extends StatelessWidget {
                 ),
                 TextButton(
                   style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all(AppColors.grey2),
+                    backgroundColor:
+                        WidgetStateProperty.all(AppColors.bottomBarBackground),
                     foregroundColor: WidgetStateProperty.all(Colors.white),
                   ),
                   child: const Text('Voir plus'),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ListComics()),
-                    );
+                    context.push('/series');
+                    context.push('/comics');
+                    context.push('/movies');
                   },
                 ),
               ],

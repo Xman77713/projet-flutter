@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_projet_final/pages/card_movies.dart';
+import 'package:flutter_projet_final/res/app_colors.dart';
+
+class ListMovies extends StatelessWidget {
+  const ListMovies({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.screenBackground,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.topLeft,
+              child: Container(
+                margin: const EdgeInsets.only(top: 40),
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
+                  'Films les plus populaires',
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 255, 255, 255),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 2),
+            const CardMovies(),
+            const SizedBox(height: 2),
+            const CardMovies(),
+            const SizedBox(height: 2),
+            const CardMovies(),
+            const SizedBox(height: 2),
+            const CardMovies(),
+            const SizedBox(height: 2),
+            const CardMovies(),
+            const SizedBox(height: 2),
+          ],
+        ),
+      ),
+    );
+  }
+}
