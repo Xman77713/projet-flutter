@@ -1,6 +1,6 @@
-class Studiomodel {
+class StudioModel {
   final String? name;
   final int? id;
 
-  Studiomodel(this.name, this.id);
+  StudioModel(this.name, this.id);
 }

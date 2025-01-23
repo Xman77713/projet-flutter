@@ -1,6 +1,36 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import 'package:go_router/go_router.dart';
+
+class MovieDetailsPage extends StatelessWidget {
+  final int movieId;
+
+  const MovieDetailsPage({super.key, required this.movieId});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Détails du film'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            context.pop(); // Retour avec GoRouter
+          },
+        ),
+      ),
+      body: Center(
+        child: Text(
+          'ID du film : $movieId',
+          style: const TextStyle(
+              fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+      ),
+    );
+  }
+}
 
 class FirstBlocDetailsMovies extends StatelessWidget {
   const FirstBlocDetailsMovies({super.key});

@@ -1,4 +1,8 @@
 import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
+import 'package:flutter_projet_final/model/descr/movieDescrModel.dart';
+import 'package:flutter_projet_final/model/utils/characterModel.dart';
+import 'package:flutter_projet_final/model/utils/producerModel.dart';
+import 'package:flutter_projet_final/model/utils/studioModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../utils/responseAPICharacter.dart';
@@ -20,6 +24,8 @@ class OFFServerResponseMovieDescr {
       _$OFFServerResponseMovieDescrFromJson(json);
 
   Map<String, dynamic> toJson() => _$OFFServerResponseMovieDescrToJson(this);
+
+  MovieDescrModel getMovieDescr() => MovieDescrModel(results.getMovieD());
 }
 
 @JsonSerializable()
@@ -65,4 +71,19 @@ class OFFMovieDescr {
       _$OFFMovieDescrFromJson(json);
 
   Map<String, dynamic> toJson() => _$OFFMovieDescrToJson(this);
+
+  MovieDModel getMovieD() => MovieDModel(
+      name,
+      image?.getImageUrl(),
+      id,
+      runtime,
+      description,
+      characters?.cast<CharacterModel>(),
+      date_added,
+      // studios.getStudios(),
+      // producers.getProducers(),
+      studios?.cast<StudioModel>(),
+      producers?.cast<ProducerModel>(),
+      budget,
+      box_office_revenue);
 }

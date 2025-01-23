@@ -22,5 +22,5 @@ class Studio {
 
   Map<String, dynamic> toJson() => _$StudioToJson(this);
 
-  Studiomodel getStudio() => Studiomodel(name, id);
+  StudioModel getStudio() => StudioModel(name, id);
 }
