@@ -17,19 +17,10 @@ class FirstBlocDetailsMovies extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 2, 8, 14),
-          title: Row(
+          title: const Row(
             children: [
-              IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ListMovies()));
-                  },
-                  icon: const Icon(Icons.arrow_back_ios,
-                      color: AppColors.bottomBarUnselectedText)),
-              const SizedBox(width: 8),
-              const Text(
+              SizedBox(width: 8),
+              Text(
                 'Watchmen',
                 style: TextStyle(
                   color: Colors.white,

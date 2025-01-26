@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../model/list/moviesListModel.dart';
 
@@ -71,12 +72,17 @@ class CardMovies extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            movie.name ?? 'Nom indisponible',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                          InkWell(
+                            onTap: () {
+                              context.go('/movie/${movie.id}');
+                            },
+                            child: Text(
+                              movie.name ?? 'Nom indisponible',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 60),
