@@ -36,7 +36,7 @@ class OFFMovies {
   final int? id;
   @JsonKey(name: 'runtime')
   final String? runtime;
-  @JsonKey(name: 'date_added')
+  @JsonKey(name: 'release_date')
   final DateTime? date_added;
 
   OFFMovies(this.name, this.image, this.id, this.runtime, this.date_added);

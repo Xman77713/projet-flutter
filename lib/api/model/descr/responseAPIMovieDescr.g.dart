@@ -32,9 +32,9 @@ OFFMovieDescr _$OFFMovieDescrFromJson(Map<String, dynamic> json) =>
       (json['characters'] as List<dynamic>?)
           ?.map((e) => Character.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['date_added'] == null
+      json['release_date'] == null
           ? null
-          : DateTime.parse(json['date_added'] as String),
+          : DateTime.parse(json['release_date'] as String),
       (json['studios'] as List<dynamic>?)
           ?.map((e) => Studio.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -53,7 +53,7 @@ Map<String, dynamic> _$OFFMovieDescrToJson(OFFMovieDescr instance) =>
       'runtime': instance.runtime,
       'description': instance.description,
       'characters': instance.characters,
-      'date_added': instance.date_added?.toIso8601String(),
+      'release_date': instance.date_added?.toIso8601String(),
       'studios': instance.studios,
       'producers': instance.producers,
       'budget': instance.budget,

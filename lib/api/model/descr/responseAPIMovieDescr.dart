@@ -42,7 +42,7 @@ class OFFMovieDescr {
   final String? description;
   @JsonKey(name: 'characters')
   final List<Character>? characters;
-  @JsonKey(name: 'date_added')
+  @JsonKey(name: 'release_date')
   final DateTime? date_added;
   @JsonKey(name: 'studios')
   final List<Studio>? studios;
@@ -72,14 +72,38 @@ class OFFMovieDescr {
 
   Map<String, dynamic> toJson() => _$OFFMovieDescrToJson(this);
 
-  ListCharacterModel getCharactersList() => ListCharacterModel(
-      characters!.map((char) => char.getCharacter()).toList());
+  // ListCharacterModel getCharactersList() => ListCharacterModel(
+  //     characters!.map((char) => char.getCharacter()).toList());
+  //
+  // ListStudiosModel getStudiosList() =>
+  //     ListStudiosModel(studios!.map((stud) => stud.getStudio()).toList());
+  //
+  // ListProducersModel getProducersList() => ListProducersModel(
+  //     producers!.map((produ) => produ.getProducer()).toList());
 
-  ListStudiosModel getStudiosList() =>
-      ListStudiosModel(studios!.map((stud) => stud.getStudio()).toList());
+  ListCharacterModel getCharactersList() {
+    if (characters != null) {
+      return ListCharacterModel(
+          characters!.map((char) => char.getCharacter()).toList());
+    }
+    return ListCharacterModel([]);
+  }
 
-  ListProducersModel getProducersList() => ListProducersModel(
-      producers!.map((produ) => produ.getProducer()).toList());
+  ListStudiosModel getStudiosList() {
+    if (studios != null) {
+      return ListStudiosModel(
+          studios!.map((stud) => stud.getStudio()).toList());
+    }
+    return ListStudiosModel([]);
+  }
+
+  ListProducersModel getProducersList() {
+    if (producers != null) {
+      return ListProducersModel(
+          producers!.map((produ) => produ.getProducer()).toList());
+    }
+    return ListProducersModel([]);
+  }
 
   MovieDModel getMovieD() => MovieDModel(
       name,
