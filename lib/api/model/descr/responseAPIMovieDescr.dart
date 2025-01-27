@@ -1,10 +1,12 @@
 import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
+import 'package:flutter_projet_final/api/model/utils/responseAPIWriter.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../interface/model/descr/movieDescrModel.dart';
 import '../../../interface/model/utils/characterModel.dart';
 import '../../../interface/model/utils/producerModel.dart';
 import '../../../interface/model/utils/studioModel.dart';
+import '../../../interface/model/utils/writerModel.dart';
 import '../utils/responseAPICharacter.dart';
 import '../utils/responseAPIProducer.dart';
 import '../utils/responseAPIStudio.dart';
@@ -52,6 +54,12 @@ class OFFMovieDescr {
   final String? budget;
   @JsonKey(name: 'box_office_revenue')
   final String? box_office_revenue;
+  @JsonKey(name: 'rating')
+  final String? rating;
+  @JsonKey(name: 'writers')
+  final List<Writer>? writers;
+  @JsonKey(name: 'total_revenue')
+  final String? total_revenue;
 
   OFFMovieDescr(
     this.name,
@@ -65,21 +73,15 @@ class OFFMovieDescr {
     this.producers,
     this.budget,
     this.box_office_revenue,
+    this.rating,
+    this.writers,
+    this.total_revenue,
   );
 
   factory OFFMovieDescr.fromJson(Map<String, dynamic> json) =>
       _$OFFMovieDescrFromJson(json);
 
   Map<String, dynamic> toJson() => _$OFFMovieDescrToJson(this);
-
-  // ListCharacterModel getCharactersList() => ListCharacterModel(
-  //     characters!.map((char) => char.getCharacter()).toList());
-  //
-  // ListStudiosModel getStudiosList() =>
-  //     ListStudiosModel(studios!.map((stud) => stud.getStudio()).toList());
-  //
-  // ListProducersModel getProducersList() => ListProducersModel(
-  //     producers!.map((produ) => produ.getProducer()).toList());
 
   ListCharacterModel getCharactersList() {
     if (characters != null) {
@@ -105,6 +107,14 @@ class OFFMovieDescr {
     return ListProducersModel([]);
   }
 
+  ListWritersModel getWritersList() {
+    if (writers != null) {
+      return ListWritersModel(
+          writers!.map((writer) => writer.getWriter()).toList());
+    }
+    return ListWritersModel([]);
+  }
+
   MovieDModel getMovieD() => MovieDModel(
       name,
       image?.getImageUrl(),
@@ -116,5 +126,8 @@ class OFFMovieDescr {
       getStudiosList(),
       getProducersList(),
       budget,
-      box_office_revenue);
+      box_office_revenue,
+      rating,
+      getWritersList(),
+      total_revenue);
 }

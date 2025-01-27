@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projet_final/interface/model/utils/producerModel.dart';
+import 'package:flutter_projet_final/interface/model/utils/studioModel.dart';
+import 'package:flutter_projet_final/interface/model/utils/writerModel.dart';
 
 class SecondBlocDetailsMoviesInfos extends StatelessWidget {
-  const SecondBlocDetailsMoviesInfos({super.key});
+  final ListProducersModel? producers;
+  final ListStudiosModel? studios;
+  final String? budget;
+  final String? box_office_revenue;
+  final String? rating;
+  final ListWritersModel? writers;
+  final String? total_revenue;
+
+  const SecondBlocDetailsMoviesInfos(
+      {super.key,
+      required this.producers,
+      required this.studios,
+      required this.budget,
+      required this.box_office_revenue,
+      required this.rating,
+      required this.writers,
+      required this.total_revenue});
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +34,8 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
             color: const Color.fromARGB(255, 26, 49, 73),
             borderRadius: BorderRadius.circular(20),
           ),
-          child: const Padding(
-            padding: EdgeInsets.all(20.0),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +43,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   // Classification
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         'Classification',
                         style: TextStyle(
                           color: Colors.white,
@@ -32,19 +51,19 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(width: 50),
+                      const SizedBox(width: 50),
                       Text(
-                        'R',
-                        style: TextStyle(
+                        rating ?? 'Indisponible',
+                        style: const TextStyle(
                           color: Colors.white,
                           fontSize: 20,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   // Réalisateur
-                  Row(
+                  const Row(
                     children: [
                       Text(
                         'Réalisateur',
@@ -56,7 +75,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                       ),
                       SizedBox(width: 50),
                       Text(
-                        'Zack Snyder',
+                        'Indiponible',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -64,12 +83,12 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   // Scénaristes
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Scénaristes',
                         style: TextStyle(
                           color: Colors.white,
@@ -77,34 +96,27 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(width: 50),
+                      const SizedBox(width: 50),
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Alex Tse',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: List.generate(
+                            writers!.listWritersModel.length,
+                            (index) => Text(
+                              writers?.listWritersModel[index].name ?? '',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
                             ),
-                          ),
-                          Text(
-                            'David Hayter',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ],
-                      ),
+                          ))
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   // Producteurs
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Producteurs',
                         style: TextStyle(
                           color: Colors.white,
@@ -112,48 +124,27 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(width: 50),
+                      const SizedBox(width: 50),
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Deborah Snyder',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: List.generate(
+                            producers!.listProducersModel.length,
+                            (index) => Text(
+                              producers?.listProducersModel[index].name ?? '',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
                             ),
-                          ),
-                          Text(
-                            'Lawrence Gordon',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
-                          Text(
-                            'Lloyd Levin',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
-                          Text(
-                            'Wesley Collier',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ],
-                      ),
+                          ))
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   // Studio
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Studio',
                         style: TextStyle(
                           color: Colors.white,
@@ -161,40 +152,26 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(width: 50),
+                      const SizedBox(width: 50),
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'DC Comics',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: List.generate(
+                            studios!.listStudiosModel.length,
+                            (index) => Text(
+                              studios?.listStudiosModel[index].name ?? '',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
                             ),
-                          ),
-                          Text(
-                            'Cartoon Network Comics',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
-                          Text(
-                            'Paramount Pictures',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
-                        ],
-                      ),
+                          ))
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Budget',
                         style: TextStyle(
                           color: Colors.white,
@@ -202,13 +179,13 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(width: 50),
+                      const SizedBox(width: 50),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '130 millions',
-                            style: TextStyle(
+                            '${budget ?? 'XX'} \$',
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 20,
                             ),
@@ -217,11 +194,11 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Flexible(
+                      const Flexible(
                         child: Text(
                           'Recette aux box-offices',
                           style: TextStyle(
@@ -231,13 +208,13 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 50),
+                      const SizedBox(width: 50),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '185 millions',
-                            style: TextStyle(
+                            '${box_office_revenue ?? 'XX'} \$',
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 20,
                             ),
@@ -247,11 +224,11 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                     ],
                   ),
 
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Flexible(
+                      const Flexible(
                         child: Text(
                           'Recette brutes totales',
                           style: TextStyle(
@@ -261,13 +238,13 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(width: 50),
+                      const SizedBox(width: 50),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '185 millions',
-                            style: TextStyle(
+                            '${total_revenue ?? 'XX'} \$',
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 20,
                             ),

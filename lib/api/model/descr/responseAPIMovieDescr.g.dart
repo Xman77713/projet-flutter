@@ -43,6 +43,11 @@ OFFMovieDescr _$OFFMovieDescrFromJson(Map<String, dynamic> json) =>
           .toList(),
       json['budget'] as String?,
       json['box_office_revenue'] as String?,
+      json['rating'] as String?,
+      (json['writers'] as List<dynamic>?)
+          ?.map((e) => Writer.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      json['total_revenue'] as String?,
     );
 
 Map<String, dynamic> _$OFFMovieDescrToJson(OFFMovieDescr instance) =>
@@ -58,4 +63,7 @@ Map<String, dynamic> _$OFFMovieDescrToJson(OFFMovieDescr instance) =>
       'producers': instance.producers,
       'budget': instance.budget,
       'box_office_revenue': instance.box_office_revenue,
+      'rating': instance.rating,
+      'writers': instance.writers,
+      'total_revenue': instance.total_revenue,
     };

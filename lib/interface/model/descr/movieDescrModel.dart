@@ -1,3 +1,5 @@
+import 'package:flutter_projet_final/interface/model/utils/writerModel.dart';
+
 import '../utils/characterModel.dart';
 import '../utils/imageUrlModel.dart';
 import '../utils/producerModel.dart';
@@ -21,6 +23,9 @@ class MovieDModel {
   final ListProducersModel? producers;
   final String? budget;
   final String? box_office_revenue;
+  final String? rating;
+  final ListWritersModel? writers;
+  final String? total_revenue;
 
   MovieDModel(
       this.name,
@@ -33,7 +38,10 @@ class MovieDModel {
       this.studios,
       this.producers,
       this.budget,
-      this.box_office_revenue);
+      this.box_office_revenue,
+      this.rating,
+      this.writers,
+      this.total_revenue);
 
   ImageUrlModel getImageUrl() =>
       ImageUrlModel(image?.mediumUrl, image?.smallUrl);
