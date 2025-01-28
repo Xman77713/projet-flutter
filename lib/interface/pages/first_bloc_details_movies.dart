@@ -1,6 +1,7 @@
 import 'dart:ui'; // Pour le flou
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projet_final/interface/pages/tabDetailMovie/second_bloc_details_movies_infos.dart';
 import 'package:flutter_projet_final/interface/pages/tabDetailMovie/second_bloc_details_movies_people.dart';
 import 'package:flutter_projet_final/interface/pages/tabDetailMovie/second_bloc_details_movies_synopsis.dart';
