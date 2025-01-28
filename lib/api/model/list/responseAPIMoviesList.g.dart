@@ -29,9 +29,9 @@ OFFMovies _$OFFMoviesFromJson(Map<String, dynamic> json) => OFFMovies(
           : ImageURL.fromJson(json['image'] as Map<String, dynamic>),
       (json['id'] as num?)?.toInt(),
       json['runtime'] as String?,
-      json['date_added'] == null
+      json['release_date'] == null
           ? null
-          : DateTime.parse(json['date_added'] as String),
+          : DateTime.parse(json['release_date'] as String),
     );
 
 Map<String, dynamic> _$OFFMoviesToJson(OFFMovies instance) => <String, dynamic>{
@@ -39,5 +39,5 @@ Map<String, dynamic> _$OFFMoviesToJson(OFFMovies instance) => <String, dynamic>{
       'image': instance.image,
       'id': instance.id,
       'runtime': instance.runtime,
-      'date_added': instance.date_added?.toIso8601String(),
+      'release_date': instance.date_added?.toIso8601String(),
     };

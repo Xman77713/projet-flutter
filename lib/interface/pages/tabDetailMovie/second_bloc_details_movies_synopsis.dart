@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 class SecondBlocDetailsMoviesSynopsis extends StatelessWidget {
-  const SecondBlocDetailsMoviesSynopsis({super.key});
+  final String? description;
+
+  const SecondBlocDetailsMoviesSynopsis({super.key, required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -15,21 +18,13 @@ class SecondBlocDetailsMoviesSynopsis extends StatelessWidget {
             color: const Color.fromARGB(255, 26, 49, 73),
             borderRadius: BorderRadius.circular(20),
           ),
-          child: const Padding(
-            padding: EdgeInsets.all(15.0),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
             child: Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                'The watchmen, follows a group of retired superheroes, as they attempt to foil a plot to kill off masked superheroes.',
-                style: TextStyle(
-                  fontSize: 20,
-                  height: 1.5,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                alignment: Alignment.topLeft,
+                child: HtmlWidget(description ?? 'Description indisponible')
+                //TODO scroll bar à ajouter et couleur à changer
                 ),
-                textAlign: TextAlign.left,
-              ),
-            ),
           ),
         ),
       ),
