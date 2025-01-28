@@ -24,16 +24,6 @@ class SecondBlocDetailsMoviesSynopsis extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: HtmlWidget(description ?? 'Description indisponible')
                 //TODO scroll bar à ajouter et couleur à changer
-                // Text(
-                //   description ?? 'Description indisponible',
-                //   style: const TextStyle(
-                //     fontSize: 20,
-                //     height: 1.5,
-                //     fontWeight: FontWeight.bold,
-                //     color: Colors.white,
-                //   ),
-                //   textAlign: TextAlign.left,
-                // ),
                 ),
           ),
         ),

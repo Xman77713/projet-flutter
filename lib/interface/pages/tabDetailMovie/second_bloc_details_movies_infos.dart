@@ -12,20 +12,21 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
   final ListWritersModel? writers;
   final String? total_revenue;
 
-  const SecondBlocDetailsMoviesInfos(
-      {super.key,
-      required this.producers,
-      required this.studios,
-      required this.budget,
-      required this.box_office_revenue,
-      required this.rating,
-      required this.writers,
-      required this.total_revenue});
+  const SecondBlocDetailsMoviesInfos({super.key,
+    required this.producers,
+    required this.studios,
+    required this.budget,
+    required this.box_office_revenue,
+    required this.rating,
+    required this.writers,
+    required this.total_revenue});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
+      color: Theme
+          .of(context)
+          .scaffoldBackgroundColor,
       padding: const EdgeInsets.all(14),
       child: Center(
         child: Container(
@@ -101,13 +102,14 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: List.generate(
                             writers!.listWritersModel.length,
-                            (index) => Text(
-                              writers?.listWritersModel[index].name ?? '',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                              ),
-                            ),
+                                (index) =>
+                                Text(
+                                  writers?.listWritersModel[index].name ?? '',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
                           ))
                     ],
                   ),
@@ -129,14 +131,17 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: List.generate(
                             producers!.listProducersModel.length,
-                            (index) => Text(
-                              producers?.listProducersModel[index].name ?? '',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ))
+                                (index) =>
+                                Text(
+                                  producers?.listProducersModel[index].name ??
+                                      '',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                          )
+                      )
                     ],
                   ),
                   const SizedBox(height: 20),
@@ -157,13 +162,14 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: List.generate(
                             studios!.listStudiosModel.length,
-                            (index) => Text(
-                              studios?.listStudiosModel[index].name ?? '',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                              ),
-                            ),
+                                (index) =>
+                                Text(
+                                  studios?.listStudiosModel[index].name ?? '',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                  ),
+                                ),
                           ))
                     ],
                   ),

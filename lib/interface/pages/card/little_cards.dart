@@ -4,8 +4,13 @@ import 'package:flutter_projet_final/res/app_colors.dart';
 class LittleCards extends StatelessWidget {
   final String title;
   final String imageUrl;
+  final int type;
 
-  const LittleCards({super.key, required this.title, required this.imageUrl});
+  const LittleCards(
+      {super.key,
+      required this.title,
+      required this.imageUrl,
+      required this.type});
 
   @override
   Widget build(BuildContext context) {

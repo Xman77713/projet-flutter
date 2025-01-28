@@ -23,38 +23,53 @@ class LargeCardPopular extends StatelessWidget {
     this.moviesList,
   });
 
-  List<Map<String, String?>> extractNameImageList() {
+  List<Object> extractNameImageList() {
     if (seriesList != null) {
-      return seriesList!.seriesListModelHP.map((serie) {
-        return {
-          'name': serie.name,
-          'imageUrl': serie.image?.smallUrl,
-        };
-      }).toList();
+      int type = 1;
+      return [
+        seriesList!.seriesListModelHP.map((serie) {
+          return {
+            'name': serie.name,
+            'imageUrl': serie.image?.smallUrl,
+          };
+        }).toList(),
+        type
+      ];
     }
     if (issuesList != null) {
-      return issuesList!.issuesListModelHP.map((issue) {
-        return {
-          'name': issue.name?.name,
-          'imageUrl': issue.image?.smallUrl,
-        };
-      }).toList();
+      int type = 2;
+      return [
+        issuesList!.issuesListModelHP.map((issue) {
+          return {
+            'name': issue.name?.name,
+            'imageUrl': issue.image?.smallUrl,
+          };
+        }).toList(),
+        type
+      ];
     }
     if (moviesList != null) {
-      return moviesList!.moviesListModelHP.map((movie) {
-        return {
-          'name': movie.name,
-          'imageUrl': movie.image?.smallUrl,
-        };
-      }).toList();
+      int type = 3;
+      return [
+        moviesList!.moviesListModelHP.map((movie) {
+          return {
+            'name': movie.name,
+            'imageUrl': movie.image?.smallUrl,
+          };
+        }).toList(),
+        type
+      ];
     } else {
-      return [];
+      return [[], 0];
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String?>> data = extractNameImageList();
+    List<Map<String, String?>> data =
+        extractNameImageList()[0] as List<Map<String, String?>>;
+
+    int type = extractNameImageList()[1] as int;
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 2),
@@ -120,12 +135,13 @@ class LargeCardPopular extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: List.generate(
-                    data.length,
+                    30,
                     (index) => Padding(
                       padding: const EdgeInsets.only(right: 5.0),
                       child: LittleCards(
                         title: data[index]['name'] ?? "Nom non disponible",
                         imageUrl: data[index]['imageUrl'] ?? "",
+                        type: type,
                       ),
                     ),
                   ),
