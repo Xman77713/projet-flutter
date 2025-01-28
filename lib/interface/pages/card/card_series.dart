@@ -73,6 +73,7 @@ class CardSeries extends StatelessWidget {
                           color: Colors.white,
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       const SizedBox(height: 30),
@@ -93,7 +94,7 @@ class CardSeries extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 7),
+                      const SizedBox(height: 7),
                       Row(
                         children: [
                           const Icon(

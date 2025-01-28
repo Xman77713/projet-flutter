@@ -1,7 +1,6 @@
 import 'dart:ui'; // Pour le flou
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projet_final/interface/pages/tabDetailMovie/second_bloc_details_movies_infos.dart';
 import 'package:flutter_projet_final/interface/pages/tabDetailMovie/second_bloc_details_movies_people.dart';
 import 'package:flutter_projet_final/interface/pages/tabDetailMovie/second_bloc_details_movies_synopsis.dart';
@@ -49,7 +48,6 @@ class _FirstBlocDetailsMoviesState extends State<FirstBlocDetailsMovies> {
                   child: Scaffold(
                     body: Stack(
                       children: [
-                        // Arrière-plan flou
                         Positioned.fill(
                           child: Image.network(
                             state.movieDescr.movieDModel
@@ -70,7 +68,6 @@ class _FirstBlocDetailsMoviesState extends State<FirstBlocDetailsMovies> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Barre supérieure avec le bouton "back" et le titre
                             Container(
                               padding: const EdgeInsets.only(
                                   top: 40, left: 16, right: 16),
