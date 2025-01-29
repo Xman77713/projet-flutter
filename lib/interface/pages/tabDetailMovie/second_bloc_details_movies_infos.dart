@@ -42,7 +42,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                 children: [
                   // Classification
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
                         'Classification',
@@ -52,7 +51,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      const SizedBox(width: 50),
+                      const Spacer(),
                       Text(
                         rating ?? 'Indisponible',
                         style: const TextStyle(
@@ -67,7 +66,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   const SizedBox(height: 20),
                   // Réalisateur
                   const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         'Réalisateur',
@@ -77,7 +75,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      SizedBox(width: 50),
+                      Spacer(),
                       Text(
                         'Indiponible',
                         style: TextStyle(
@@ -92,7 +90,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   const SizedBox(height: 20),
                   // Scénaristes
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
                         'Scénaristes',
@@ -102,13 +99,13 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      const SizedBox(width: 50),
+                      const Spacer(),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: List.generate(
                           writers!.listWritersModel.length,
                           (index) => SizedBox(
-                            width: 170,
+                            width: 150,
                             child: Text(
                               writers?.listWritersModel[index].name ?? '',
                               style: const TextStyle(
@@ -126,7 +123,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   const SizedBox(height: 20),
                   // Producteurs
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
                         'Producteurs',
@@ -137,7 +133,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      const SizedBox(width: 50),
+                      const Spacer(),
                       Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: List.generate(
@@ -157,7 +153,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   const SizedBox(height: 20),
                   // Studio
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
                         'Studio',
@@ -168,7 +163,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      const SizedBox(width: 50),
+                      const Spacer(),
                       Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: List.generate(
@@ -186,7 +181,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
                         'Budget',
@@ -197,7 +191,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      const SizedBox(width: 50),
+                      const Spacer(),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -215,7 +209,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Flexible(
                         child: Text(
@@ -227,7 +220,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 50),
+                      const Spacer(),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -247,7 +240,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
 
                   const SizedBox(height: 20),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Flexible(
                         child: Text(
@@ -259,7 +251,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 50),
+                      const Spacer(),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
