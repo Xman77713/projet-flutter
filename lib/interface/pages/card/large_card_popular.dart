@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../model/list/issuesListModel.dart';
 import '../../model/list/moviesListModel.dart';
@@ -72,7 +73,7 @@ class LargeCardPopular extends StatelessWidget {
     int type = extractNameImageList()[1] as int;
 
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 2),
+      margin: const EdgeInsets.only(left: 9),
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(16),
@@ -99,13 +100,15 @@ class LargeCardPopular extends StatelessWidget {
                       radius: 5,
                       backgroundColor: AppColors.orange,
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 9),
                     Text(
                       title,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 255, 255, 255),
+                      style: GoogleFonts.nunito(
+                        textStyle: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                   ],

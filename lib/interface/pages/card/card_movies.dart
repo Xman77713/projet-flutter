@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../model/list/moviesListModel.dart';
 
@@ -78,11 +79,13 @@ class CardMovies extends StatelessWidget {
                             },
                             child: Text(
                               movie.name ?? 'Nom indisponible',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.nunito(
+                                textStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 17,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
                             ),
                           ),
@@ -97,9 +100,11 @@ class CardMovies extends StatelessWidget {
                               const SizedBox(width: 6),
                               Text(
                                 '${movie.runtime ?? 'XX'} minutes',
-                                style: const TextStyle(
-                                  color: AppColors.bottomBarUnselectedText,
-                                  fontSize: 12,
+                                style: GoogleFonts.nunito(
+                                  textStyle: const TextStyle(
+                                    color: AppColors.bottomBarUnselectedText,
+                                    fontSize: 12,
+                                  ),
                                 ),
                               ),
                             ],
@@ -115,9 +120,11 @@ class CardMovies extends StatelessWidget {
                               const SizedBox(width: 6),
                               Text(
                                 movie.date_added.toString().split(' ')[0],
-                                style: const TextStyle(
-                                  color: AppColors.bottomBarUnselectedText,
-                                  fontSize: 12,
+                                style: GoogleFonts.nunito(
+                                  textStyle: const TextStyle(
+                                    color: AppColors.bottomBarUnselectedText,
+                                    fontSize: 12,
+                                  ),
                                 ),
                               ),
                             ],
