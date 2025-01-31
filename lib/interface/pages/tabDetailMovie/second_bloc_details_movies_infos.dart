@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/interface/model/utils/producerModel.dart';
 import 'package:flutter_projet_final/interface/model/utils/studioModel.dart';
 import 'package:flutter_projet_final/interface/model/utils/writerModel.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SecondBlocDetailsMoviesInfos extends StatelessWidget {
   final ListProducersModel? producers;
@@ -42,47 +43,47 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   // Classification
                   Row(
                     children: [
-                      const Text(
-                        'Classification',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
+                      Text('Classification',
+                          style: GoogleFonts.nunito(
+                            textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          )),
                       const SizedBox(width: 50),
                       Expanded(
-                        child: Text(
-                          rating ?? 'Indisponible',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
+                        child: Text(rating ?? 'Indisponible',
+                            style: GoogleFonts.nunito(
+                              textStyle: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            )),
                       ),
                     ],
                   ),
                   const SizedBox(height: 20),
                   // Réalisateur
-                  const Row(
+                  Row(
                     children: [
-                      Text(
-                        'Réalisateur',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
+                      Text('Réalisateur',
+                          style: GoogleFonts.nunito(
+                            textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          )),
                       const SizedBox(width: 70),
                       Expanded(
                         child: Text(
                           'Indisponible',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.nunito(
+                            textStyle: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                overflow: TextOverflow.ellipsis),
                           ),
                         ),
                       ),
@@ -92,14 +93,14 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   // Scénaristes
                   Row(
                     children: [
-                      const Text(
-                        'Scénaristes',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
+                      Text('Scénaristes',
+                          style: GoogleFonts.nunito(
+                            textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          )),
                       const SizedBox(width: 70),
                       Expanded(
                         child: Column(
@@ -110,11 +111,12 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                               width: 150,
                               child: Text(
                                 writers?.listWritersModel[index].name ?? '',
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
+                                style: GoogleFonts.nunito(
+                                  textStyle: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 20,
+                                      overflow: TextOverflow.ellipsis),
                                 ),
-                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
                           ),
@@ -126,14 +128,14 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   // Producteurs
                   Row(
                     children: [
-                      const Text(
-                        'Producteurs',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
+                      Text('Producteurs',
+                          style: GoogleFonts.nunito(
+                            textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          )),
                       const SizedBox(width: 70),
                       Expanded(
                         child: Column(
@@ -142,10 +144,11 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                             producers!.listProducersModel.length,
                             (index) => Text(
                               producers?.listProducersModel[index].name ?? '',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.nunito(
+                                textStyle: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    overflow: TextOverflow.ellipsis),
                               ),
                             ),
                           ),
@@ -157,14 +160,14 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   // Studios
                   Row(
                     children: [
-                      const Text(
-                        'Studio',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
+                      Text('Studio',
+                          style: GoogleFonts.nunito(
+                            textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          )),
                       const SizedBox(width: 125),
                       Expanded(
                         child: Column(
@@ -173,10 +176,11 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                             studios!.listStudiosModel.length,
                             (index) => Text(
                               studios?.listStudiosModel[index].name ?? '',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                overflow: TextOverflow.ellipsis,
+                              style: GoogleFonts.nunito(
+                                textStyle: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    overflow: TextOverflow.ellipsis),
                               ),
                             ),
                           ),
@@ -188,21 +192,23 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   // Budget
                   Row(
                     children: [
-                      const Text(
-                        'Budget',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
+                      Text('Budget',
+                          style: GoogleFonts.nunito(
+                            textStyle: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          )),
                       const SizedBox(width: 120),
                       Expanded(
                         child: Text(
                           '${budget ?? 'XX'} \$',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
+                          style: GoogleFonts.nunito(
+                            textStyle: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                overflow: TextOverflow.ellipsis),
                           ),
                         ),
                       ),
@@ -212,23 +218,25 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   // Recette aux box-offices
                   Row(
                     children: [
-                      const Flexible(
-                        child: Text(
-                          'Recette aux box-offices',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
+                      Flexible(
+                        child: Text('Recette aux box-offices',
+                            style: GoogleFonts.nunito(
+                              textStyle: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            )),
                       ),
                       const SizedBox(width: 30),
                       Expanded(
                         child: Text(
                           '${box_office_revenue ?? 'XX'} \$',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
+                          style: GoogleFonts.nunito(
+                            textStyle: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                overflow: TextOverflow.ellipsis),
                           ),
                         ),
                       ),
@@ -238,23 +246,25 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   // Recette brutes totales
                   Row(
                     children: [
-                      const Flexible(
-                        child: Text(
-                          'Recette brutes totales',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
+                      Flexible(
+                        child: Text('Recette brutes totales',
+                            style: GoogleFonts.nunito(
+                              textStyle: const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
+                            )),
                       ),
                       const SizedBox(width: 30),
                       Expanded(
                         child: Text(
                           '${total_revenue ?? 'XX'} \$',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
+                          style: GoogleFonts.nunito(
+                            textStyle: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                overflow: TextOverflow.ellipsis),
                           ),
                         ),
                       ),

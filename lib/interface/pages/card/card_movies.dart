@@ -17,7 +17,7 @@ class CardMovies extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       child: Center(
         child: Container(
-          height: 180,
+          height: 160,
           width: 359,
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 26, 49, 73),

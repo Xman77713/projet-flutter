@@ -4,7 +4,7 @@ import 'package:flutter_projet_final/interface/pages/tabHomePage/list_comics.dar
 import 'package:flutter_projet_final/interface/pages/tabHomePage/list_movies.dart';
 import 'package:flutter_projet_final/interface/pages/tabHomePage/list_series.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../model/list/issuesListModel.dart';
 import '../model/list/moviesListModel.dart';
 import '../model/list/seriesListModel.dart';

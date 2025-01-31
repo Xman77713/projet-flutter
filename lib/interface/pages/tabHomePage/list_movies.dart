@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../blocs/moviesPageBloc.dart';
 import '../card/card_movies.dart';
@@ -42,14 +43,16 @@ class _ListMoviesState extends State<ListMovies> {
                         Align(
                           alignment: Alignment.topLeft,
                           child: Container(
-                            margin: const EdgeInsets.only(top: 40),
+                            margin: const EdgeInsets.only(top: 30, left: 32),
                             padding: const EdgeInsets.all(16.0),
-                            child: const Text(
+                            child: Text(
                               'Films les plus populaires',
-                              style: TextStyle(
-                                fontSize: 32,
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 255, 255, 255),
+                              style: GoogleFonts.nunito(
+                                textStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30,
+                                ),
                               ),
                             ),
                           ),
