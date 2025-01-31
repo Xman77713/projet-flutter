@@ -38,7 +38,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             child: SingleChildScrollView(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Classification
                   Row(
@@ -51,15 +50,16 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      const Spacer(),
-                      Text(
-                        rating ?? 'Indisponible',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          overflow: TextOverflow.ellipsis,
+                      const SizedBox(width: 50),
+                      Expanded(
+                        child: Text(
+                          rating ?? 'Indisponible',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                        textAlign: TextAlign.left,
                       ),
                     ],
                   ),
@@ -75,15 +75,16 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      Spacer(),
-                      Text(
-                        'Indiponible',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          overflow: TextOverflow.ellipsis,
+                      const SizedBox(width: 70),
+                      Expanded(
+                        child: Text(
+                          'Indisponible',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                        textAlign: TextAlign.right,
                       ),
                     ],
                   ),
@@ -99,25 +100,26 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
-                      const Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: List.generate(
-                          writers!.listWritersModel.length,
-                          (index) => SizedBox(
-                            width: 150,
-                            child: Text(
-                              writers?.listWritersModel[index].name ?? '',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
+                      const SizedBox(width: 70),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: List.generate(
+                            writers!.listWritersModel.length,
+                            (index) => SizedBox(
+                              width: 150,
+                              child: Text(
+                                writers?.listWritersModel[index].name ?? '',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                                overflow: TextOverflow.ellipsis,
                               ),
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.right,
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                   const SizedBox(height: 20),
@@ -130,11 +132,11 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      const Spacer(),
-                      Column(
+                      const SizedBox(width: 70),
+                      Expanded(
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: List.generate(
                             producers!.listProducersModel.length,
@@ -145,13 +147,14 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                                 fontSize: 20,
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              textAlign: TextAlign.right,
                             ),
-                          ))
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 20),
-                  // Studio
+                  // Studios
                   Row(
                     children: [
                       const Text(
@@ -160,11 +163,11 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      const Spacer(),
-                      Column(
+                      const SizedBox(width: 125),
+                      Expanded(
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: List.generate(
                             studios!.listStudiosModel.length,
@@ -176,10 +179,13 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
-                          ))
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 20),
+                  // Budget
                   Row(
                     children: [
                       const Text(
@@ -188,26 +194,22 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      const Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '${budget ?? 'XX'} \$',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                            textAlign: TextAlign.right,
+                      const SizedBox(width: 120),
+                      Expanded(
+                        child: Text(
+                          '${budget ?? 'XX'} \$',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
                           ),
-                        ],
+                        ),
                       ),
                     ],
                   ),
                   const SizedBox(height: 20),
+                  // Recette aux box-offices
                   Row(
                     children: [
                       const Flexible(
@@ -220,25 +222,20 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '${box_office_revenue ?? 'XX'} \$',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            textAlign: TextAlign.right,
+                      const SizedBox(width: 30),
+                      Expanded(
+                        child: Text(
+                          '${box_office_revenue ?? 'XX'} \$',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
                           ),
-                        ],
+                        ),
                       ),
                     ],
                   ),
-
                   const SizedBox(height: 20),
+                  // Recette brutes totales
                   Row(
                     children: [
                       const Flexible(
@@ -251,23 +248,18 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '${total_revenue ?? 'XX'} \$',
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            textAlign: TextAlign.right,
+                      const SizedBox(width: 30),
+                      Expanded(
+                        child: Text(
+                          '${total_revenue ?? 'XX'} \$',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
                           ),
-                        ],
+                        ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
