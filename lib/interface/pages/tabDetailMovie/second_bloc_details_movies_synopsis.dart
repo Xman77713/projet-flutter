@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projet_final/res/app_colors.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 class SecondBlocDetailsMoviesSynopsis extends StatelessWidget {
@@ -13,9 +14,8 @@ class SecondBlocDetailsMoviesSynopsis extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       child: Center(
         child: Container(
-          height: 700,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 26, 49, 73),
+            color: AppColors.cardBackground,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(

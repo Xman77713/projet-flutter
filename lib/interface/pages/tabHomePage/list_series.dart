@@ -31,17 +31,15 @@ class _ListSeriesState extends State<ListSeries> {
               SeriesListPageNotifierErrorState() => Scaffold(
                   body: Center(
                     child: Text(state.error.toString(),
-                        style: const TextStyle(color: Colors.white)),
+                        style: const TextStyle(color: AppColors.text)),
                   ),
                 ),
               SeriesListPageNotifierSuccessState() => Scaffold(
                   backgroundColor: AppColors.screenBackground,
                   body: SingleChildScrollView(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Align(
-                          alignment: Alignment.topLeft,
                           child: Container(
                             margin: const EdgeInsets.only(top: 30, left: 32),
                             padding: const EdgeInsets.all(16.0),
@@ -49,7 +47,7 @@ class _ListSeriesState extends State<ListSeries> {
                               'Séries les plus populaires',
                               style: GoogleFonts.nunito(
                                 textStyle: const TextStyle(
-                                  color: Colors.white,
+                                  color: AppColors.text,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 30,
                                 ),
@@ -58,7 +56,6 @@ class _ListSeriesState extends State<ListSeries> {
                           ),
                         ),
                         SizedBox(
-                            height: 700, //TODO à changer (peut-être)
                             child: SingleChildScrollView(
                                 scrollDirection: Axis.vertical,
                                 child: Column(

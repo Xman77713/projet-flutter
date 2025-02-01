@@ -77,19 +77,10 @@ class LargeCardPopular extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(16),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black26,
-            offset: Offset(0, 4),
-            blurRadius: 6,
-          ),
-        ],
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,7 +107,7 @@ class LargeCardPopular extends StatelessWidget {
                 TextButton(
                   style: ButtonStyle(
                     backgroundColor:
-                        WidgetStateProperty.all(AppColors.bottomBarBackground),
+                        WidgetStateProperty.all(AppColors.seeMoreBackground),
                     foregroundColor: WidgetStateProperty.all(Colors.white),
                   ),
                   child: const Text('Voir plus'),

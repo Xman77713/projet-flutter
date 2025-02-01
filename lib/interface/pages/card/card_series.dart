@@ -20,13 +20,12 @@ class CardSeries extends StatelessWidget {
           height: 164,
           width: 359,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 26, 49, 73),
+            color: AppColors.cardBackground,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(
                   children: [
@@ -48,22 +47,24 @@ class CardSeries extends StatelessWidget {
                         height: 40,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: Colors.orange,
+                          color: AppColors.orange,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
                           '#$index',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
+                          style: GoogleFonts.nunito(
+                            textStyle: const TextStyle(
+                              color: AppColors.text,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(width: 14),
+                const SizedBox(width: 11.14),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +73,7 @@ class CardSeries extends StatelessWidget {
                         serie.name ?? 'Nom indisponible',
                         style: GoogleFonts.nunito(
                           textStyle: const TextStyle(
-                            color: Colors.white,
+                            color: AppColors.text,
                             fontWeight: FontWeight.bold,
                             fontSize: 17,
                             overflow: TextOverflow.ellipsis,
@@ -92,7 +93,7 @@ class CardSeries extends StatelessWidget {
                             serie.publisher?.name ?? 'Publisher indisponible',
                             style: GoogleFonts.nunito(
                               textStyle: const TextStyle(
-                                color: AppColors.bottomBarUnselectedText,
+                                color: AppColors.text,
                                 fontSize: 12,
                               ),
                             ),
@@ -112,7 +113,7 @@ class CardSeries extends StatelessWidget {
                             '${serie.count_of_episodes ?? 'XX'} épisodes',
                             style: GoogleFonts.nunito(
                               textStyle: const TextStyle(
-                                color: AppColors.bottomBarUnselectedText,
+                                color: AppColors.text,
                                 fontSize: 12,
                               ),
                             ),
@@ -132,7 +133,7 @@ class CardSeries extends StatelessWidget {
                             serie.date_added.toString().split(' ')[0],
                             style: GoogleFonts.nunito(
                               textStyle: const TextStyle(
-                                color: AppColors.bottomBarUnselectedText,
+                                color: AppColors.text,
                                 fontSize: 12,
                               ),
                             ),

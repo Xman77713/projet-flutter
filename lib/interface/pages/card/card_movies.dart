@@ -21,16 +21,14 @@ class CardMovies extends StatelessWidget {
           height: 160,
           width: 359,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 26, 49, 73),
+            color: AppColors.cardBackground,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Stack(
                       children: [
@@ -53,13 +51,13 @@ class CardMovies extends StatelessWidget {
                             height: 40,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
-                              color: Colors.orange,
+                              color: AppColors.orange,
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Text(
                               '#$index',
                               style: const TextStyle(
-                                color: Colors.white,
+                                color: AppColors.text,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 22,
                               ),
@@ -81,7 +79,7 @@ class CardMovies extends StatelessWidget {
                               movie.name ?? 'Nom indisponible',
                               style: GoogleFonts.nunito(
                                 textStyle: const TextStyle(
-                                  color: Colors.white,
+                                  color: AppColors.text,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 17,
                                   overflow: TextOverflow.ellipsis,
@@ -102,7 +100,7 @@ class CardMovies extends StatelessWidget {
                                 '${movie.runtime ?? 'XX'} minutes',
                                 style: GoogleFonts.nunito(
                                   textStyle: const TextStyle(
-                                    color: AppColors.bottomBarUnselectedText,
+                                    color: AppColors.text,
                                     fontSize: 12,
                                   ),
                                 ),
@@ -122,7 +120,7 @@ class CardMovies extends StatelessWidget {
                                 movie.date_added.toString().split(' ')[0],
                                 style: GoogleFonts.nunito(
                                   textStyle: const TextStyle(
-                                    color: AppColors.bottomBarUnselectedText,
+                                    color: AppColors.text,
                                     fontSize: 12,
                                   ),
                                 ),

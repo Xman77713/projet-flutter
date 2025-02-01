@@ -39,7 +39,7 @@ class _FirstBlocDetailsMoviesState extends State<FirstBlocDetailsMovies> {
                   child: Text(state.error.toString(),
                       style: GoogleFonts.nunito(
                         textStyle: const TextStyle(
-                          color: Colors.white,
+                          color: AppColors.text,
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
@@ -69,13 +69,11 @@ class _FirstBlocDetailsMoviesState extends State<FirstBlocDetailsMovies> {
                         ),
                       ),
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
                             padding: const EdgeInsets.only(
                                 top: 40, left: 16, right: 16),
                             child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 IconButton(
                                   onPressed: () {
@@ -83,7 +81,7 @@ class _FirstBlocDetailsMoviesState extends State<FirstBlocDetailsMovies> {
                                   },
                                   icon: const Icon(
                                     Icons.arrow_back,
-                                    color: Colors.white,
+                                    color: AppColors.text,
                                   ),
                                 ),
                                 const SizedBox(width: 8),
@@ -92,7 +90,7 @@ class _FirstBlocDetailsMoviesState extends State<FirstBlocDetailsMovies> {
                                     state.movieDescr.movieDModel.name ??
                                         'Nom indisponible',
                                     style: const TextStyle(
-                                      color: Colors.white,
+                                      color: AppColors.text,
                                       fontSize: 17,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -123,14 +121,13 @@ class _FirstBlocDetailsMoviesState extends State<FirstBlocDetailsMovies> {
                                 ),
                                 const SizedBox(width: 16),
                                 Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     const SizedBox(height: 40),
                                     Row(
                                       children: [
                                         const Icon(
                                           Icons.theaters,
-                                          color: Colors.white,
+                                          color: AppColors.text,
                                           size: 17,
                                         ),
                                         const SizedBox(width: 6),
@@ -138,7 +135,7 @@ class _FirstBlocDetailsMoviesState extends State<FirstBlocDetailsMovies> {
                                             '${state.movieDescr.movieDModel.runtime ?? 'XX'} minutes',
                                             style: GoogleFonts.nunito(
                                               textStyle: const TextStyle(
-                                                color: Colors.white,
+                                                color: AppColors.text,
                                                 fontSize: 14,
                                               ),
                                             )),
@@ -149,7 +146,7 @@ class _FirstBlocDetailsMoviesState extends State<FirstBlocDetailsMovies> {
                                       children: [
                                         const Icon(
                                           Icons.calendar_today,
-                                          color: Colors.white,
+                                          color: AppColors.text,
                                           size: 17,
                                         ),
                                         const SizedBox(width: 6),
@@ -160,7 +157,7 @@ class _FirstBlocDetailsMoviesState extends State<FirstBlocDetailsMovies> {
                                                 .split(' ')[0],
                                             style: GoogleFonts.nunito(
                                               textStyle: const TextStyle(
-                                                color: Colors.white,
+                                                color: AppColors.text,
                                                 fontSize: 14,
                                               ),
                                             )),
@@ -193,13 +190,13 @@ class _FirstBlocDetailsMoviesState extends State<FirstBlocDetailsMovies> {
                               ),
                             ],
                             indicatorColor: AppColors.orange,
-                            labelColor: Colors.white,
+                            labelColor: AppColors.text,
                             unselectedLabelColor:
                                 AppColors.bottomBarUnselectedText,
                             indicatorWeight: 6.0,
                             labelStyle: GoogleFonts.nunito(
                               textStyle: const TextStyle(
-                                color: Colors.white,
+                                color: AppColors.text,
                                 fontSize: 16,
                               ),
                             ),

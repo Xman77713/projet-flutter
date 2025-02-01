@@ -20,13 +20,12 @@ class CardComics extends StatelessWidget {
           height: 196,
           width: 359,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 26, 49, 73),
+            color: AppColors.cardBackground,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(
                   children: [
@@ -48,13 +47,13 @@ class CardComics extends StatelessWidget {
                         height: 40,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: Colors.orange,
+                          color: AppColors.orange,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
                           '#$index',
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: AppColors.text,
                             fontWeight: FontWeight.bold,
                             fontSize: 22,
                           ),
@@ -72,7 +71,7 @@ class CardComics extends StatelessWidget {
                         issue.name?.name ?? 'Nom indisponible',
                         style: GoogleFonts.nunito(
                           textStyle: const TextStyle(
-                            color: Colors.white,
+                            color: AppColors.text,
                             fontWeight: FontWeight.bold,
                             fontSize: 17,
                             overflow: TextOverflow.ellipsis,
@@ -84,7 +83,7 @@ class CardComics extends StatelessWidget {
                         issue.nameSaga ?? 'Nom saga indisponible',
                         style: GoogleFonts.nunito(
                           textStyle: const TextStyle(
-                            color: Colors.white,
+                            color: AppColors.text,
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                             overflow: TextOverflow.ellipsis,
@@ -104,7 +103,7 @@ class CardComics extends StatelessWidget {
                             'N°16',
                             style: GoogleFonts.nunito(
                               textStyle: const TextStyle(
-                                color: AppColors.bottomBarUnselectedText,
+                                color: AppColors.text,
                                 fontSize: 12,
                               ),
                             ),
@@ -124,7 +123,7 @@ class CardComics extends StatelessWidget {
                             issue.date_added.toString().split(' ')[0],
                             style: GoogleFonts.nunito(
                               textStyle: const TextStyle(
-                                color: AppColors.bottomBarUnselectedText,
+                                color: AppColors.text,
                                 fontSize: 12,
                               ),
                             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_projet_final/res/app_colors.dart';
 
 class SecondBlocDetailsMoviesPeople extends StatelessWidget {
   const SecondBlocDetailsMoviesPeople({super.key});
@@ -13,7 +14,7 @@ class SecondBlocDetailsMoviesPeople extends StatelessWidget {
           width: double.infinity,
           height: 700,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 26, 49, 73),
+            color: AppColors.cardBackground,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
@@ -38,7 +39,7 @@ class SecondBlocDetailsMoviesPeople extends StatelessWidget {
                       const Text(
                         'Andy Warhol',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.text,
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
@@ -63,7 +64,7 @@ class SecondBlocDetailsMoviesPeople extends StatelessWidget {
                       const Text(
                         'Andy Warhol',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.text,
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
@@ -88,7 +89,7 @@ class SecondBlocDetailsMoviesPeople extends StatelessWidget {
                       const Text(
                         'Andy Warhol',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.text,
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
@@ -113,7 +114,7 @@ class SecondBlocDetailsMoviesPeople extends StatelessWidget {
                       const Text(
                         'Andy Warhol',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: AppColors.text,
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),

@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                   data: NavigationBarThemeData(
                     backgroundColor: AppColors.bottomBarBackground,
                     labelTextStyle: WidgetStateProperty.all(
-                      const TextStyle(
+                      GoogleFonts.nunito(
                         color: AppColors.bottomBarUnselectedText,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -232,19 +232,19 @@ class HomePageTab extends StatelessWidget {
               issuesList: issuesList,
               setTab: setTab,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             LargeCardPopular(
               title: "Séries populaires",
               seriesList: seriesList,
               setTab: setTab,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             LargeCardPopular(
               title: "Films populaires",
               moviesList: moviesList,
               setTab: setTab,
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
           ],
         ),
       ),
