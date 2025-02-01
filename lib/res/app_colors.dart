@@ -12,4 +12,5 @@ class AppColors {
   static const Color bottomBarSelectedBackground = Color(0xff12273c);
   static const Color bottomBarSelectedText = Color(0xff12273c);
   static const Color bottomBarUnselectedText = Color(0xff778ba8);
+  static const Color text = Color(0xFFFFFFFF);
 }

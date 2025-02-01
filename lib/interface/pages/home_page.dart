@@ -4,7 +4,8 @@ import 'package:flutter_projet_final/interface/pages/tabHomePage/list_comics.dar
 import 'package:flutter_projet_final/interface/pages/tabHomePage/list_movies.dart';
 import 'package:flutter_projet_final/interface/pages/tabHomePage/list_series.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
-
+import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../model/list/issuesListModel.dart';
 import '../model/list/moviesListModel.dart';
 import '../model/list/seriesListModel.dart';
@@ -16,34 +17,6 @@ class HomePage extends StatefulWidget {
 
   @override
   State<HomePage> createState() => _HomePageState();
-
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.screenBackground,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                margin: const EdgeInsets.only(top: 40),
-                padding: const EdgeInsets.all(16.0),
-                child: const Text(
-                  'Bienvenue !',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 255, 255, 255),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 }
 
 class _HomePageState extends State<HomePage> {
@@ -111,9 +84,8 @@ class _HomePageState extends State<HomePage> {
                 bottomNavigationBar: NavigationBarTheme(
                   data: NavigationBarThemeData(
                     backgroundColor: AppColors.bottomBarBackground,
-                    indicatorColor: const Color.fromARGB(255, 255, 0, 0),
                     labelTextStyle: WidgetStateProperty.all(
-                      const TextStyle(
+                      GoogleFonts.nunito(
                         color: AppColors.bottomBarUnselectedText,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -224,40 +196,55 @@ class HomePageTab extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                margin: const EdgeInsets.only(top: 40),
-                padding: const EdgeInsets.all(16.0),
-                child: const Text(
-                  'Bienvenue !',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 255, 255, 255),
+            Stack(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Container(
+                    margin:
+                        const EdgeInsets.only(top: 34, left: 32, bottom: 32),
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'Bienvenue !',
+                      style: GoogleFonts.nunito(
+                        textStyle: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+                Positioned(
+                  top: 53,
+                  right: 10,
+                  child: SvgPicture.asset(
+                    'res/svg/astronaut.svg',
+                    height: 159,
+                    width: 122,
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 10),
-            LargeCardPopular(
-              title: "Séries populaires",
-              seriesList: seriesList,
-              setTab: setTab,
-            ),
-            const SizedBox(height: 10),
             LargeCardPopular(
               title: "Comics populaires",
               issuesList: issuesList,
               setTab: setTab,
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 16),
+            LargeCardPopular(
+              title: "Séries populaires",
+              seriesList: seriesList,
+              setTab: setTab,
+            ),
+            const SizedBox(height: 16),
             LargeCardPopular(
               title: "Films populaires",
               moviesList: moviesList,
               setTab: setTab,
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 16),
           ],
         ),
       ),

@@ -31,9 +31,9 @@ OFFIssues _$OFFIssuesFromJson(Map<String, dynamic> json) => OFFIssues(
           : ImageURL.fromJson(json['image'] as Map<String, dynamic>),
       (json['id'] as num?)?.toInt(),
       json['issue_number'] as String?,
-      json['date_added'] == null
+      json['cover_date'] == null
           ? null
-          : DateTime.parse(json['date_added'] as String),
+          : DateTime.parse(json['cover_date'] as String),
       json['name'] as String?,
     );
 
@@ -42,6 +42,6 @@ Map<String, dynamic> _$OFFIssuesToJson(OFFIssues instance) => <String, dynamic>{
       'image': instance.image,
       'id': instance.id,
       'issue_number': instance.issue_number,
-      'date_added': instance.date_added?.toIso8601String(),
+      'cover_date': instance.date_added?.toIso8601String(),
       'name': instance.nameSaga,
     };
