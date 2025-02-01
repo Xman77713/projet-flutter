@@ -11,7 +11,6 @@ class SecondBlocDetailsMoviesPeople extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       child: Center(
         child: Container(
-          width: double.infinity,
           height: 700,
           decoration: BoxDecoration(
             color: AppColors.cardBackground,

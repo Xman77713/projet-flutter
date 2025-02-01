@@ -31,5 +31,6 @@ Nous avons réalisé :
 
 
 Ce qu'on aurait voulu faire : 
+- On n'a pas réussi à retrouver les même icones identiques
 - Les pages détails pour un comics et une série 
 - La navigation au click d'un film sur la home page vers son détail

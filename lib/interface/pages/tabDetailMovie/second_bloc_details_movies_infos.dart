@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/interface/model/utils/producerModel.dart';
 import 'package:flutter_projet_final/interface/model/utils/studioModel.dart';
 import 'package:flutter_projet_final/interface/model/utils/writerModel.dart';
+import 'package:flutter_projet_final/res/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SecondBlocDetailsMoviesInfos extends StatelessWidget {
@@ -30,9 +31,8 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       child: Center(
         child: Container(
-          width: double.infinity,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 26, 49, 73),
+            color: AppColors.cardBackground,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
@@ -46,7 +46,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                       Text('Classification',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
-                              color: Colors.white,
+                              color: AppColors.text,
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
                             ),
@@ -56,8 +56,8 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                         child: Text(rating ?? 'Indisponible',
                             style: GoogleFonts.nunito(
                               textStyle: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
+                                color: AppColors.text,
+                                fontSize: 17,
                               ),
                             )),
                       ),
@@ -70,7 +70,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                       Text('Réalisateur',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
-                              color: Colors.white,
+                              color: AppColors.text,
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
                             ),
@@ -81,7 +81,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                           'Indisponible',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
-                                color: Colors.white,
+                                color: AppColors.text,
                                 fontSize: 20,
                                 overflow: TextOverflow.ellipsis),
                           ),
@@ -96,15 +96,14 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                       Text('Scénaristes',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
-                              color: Colors.white,
+                              color: AppColors.text,
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
                             ),
                           )),
-                      const SizedBox(width: 70),
+                      const SizedBox(width: 50),
                       Expanded(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: List.generate(
                             writers!.listWritersModel.length,
                             (index) => SizedBox(
@@ -113,7 +112,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                                 writers?.listWritersModel[index].name ?? '',
                                 style: GoogleFonts.nunito(
                                   textStyle: const TextStyle(
-                                      color: Colors.white,
+                                      color: AppColors.text,
                                       fontSize: 20,
                                       overflow: TextOverflow.ellipsis),
                                 ),
@@ -131,22 +130,21 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                       Text('Producteurs',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
-                              color: Colors.white,
+                              color: AppColors.text,
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
                             ),
                           )),
-                      const SizedBox(width: 70),
+                      const SizedBox(width: 63),
                       Expanded(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: List.generate(
                             producers!.listProducersModel.length,
                             (index) => Text(
                               producers?.listProducersModel[index].name ?? '',
                               style: GoogleFonts.nunito(
                                 textStyle: const TextStyle(
-                                    color: Colors.white,
+                                    color: AppColors.text,
                                     fontSize: 20,
                                     overflow: TextOverflow.ellipsis),
                               ),
@@ -163,22 +161,21 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                       Text('Studio',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
-                              color: Colors.white,
+                              color: AppColors.text,
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
                             ),
                           )),
-                      const SizedBox(width: 125),
+                      const SizedBox(width: 50),
                       Expanded(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: List.generate(
                             studios!.listStudiosModel.length,
                             (index) => Text(
                               studios?.listStudiosModel[index].name ?? '',
                               style: GoogleFonts.nunito(
                                 textStyle: const TextStyle(
-                                    color: Colors.white,
+                                    color: AppColors.text,
                                     fontSize: 20,
                                     overflow: TextOverflow.ellipsis),
                               ),
@@ -195,18 +192,18 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                       Text('Budget',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
-                              color: Colors.white,
+                              color: AppColors.text,
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
                             ),
                           )),
-                      const SizedBox(width: 120),
+                      const SizedBox(width: 110),
                       Expanded(
                         child: Text(
                           '${budget ?? 'XX'} \$',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
-                                color: Colors.white,
+                                color: AppColors.text,
                                 fontSize: 20,
                                 overflow: TextOverflow.ellipsis),
                           ),
@@ -222,19 +219,19 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                         child: Text('Recette aux box-offices',
                             style: GoogleFonts.nunito(
                               textStyle: const TextStyle(
-                                color: Colors.white,
+                                color: AppColors.text,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
                             )),
                       ),
-                      const SizedBox(width: 30),
+                      const SizedBox(width: 20),
                       Expanded(
                         child: Text(
                           '${box_office_revenue ?? 'XX'} \$',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
-                                color: Colors.white,
+                                color: AppColors.text,
                                 fontSize: 20,
                                 overflow: TextOverflow.ellipsis),
                           ),
@@ -250,19 +247,19 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                         child: Text('Recette brutes totales',
                             style: GoogleFonts.nunito(
                               textStyle: const TextStyle(
-                                color: Colors.white,
+                                color: AppColors.text,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
                             )),
                       ),
-                      const SizedBox(width: 30),
+                      const SizedBox(width: 20),
                       Expanded(
                         child: Text(
                           '${total_revenue ?? 'XX'} \$',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
-                                color: Colors.white,
+                                color: AppColors.text,
                                 fontSize: 20,
                                 overflow: TextOverflow.ellipsis),
                           ),
