@@ -129,7 +129,7 @@ class LargeCardPopular extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: List.generate(
-                    30,
+                    5,
                     (index) => Padding(
                       padding: const EdgeInsets.only(right: 5.0),
                       child: LittleCards(

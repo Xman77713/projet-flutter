@@ -135,23 +135,26 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                               fontSize: 20,
                             ),
                           )),
-                      const SizedBox(width: 63),
+                      const SizedBox(width: 50),
                       Expanded(
                         child: Column(
                           children: List.generate(
                             producers!.listProducersModel.length,
-                            (index) => Text(
-                              producers?.listProducersModel[index].name ?? '',
-                              style: GoogleFonts.nunito(
-                                textStyle: const TextStyle(
-                                    color: AppColors.text,
-                                    fontSize: 20,
-                                    overflow: TextOverflow.ellipsis),
+                            (index) => SizedBox(
+                              width: 150,
+                              child: Text(
+                                producers?.listProducersModel[index].name ?? '',
+                                style: GoogleFonts.nunito(
+                                  textStyle: const TextStyle(
+                                      color: AppColors.text,
+                                      fontSize: 20,
+                                      overflow: TextOverflow.ellipsis),
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                   const SizedBox(height: 20),
@@ -166,23 +169,26 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                               fontSize: 20,
                             ),
                           )),
-                      const SizedBox(width: 50),
+                      const SizedBox(width: 101),
                       Expanded(
                         child: Column(
                           children: List.generate(
                             studios!.listStudiosModel.length,
-                            (index) => Text(
-                              studios?.listStudiosModel[index].name ?? '',
-                              style: GoogleFonts.nunito(
-                                textStyle: const TextStyle(
-                                    color: AppColors.text,
-                                    fontSize: 20,
-                                    overflow: TextOverflow.ellipsis),
+                            (index) => SizedBox(
+                              width: 150,
+                              child: Text(
+                                studios?.listStudiosModel[index].name ?? '',
+                                style: GoogleFonts.nunito(
+                                  textStyle: const TextStyle(
+                                      color: AppColors.text,
+                                      fontSize: 20,
+                                      overflow: TextOverflow.ellipsis),
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                   const SizedBox(height: 20),

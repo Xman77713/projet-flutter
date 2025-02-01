@@ -102,7 +102,7 @@ class CardComics extends StatelessWidget {
                           Text(
                             'N°${issue.issue_number}',
                             style: GoogleFonts.nunito(
-                              TextStyle(
+                              textStyle: const TextStyle(
                                 color: AppColors.text,
                                 fontSize: 12,
                               ),
