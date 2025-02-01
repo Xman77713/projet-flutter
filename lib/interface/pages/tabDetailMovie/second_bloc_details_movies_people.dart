@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_projet_final/res/app_colors.dart';
 
 import '../blocs/persoDetailMovieBloc.dart';
 
@@ -45,7 +46,7 @@ class _FirstBlocDetailsMoviesState
                     width: double.infinity,
                     height: 700,
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 26, 49, 73),
+                      color: AppColors.cardBackground,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
@@ -83,7 +84,7 @@ class _FirstBlocDetailsMoviesState
                                           .name ??
                                       'Nom indisponible',
                                   style: const TextStyle(
-                                    color: Colors.white,
+                                    color: AppColors.text,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,
                                   ),

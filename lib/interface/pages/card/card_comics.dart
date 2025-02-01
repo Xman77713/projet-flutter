@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../model/list/issuesListModel.dart';
 
@@ -19,13 +20,12 @@ class CardComics extends StatelessWidget {
           height: 196,
           width: 359,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 26, 49, 73),
+            color: AppColors.cardBackground,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(
                   children: [
@@ -47,13 +47,13 @@ class CardComics extends StatelessWidget {
                         height: 40,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: Colors.orange,
+                          color: AppColors.orange,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
                           '#$index',
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: AppColors.text,
                             fontWeight: FontWeight.bold,
                             fontSize: 22,
                           ),
@@ -69,21 +69,25 @@ class CardComics extends StatelessWidget {
                     children: [
                       Text(
                         issue.name?.name ?? 'Nom indisponible',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.nunito(
+                          textStyle: const TextStyle(
+                            color: AppColors.text,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 20),
                       Text(
                         issue.nameSaga ?? 'Nom saga indisponible',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.nunito(
+                          textStyle: const TextStyle(
+                            color: AppColors.text,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 30),
@@ -97,9 +101,11 @@ class CardComics extends StatelessWidget {
                           const SizedBox(width: 6),
                           Text(
                             'N°${issue.issue_number}',
-                            style: const TextStyle(
-                              color: AppColors.bottomBarUnselectedText,
-                              fontSize: 12,
+                            style: GoogleFonts.nunito(
+                              TextStyle(
+                                color: AppColors.text,
+                                fontSize: 12,
+                              ),
                             ),
                           ),
                         ],
@@ -115,9 +121,11 @@ class CardComics extends StatelessWidget {
                           const SizedBox(width: 6),
                           Text(
                             issue.date_added.toString().split(' ')[0],
-                            style: const TextStyle(
-                              color: AppColors.bottomBarUnselectedText,
-                              fontSize: 12,
+                            style: GoogleFonts.nunito(
+                              textStyle: const TextStyle(
+                                color: AppColors.text,
+                                fontSize: 12,
+                              ),
                             ),
                           ),
                         ],

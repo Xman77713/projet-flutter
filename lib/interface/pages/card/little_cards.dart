@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LittleCards extends StatelessWidget {
   final String title;
@@ -41,7 +42,12 @@ class LittleCards extends StatelessWidget {
                 padding: const EdgeInsets.all(7.0),
                 child: Text(
                   title,
-                  style: const TextStyle(color: Colors.white, fontSize: 16),
+                  style: GoogleFonts.nunito(
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
                   overflow: TextOverflow.ellipsis,
                 ),
               ),

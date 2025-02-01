@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../model/list/seriesListModel.dart';
 
@@ -16,16 +17,15 @@ class CardSeries extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       child: Center(
         child: Container(
-          height: 162,
+          height: 164,
           width: 359,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 26, 49, 73),
+            color: AppColors.cardBackground,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(
                   children: [
@@ -35,7 +35,7 @@ class CardSeries extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         child: Image.network(
                           serie.getImageUrl().smallUrl ?? 'Image indisponible',
-                          height: 131,
+                          height: 132,
                           width: 129,
                           fit: BoxFit.cover,
                         ),
@@ -47,33 +47,37 @@ class CardSeries extends StatelessWidget {
                         height: 40,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: Colors.orange,
+                          color: AppColors.orange,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
                           '#$index',
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
+                          style: GoogleFonts.nunito(
+                            textStyle: const TextStyle(
+                              color: AppColors.text,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22,
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(width: 14),
+                const SizedBox(width: 11.14),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         serie.name ?? 'Nom indisponible',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.nunito(
+                          textStyle: const TextStyle(
+                            color: AppColors.text,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 30),
@@ -87,9 +91,11 @@ class CardSeries extends StatelessWidget {
                           const SizedBox(width: 6),
                           Text(
                             serie.publisher?.name ?? 'Publisher indisponible',
-                            style: const TextStyle(
-                              color: AppColors.bottomBarUnselectedText,
-                              fontSize: 12,
+                            style: GoogleFonts.nunito(
+                              textStyle: const TextStyle(
+                                color: AppColors.text,
+                                fontSize: 12,
+                              ),
                             ),
                           ),
                         ],
@@ -105,9 +111,11 @@ class CardSeries extends StatelessWidget {
                           const SizedBox(width: 6),
                           Text(
                             '${serie.count_of_episodes ?? 'XX'} épisodes',
-                            style: const TextStyle(
-                              color: AppColors.bottomBarUnselectedText,
-                              fontSize: 12,
+                            style: GoogleFonts.nunito(
+                              textStyle: const TextStyle(
+                                color: AppColors.text,
+                                fontSize: 12,
+                              ),
                             ),
                           ),
                         ],
@@ -123,9 +131,11 @@ class CardSeries extends StatelessWidget {
                           const SizedBox(width: 6),
                           Text(
                             serie.date_added.toString().split(' ')[0],
-                            style: const TextStyle(
-                              color: AppColors.bottomBarUnselectedText,
-                              fontSize: 12,
+                            style: GoogleFonts.nunito(
+                              textStyle: const TextStyle(
+                                color: AppColors.text,
+                                fontSize: 12,
+                              ),
                             ),
                           ),
                         ],
