@@ -31,6 +31,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
       padding: const EdgeInsets.all(14),
       child: Center(
         child: Container(
+          height: 700,
           decoration: BoxDecoration(
             color: AppColors.cardBackground,
             borderRadius: BorderRadius.circular(20),
