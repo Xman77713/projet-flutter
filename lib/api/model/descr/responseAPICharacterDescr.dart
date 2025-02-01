@@ -1,4 +1,5 @@
 import 'package:flutter_projet_final/api/model/utils/responseAPIImageURL.dart';
+import 'package:flutter_projet_final/interface/model/utils/characterDescrModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'responseAPICharacterDescr.g.dart';
@@ -17,6 +18,9 @@ class OFFServerResponseCharacterDescr {
 
   Map<String, dynamic> toJson() =>
       _$OFFServerResponseCharacterDescrToJson(this);
+
+  CharacterDescrModel getCharacterDescr() =>
+      CharacterDescrModel(results.getCharacterD());
 }
 
 @JsonSerializable()
@@ -38,4 +42,7 @@ class OFFCharacterDescr {
       _$OFFCharacterDescrFromJson(json);
 
   Map<String, dynamic> toJson() => _$OFFCharacterDescrToJson(this);
+
+  CharacterDModel getCharacterD() =>
+      CharacterDModel(name, id, image?.getImageUrl());
 }

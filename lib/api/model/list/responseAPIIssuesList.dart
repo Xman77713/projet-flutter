@@ -37,7 +37,7 @@ class OFFIssues {
   final int? id;
   @JsonKey(name: 'issue_number')
   final String? issue_number;
-  @JsonKey(name: 'date_added')
+  @JsonKey(name: 'cover_date')
   final DateTime? date_added;
   @JsonKey(name: 'name')
   final String? nameSaga;

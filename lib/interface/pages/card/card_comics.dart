@@ -87,17 +87,17 @@ class CardComics extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 30),
-                      const Row(
+                      Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.book,
                             color: AppColors.bottomBarUnselectedText,
                             size: 17,
                           ),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Text(
-                            'N°16',
-                            style: TextStyle(
+                            'N°${issue.issue_number}',
+                            style: const TextStyle(
                               color: AppColors.bottomBarUnselectedText,
                               fontSize: 12,
                             ),

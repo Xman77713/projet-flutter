@@ -1,130 +1,104 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SecondBlocDetailsMoviesPeople extends StatelessWidget {
-  const SecondBlocDetailsMoviesPeople({super.key});
+import '../blocs/persoDetailMovieBloc.dart';
+
+class SecondBlocDetailsMoviesPeople extends StatefulWidget {
+  final List<int> listId;
+
+  const SecondBlocDetailsMoviesPeople({super.key, required this.listId});
+
+  @override
+  State<SecondBlocDetailsMoviesPeople> createState() =>
+      _FirstBlocDetailsMoviesState();
+}
+
+class _FirstBlocDetailsMoviesState
+    extends State<SecondBlocDetailsMoviesPeople> {
+  PersoDetailMoviePageState? state;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      padding: const EdgeInsets.all(14),
-      child: Center(
-        child: Container(
-          width: double.infinity,
-          height: 700,
-          decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 26, 49, 73),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(30.0),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.network(
-                          'https://media.istockphoto.com/id/1209654046/fr/vectoriel/illustration-noire-dic%C3%B4ne-de-profil-dutilisateur.jpg?s=612x612&w=0&k=20&c=oEfoQr1uRwCdQUG5sabJxBoZ7XZgvrvNhtEKj0phAAQ=',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      const Text(
-                        'Andy Warhol',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.network(
-                          'https://media.istockphoto.com/id/1209654046/fr/vectoriel/illustration-noire-dic%C3%B4ne-de-profil-dutilisateur.jpg?s=612x612&w=0&k=20&c=oEfoQr1uRwCdQUG5sabJxBoZ7XZgvrvNhtEKj0phAAQ=',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      const Text(
-                        'Andy Warhol',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.network(
-                          'https://media.istockphoto.com/id/1209654046/fr/vectoriel/illustration-noire-dic%C3%B4ne-de-profil-dutilisateur.jpg?s=612x612&w=0&k=20&c=oEfoQr1uRwCdQUG5sabJxBoZ7XZgvrvNhtEKj0phAAQ=',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      const Text(
-                        'Andy Warhol',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.network(
-                          'https://media.istockphoto.com/id/1209654046/fr/vectoriel/illustration-noire-dic%C3%B4ne-de-profil-dutilisateur.jpg?s=612x612&w=0&k=20&c=oEfoQr1uRwCdQUG5sabJxBoZ7XZgvrvNhtEKj0phAAQ=',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      const Text(
-                        'Andy Warhol',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+    return BlocProvider(
+      create: (_) => LoadPersoDetailMovieBloc(widget.listId),
+      child: BlocBuilder<LoadPersoDetailMovieBloc, PersoDetailMoviePageState>(
+        builder: (BuildContext context, state) {
+          return switch (state) {
+            PersoDetailMoviePageNotifierLoadingState() => const Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator.adaptive(),
+                ),
               ),
-            ),
-          ),
-        ),
+            PersoDetailMoviePageNotifierErrorState() => Scaffold(
+                body: Center(
+                  child: Text(
+                    state.error.toString(),
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            PersoDetailMoviePageNotifierSuccessState() => Container(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                padding: const EdgeInsets.all(14),
+                child: Center(
+                  child: Container(
+                    width: double.infinity,
+                    height: 700,
+                    decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 26, 49, 73),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(30.0),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: List.generate(
+                            state.characterDescrModel.listCharacterDescrModel
+                                .length,
+                            (index) => Row(
+                              children: [
+                                Container(
+                                  height: 60,
+                                  width: 60,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.network(
+                                    state
+                                            .characterDescrModel
+                                            .listCharacterDescrModel[index]
+                                            .characterDModel
+                                            .getImageUrl()
+                                            .smallUrl ??
+                                        'Image indisponible',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                const SizedBox(width: 20),
+                                Text(
+                                  state
+                                          .characterDescrModel
+                                          .listCharacterDescrModel[index]
+                                          .characterDModel
+                                          .name ??
+                                      'Nom indisponible',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+          };
+        },
       ),
     );
   }
