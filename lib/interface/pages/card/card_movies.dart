@@ -16,7 +16,11 @@ class CardMovies extends StatelessWidget {
     return Container(
       color: Theme.of(context).scaffoldBackgroundColor,
       padding: const EdgeInsets.all(14),
-      child: Center(
+      child: InkWell(
+        onTap: () {
+          context.go('/movie/${movie.id}');
+        },
+        borderRadius: BorderRadius.circular(20),
         child: Container(
           height: 160,
           width: 359,
@@ -71,19 +75,14 @@ class CardMovies extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          InkWell(
-                            onTap: () {
-                              context.go('/movie/${movie.id}');
-                            },
-                            child: Text(
-                              movie.name ?? 'Nom indisponible',
-                              style: GoogleFonts.nunito(
-                                textStyle: const TextStyle(
-                                  color: AppColors.text,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+                          Text(
+                            movie.name ?? 'Nom indisponible',
+                            style: GoogleFonts.nunito(
+                              textStyle: const TextStyle(
+                                color: AppColors.text,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
                           ),
