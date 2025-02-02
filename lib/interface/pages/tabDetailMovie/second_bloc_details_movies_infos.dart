@@ -100,7 +100,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                               fontSize: 20,
                             ),
                           )),
-                      const SizedBox(width: 50),
+                      const SizedBox(width: 38),
                       Expanded(
                         child: Column(
                           children: (writers?.listWritersModel.isEmpty == true)
@@ -149,7 +149,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                               fontSize: 20,
                             ),
                           )),
-                      const SizedBox(width: 50),
+                      const SizedBox(width: 35),
                       Expanded(
                         child: Column(
                           children: (producers?.listProducersModel.isEmpty ==
@@ -200,7 +200,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                               fontSize: 20,
                             ),
                           )),
-                      const SizedBox(width: 101),
+                      const SizedBox(width: 80),
                       Expanded(
                         child: Column(
                           children: (studios?.listStudiosModel.isEmpty == true)
