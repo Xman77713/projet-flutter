@@ -209,8 +209,11 @@ class _FirstBlocDetailsMoviesState extends State<FirstBlocDetailsMovies> {
                                   description:
                                       state.movieDescr.movieDModel.description,
                                 ),
-                                const SecondBlocDetailsMoviesPeople(
-                                    listId: [1253, 1253]),
+                                SecondBlocDetailsMoviesPeople(
+                                    listId: state.movieDescr.movieDModel
+                                        .characters!.listCharacterModel
+                                        .map((char) => char.id ?? 0)
+                                        .toList()),
                                 SecondBlocDetailsMoviesInfos(
                                   producers:
                                       state.movieDescr.movieDModel.producers,

@@ -54,5 +54,5 @@ class OFFIssues {
       image?.getImageUrl(), id, issue_number, date_added, nameSaga);
 
   IssueModelHP getIssueHP() =>
-      IssueModelHP(name?.getNameComics(), image?.getImageUrl());
+      IssueModelHP(name?.getNameComics(), image?.getImageUrl(), id);
 }

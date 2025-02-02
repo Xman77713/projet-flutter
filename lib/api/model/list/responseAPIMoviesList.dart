@@ -49,5 +49,5 @@ class OFFMovies {
   MovieModel getMovie() =>
       MovieModel(name, image?.getImageUrl(), id, runtime, date_added);
 
-  MoviesModelHP getMovieHP() => MoviesModelHP(name, image?.getImageUrl());
+  MoviesModelHP getMovieHP() => MoviesModelHP(name, image?.getImageUrl(), id);
 }

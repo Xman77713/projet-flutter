@@ -28,6 +28,7 @@ class MoviesListModelHP {
 class MoviesModelHP {
   final String? name;
   final ImageUrlModel? image;
+  final int? id;
 
-  MoviesModelHP(this.name, this.image);
+  MoviesModelHP(this.name, this.image, this.id);
 }

@@ -32,6 +32,7 @@ class LargeCardPopular extends StatelessWidget {
           return {
             'name': serie.name,
             'imageUrl': serie.image?.smallUrl,
+            'id': serie.id.toString(),
           };
         }).toList(),
         type
@@ -44,6 +45,7 @@ class LargeCardPopular extends StatelessWidget {
           return {
             'name': issue.name?.name,
             'imageUrl': issue.image?.smallUrl,
+            'id': issue.id.toString(),
           };
         }).toList(),
         type
@@ -56,6 +58,7 @@ class LargeCardPopular extends StatelessWidget {
           return {
             'name': movie.name,
             'imageUrl': movie.image?.smallUrl,
+            'id': movie.id.toString(),
           };
         }).toList(),
         type
@@ -135,6 +138,7 @@ class LargeCardPopular extends StatelessWidget {
                       child: LittleCards(
                         title: data[index]['name'] ?? "Nom non disponible",
                         imageUrl: data[index]['imageUrl'] ?? "",
+                        id: int.parse(data[index]['id']!),
                         type: type,
                       ),
                     ),

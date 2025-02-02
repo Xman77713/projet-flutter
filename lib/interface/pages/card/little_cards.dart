@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LittleCards extends StatelessWidget {
   final String title;
   final String imageUrl;
+  final int id;
   final int type;
 
   const LittleCards(
       {super.key,
       required this.title,
       required this.imageUrl,
-      required this.type});
+      required this.type,
+      required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +41,14 @@ class LittleCards extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(7.0),
+                child: Padding(
+              padding: const EdgeInsets.all(7.0),
+              child: InkWell(
+                onTap: () {
+                  if (type == 3) {
+                    context.go('/movie/$id');
+                  }
+                },
                 child: Text(
                   title,
                   style: GoogleFonts.nunito(
@@ -51,7 +60,7 @@ class LittleCards extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-            ),
+            )),
           ],
         ),
       ),
