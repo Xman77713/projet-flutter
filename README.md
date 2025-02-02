@@ -49,3 +49,4 @@ Ce qu'on aurait voulu faire :
 - L'appel API pour récupérer les épisodes d'une série
 - Améliorer les appels dans la Tab d'affichage du l'image et du nom des différents personnages d'un film car les appels
   se font à chaque fois que l'on clique sur la Tab "Personnages"
+- Améliorer certains petits détails d'affichage comm par exemple que l'alignement des informations d'un film
