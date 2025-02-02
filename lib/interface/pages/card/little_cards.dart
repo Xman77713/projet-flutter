@@ -21,14 +21,25 @@ class LittleCards extends StatelessWidget {
     return SizedBox(
       width: 180,
       height: 242,
-      child: Card(
-        color: AppColors.cardElementBackground,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+      child: InkWell(
+        onTap: () {
+          if (type == 1) {
+            context.go('/serie/$id');
+          }
+          if (type == 2) {
+            context.go('/issue/$id');
+          }
+          if (type == 3) {
+            context.go('/movie/$id');
+          }
+        },
+        child: Card(
+          color: AppColors.cardElementBackground,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             ClipRRect(
               borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(10),
@@ -41,14 +52,8 @@ class LittleCards extends StatelessWidget {
               ),
             ),
             Expanded(
-                child: Padding(
-              padding: const EdgeInsets.all(7.0),
-              child: InkWell(
-                onTap: () {
-                  if (type == 3) {
-                    context.go('/movie/$id');
-                  }
-                },
+              child: Padding(
+                padding: const EdgeInsets.all(7.0),
                 child: Text(
                   title,
                   style: GoogleFonts.nunito(
@@ -60,8 +65,8 @@ class LittleCards extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-            )),
-          ],
+            ),
+          ]),
         ),
       ),
     );
