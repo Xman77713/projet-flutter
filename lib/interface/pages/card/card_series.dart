@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../model/list/seriesListModel.dart';
@@ -13,141 +14,147 @@ class CardSeries extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      padding: const EdgeInsets.all(14),
-      child: Center(
-        child: Container(
-          height: 164,
-          width: 359,
-          decoration: BoxDecoration(
-            color: AppColors.cardBackground,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Stack(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        padding: const EdgeInsets.all(14),
+        child: InkWell(
+          onTap: () {
+            context.go('/serie/${serie.id}');
+          },
+          child: Center(
+            child: Container(
+              height: 164,
+              width: 359,
+              decoration: BoxDecoration(
+                color: AppColors.cardBackground,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.network(
-                          serie.getImageUrl().smallUrl ?? 'Image indisponible',
-                          height: 132,
-                          width: 129,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      child: Container(
-                        width: 59,
-                        height: 40,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: AppColors.orange,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(
-                          '#$index',
-                          style: GoogleFonts.nunito(
-                            textStyle: const TextStyle(
-                              color: AppColors.text,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
+                    Stack(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image.network(
+                              serie.getImageUrl().smallUrl ??
+                                  'Image indisponible',
+                              height: 132,
+                              width: 129,
+                              fit: BoxFit.cover,
                             ),
                           ),
                         ),
+                        Positioned(
+                          child: Container(
+                            width: 59,
+                            height: 40,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: AppColors.orange,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(
+                              '#$index',
+                              style: GoogleFonts.nunito(
+                                textStyle: const TextStyle(
+                                  color: AppColors.text,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 22,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(width: 11.14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            serie.name ?? 'Nom indisponible',
+                            style: GoogleFonts.nunito(
+                              textStyle: const TextStyle(
+                                color: AppColors.text,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 17,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.movie_edit,
+                                color: AppColors.bottomBarUnselectedText,
+                                size: 17,
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                serie.publisher?.name ??
+                                    'Publisher indisponible',
+                                style: GoogleFonts.nunito(
+                                  textStyle: const TextStyle(
+                                    color: AppColors.text,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 7),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.tv_outlined,
+                                color: AppColors.bottomBarUnselectedText,
+                                size: 17,
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                '${serie.count_of_episodes ?? 'XX'} épisodes',
+                                style: GoogleFonts.nunito(
+                                  textStyle: const TextStyle(
+                                    color: AppColors.text,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 7),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.calendar_today,
+                                color: AppColors.bottomBarUnselectedText,
+                                size: 17,
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                serie.date_added.toString().split(' ')[0],
+                                style: GoogleFonts.nunito(
+                                  textStyle: const TextStyle(
+                                    color: AppColors.text,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(width: 11.14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        serie.name ?? 'Nom indisponible',
-                        style: GoogleFonts.nunito(
-                          textStyle: const TextStyle(
-                            color: AppColors.text,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 30),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.movie_edit,
-                            color: AppColors.bottomBarUnselectedText,
-                            size: 17,
-                          ),
-                          const SizedBox(width: 6),
-                          Text(
-                            serie.publisher?.name ?? 'Publisher indisponible',
-                            style: GoogleFonts.nunito(
-                              textStyle: const TextStyle(
-                                color: AppColors.text,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 7),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.tv_outlined,
-                            color: AppColors.bottomBarUnselectedText,
-                            size: 17,
-                          ),
-                          const SizedBox(width: 6),
-                          Text(
-                            '${serie.count_of_episodes ?? 'XX'} épisodes',
-                            style: GoogleFonts.nunito(
-                              textStyle: const TextStyle(
-                                color: AppColors.text,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 7),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.calendar_today,
-                            color: AppColors.bottomBarUnselectedText,
-                            size: 17,
-                          ),
-                          const SizedBox(width: 6),
-                          Text(
-                            serie.date_added.toString().split(' ')[0],
-                            style: GoogleFonts.nunito(
-                              textStyle: const TextStyle(
-                                color: AppColors.text,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
