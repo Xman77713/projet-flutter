@@ -21,11 +21,13 @@ class _ComicVineAPI implements ComicVineAPI {
   Future<OFFServerResponseSeriesList> getSeries(
     String apiKey,
     String format,
+    String limit,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
       r'format': format,
+      r'limit': limit,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -54,11 +56,13 @@ class _ComicVineAPI implements ComicVineAPI {
   Future<OFFServerResponseMoviesList> getMovies(
     String apiKey,
     String format,
+    String limit,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
       r'format': format,
+      r'limit': limit,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -87,11 +91,13 @@ class _ComicVineAPI implements ComicVineAPI {
   Future<OFFServerResponseIssuesList> getIssues(
     String apiKey,
     String format,
+    String limit,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'api_key': apiKey,
       r'format': format,
+      r'limit': limit,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;

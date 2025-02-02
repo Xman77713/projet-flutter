@@ -60,7 +60,7 @@ class _ListSeriesState extends State<ListSeries> {
                                 scrollDirection: Axis.vertical,
                                 child: Column(
                                   children: List.generate(
-                                    100,
+                                    state.seriesList.seriesListModel.length,
                                     (index) => Padding(
                                       padding:
                                           const EdgeInsets.only(right: 5.0),

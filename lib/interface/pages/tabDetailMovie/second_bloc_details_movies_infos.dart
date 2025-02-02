@@ -94,7 +94,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   // Scénaristes
                   Row(
                     children: [
-                      Text('Scénaristes',
+                      Text('Scénariste(s)',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
                               color: AppColors.text,
@@ -144,7 +144,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   // Producteurs
                   Row(
                     children: [
-                      Text('Producteurs',
+                      Text('Producteur(s)',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
                               color: AppColors.text,
@@ -196,7 +196,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                   // Studios
                   Row(
                     children: [
-                      Text('Studio',
+                      Text('Studio(s)',
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
                               color: AppColors.text,

@@ -60,7 +60,7 @@ class _ListComicsState extends State<ListComics> {
                                 scrollDirection: Axis.vertical,
                                 child: Column(
                                   children: List.generate(
-                                    100,
+                                    state.issuesList.issuesListModel.length,
                                     (index) => Padding(
                                       padding:
                                           const EdgeInsets.only(right: 5.0),
