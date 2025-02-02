@@ -24,7 +24,7 @@ class LargeCardPopular extends StatelessWidget {
     this.moviesList,
   });
 
-  List<Object> extractNameImageList() {
+  List<Object> extractNameImageIdTypeList() {
     if (seriesList != null) {
       int type = 1;
       return [
@@ -71,9 +71,9 @@ class LargeCardPopular extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, String?>> data =
-        extractNameImageList()[0] as List<Map<String, String?>>;
+        extractNameImageIdTypeList()[0] as List<Map<String, String?>>;
 
-    int type = extractNameImageList()[1] as int;
+    int type = extractNameImageIdTypeList()[1] as int;
 
     return Container(
       margin: const EdgeInsets.only(left: 9),
@@ -99,7 +99,7 @@ class LargeCardPopular extends StatelessWidget {
                       title,
                       style: GoogleFonts.nunito(
                         textStyle: const TextStyle(
-                          color: Colors.white,
+                          color: AppColors.text,
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
                         ),
@@ -111,7 +111,7 @@ class LargeCardPopular extends StatelessWidget {
                   style: ButtonStyle(
                     backgroundColor:
                         WidgetStateProperty.all(AppColors.seeMoreBackground),
-                    foregroundColor: WidgetStateProperty.all(Colors.white),
+                    foregroundColor: WidgetStateProperty.all(AppColors.text),
                   ),
                   child: const Text('Voir plus'),
                   onPressed: () {
@@ -136,7 +136,7 @@ class LargeCardPopular extends StatelessWidget {
                     (index) => Padding(
                       padding: const EdgeInsets.only(right: 5.0),
                       child: LittleCards(
-                        title: data[index]['name'] ?? "Nom non disponible",
+                        title: data[index]['name'] ?? "Nom indisponible",
                         imageUrl: data[index]['imageUrl'] ?? "",
                         id: int.parse(data[index]['id']!),
                         type: type,

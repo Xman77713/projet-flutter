@@ -47,3 +47,5 @@ Ce qu'on aurait voulu faire :
 - Formatter les chiffres et les dates selon la maquette
 - Message d'erreur compréhensible ainsi que la possibilité de relancer une requête
 - L'appel API pour récupérer les épisodes d'une série
+- Améliorer les appels dans la Tab d'affichage du l'image et du nom des différents personnages d'un film car les appels
+  se font à chaque fois que l'on clique sur la Tab "Personnages"

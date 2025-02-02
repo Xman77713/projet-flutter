@@ -1,4 +1,4 @@
-import 'dart:ui'; // Pour le flou
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -201,7 +201,6 @@ class _FirstBlocDetailsMoviesState extends State<FirstBlocDetailsMovies> {
                               ),
                             ),
                           ),
-                          // Contenu des onglets
                           Expanded(
                             child: TabBarView(
                               children: <Widget>[

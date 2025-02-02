@@ -58,7 +58,7 @@ class LittleCards extends StatelessWidget {
                   title,
                   style: GoogleFonts.nunito(
                     textStyle: const TextStyle(
-                      color: Colors.white,
+                      color: AppColors.text,
                       fontSize: 16,
                     ),
                   ),

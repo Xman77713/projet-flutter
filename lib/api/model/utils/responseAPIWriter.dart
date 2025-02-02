@@ -12,12 +12,7 @@ class Writer {
 
   Writer(this.name, this.id);
 
-  factory Writer.fromJson(Map<String, dynamic> json) {
-    return Writer(
-      json['name'] as String? ?? 'Unknown Producer',
-      json['id'] as int? ?? -1,
-    );
-  }
+  factory Writer.fromJson(Map<String, dynamic> json) => _$WriterFromJson(json);
 
   Map<String, dynamic> toJson() => _$WriterToJson(this);
 

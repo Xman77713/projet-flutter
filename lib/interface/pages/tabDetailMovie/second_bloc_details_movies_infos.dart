@@ -41,7 +41,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  // Classification
                   Row(
                     children: [
                       Text('Classification',
@@ -65,7 +64,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  // Réalisateur
                   Row(
                     children: [
                       Text('Réalisateur',
@@ -80,6 +78,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                       Expanded(
                         child: Text(
                           'Indisponible',
+                          //pas de réalisateur(s) retourné(s) par l'API
                           style: GoogleFonts.nunito(
                             textStyle: const TextStyle(
                                 color: AppColors.text,
@@ -91,7 +90,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  // Scénaristes
                   Row(
                     children: [
                       Text('Scénariste(s)',
@@ -126,7 +124,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                                     width: 150,
                                     child: Text(
                                       writers?.listWritersModel[index].name ??
-                                          '',
+                                          'Nom indisponible',
                                       style: GoogleFonts.nunito(
                                         textStyle: const TextStyle(
                                             color: AppColors.text,
@@ -141,7 +139,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  // Producteurs
                   Row(
                     children: [
                       Text('Producteur(s)',
@@ -178,7 +175,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                                     child: Text(
                                       producers?.listProducersModel[index]
                                               .name ??
-                                          '',
+                                          'Nom indisponible',
                                       style: GoogleFonts.nunito(
                                         textStyle: const TextStyle(
                                             color: AppColors.text,
@@ -193,7 +190,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  // Studios
                   Row(
                     children: [
                       Text('Studio(s)',
@@ -228,7 +224,7 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                                     width: 150,
                                     child: Text(
                                       studios?.listStudiosModel[index].name ??
-                                          '',
+                                          'Studio indisponible',
                                       style: GoogleFonts.nunito(
                                         textStyle: const TextStyle(
                                             color: AppColors.text,
@@ -243,7 +239,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  // Budget
                   Row(
                     children: [
                       Text('Budget',
@@ -269,7 +264,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  // Recette aux box-offices
                   Row(
                     children: [
                       Flexible(
@@ -297,7 +291,6 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 20),
-                  // Recette brutes totales
                   Row(
                     children: [
                       Flexible(

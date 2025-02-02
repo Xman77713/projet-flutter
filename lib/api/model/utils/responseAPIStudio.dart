@@ -13,12 +13,7 @@ class Studio {
 
   Studio(this.name, this.id);
 
-  factory Studio.fromJson(Map<String, dynamic> json) {
-    return Studio(
-      json['name'] as String? ?? 'Unknown Studio',
-      json['id'] as int? ?? -1,
-    );
-  }
+  factory Studio.fromJson(Map<String, dynamic> json) => _$StudioFromJson(json);
 
   Map<String, dynamic> toJson() => _$StudioToJson(this);
 

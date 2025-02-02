@@ -106,7 +106,7 @@ class CardComics extends StatelessWidget {
                               ),
                               const SizedBox(width: 6),
                               Text(
-                                'N°${issue.issue_number}',
+                                'N°${issue.issue_number ?? 'XX'}',
                                 style: GoogleFonts.nunito(
                                   textStyle: const TextStyle(
                                     color: AppColors.text,

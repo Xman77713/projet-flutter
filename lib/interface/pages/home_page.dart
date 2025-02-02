@@ -6,6 +6,7 @@ import 'package:flutter_projet_final/interface/pages/tabHomePage/list_series.dar
 import 'package:flutter_projet_final/res/app_colors.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import '../model/list/issuesListModel.dart';
 import '../model/list/moviesListModel.dart';
 import '../model/list/seriesListModel.dart';
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
             HomePageNotifierErrorState() => Scaffold(
                 body: Center(
                   child: Text(state.error.toString(),
-                      style: const TextStyle(color: Colors.white)),
+                      style: const TextStyle(color: AppColors.text)),
                 ),
               ),
             HomePageNotifierSuccessState() => Scaffold(
@@ -208,7 +209,7 @@ class HomePageTab extends StatelessWidget {
                       'Bienvenue !',
                       style: GoogleFonts.nunito(
                         textStyle: const TextStyle(
-                          color: Colors.white,
+                          color: AppColors.text,
                           fontWeight: FontWeight.bold,
                           fontSize: 32,
                         ),
@@ -286,7 +287,7 @@ class SearchPageTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text("Recherche", style: TextStyle(color: Colors.white)),
+        child: Text("Recherche", style: TextStyle(color: AppColors.text)),
       ),
     );
   }

@@ -13,14 +13,15 @@ class Producer {
 
   Producer(this.name, this.id);
 
-  factory Producer.fromJson(Map<String, dynamic> json) {
-    return Producer(
-      json['name'] as String? ?? 'Unknown Producer',
-      json['id'] as int? ?? -1,
-    );
-  }
+  factory Producer.fromJson(Map<String, dynamic> json) =>
+      _$ProducerFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProducerToJson(this);
 
   ProducerModel getProducer() => ProducerModel(name, id);
 }
+
+// factory PersonCredits.fromJson(Map<String, dynamic> json) =>
+// _$PersonCreditsFromJson(json);
+//
+// Map<String, dynamic> toJson() => _$PersonCreditsToJson(this);
