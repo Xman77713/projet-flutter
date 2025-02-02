@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projet_final/res/app_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../blocs/persoDetailMovieBloc.dart';
 
@@ -34,7 +35,7 @@ class _FirstBlocDetailsMoviesState
                 body: Center(
                   child: Text(
                     state.error.toString(),
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: AppColors.text),
                   ),
                 ),
               ),
@@ -43,7 +44,6 @@ class _FirstBlocDetailsMoviesState
                 padding: const EdgeInsets.all(14),
                 child: Center(
                   child: Container(
-                    width: double.infinity,
                     height: 700,
                     decoration: BoxDecoration(
                       color: AppColors.cardBackground,
@@ -56,39 +56,45 @@ class _FirstBlocDetailsMoviesState
                           children: List.generate(
                             state.characterDescrModel.listCharacterDescrModel
                                 .length,
-                            (index) => Row(
+                            (index) => Column(
                               children: [
-                                Container(
-                                  height: 60,
-                                  width: 60,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                  ),
-                                  child: Image.network(
-                                    state
-                                            .characterDescrModel
-                                            .listCharacterDescrModel[index]
-                                            .characterDModel
-                                            .getImageUrl()
-                                            .smallUrl ??
-                                        'Image indisponible',
-                                    fit: BoxFit.cover,
-                                  ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      height: 45,
+                                      width: 45,
+                                      child: ClipOval(
+                                        child: Image.network(
+                                          state
+                                                  .characterDescrModel
+                                                  .listCharacterDescrModel[
+                                                      index]
+                                                  .characterDModel
+                                                  .getImageUrl()
+                                                  .smallUrl ??
+                                              'Image indisponible',
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 20),
+                                    Text(
+                                        state
+                                                .characterDescrModel
+                                                .listCharacterDescrModel[index]
+                                                .characterDModel
+                                                .name ??
+                                            'Nom indisponible',
+                                        style: GoogleFonts.nunito(
+                                          textStyle: const TextStyle(
+                                            color: AppColors.text,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17,
+                                          ),
+                                        )),
+                                  ],
                                 ),
-                                const SizedBox(width: 20),
-                                Text(
-                                  state
-                                          .characterDescrModel
-                                          .listCharacterDescrModel[index]
-                                          .characterDModel
-                                          .name ??
-                                      'Nom indisponible',
-                                  style: const TextStyle(
-                                    color: AppColors.text,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                  ),
-                                ),
+                                const SizedBox(height: 12),
                               ],
                             ),
                           ),

@@ -31,6 +31,7 @@ class IssuesListModelHP {
 class IssueModelHP {
   final NameComicsModel? name;
   final ImageUrlModel? image;
+  final int? id;
 
-  IssueModelHP(this.name, this.image);
+  IssueModelHP(this.name, this.image, this.id);
 }

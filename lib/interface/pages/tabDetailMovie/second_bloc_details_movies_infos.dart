@@ -105,21 +105,37 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                       const SizedBox(width: 50),
                       Expanded(
                         child: Column(
-                          children: List.generate(
-                            writers!.listWritersModel.length,
-                            (index) => SizedBox(
-                              width: 150,
-                              child: Text(
-                                writers?.listWritersModel[index].name ?? '',
-                                style: GoogleFonts.nunito(
-                                  textStyle: const TextStyle(
-                                      color: AppColors.text,
-                                      fontSize: 20,
-                                      overflow: TextOverflow.ellipsis),
+                          children: (writers?.listWritersModel.isEmpty == true)
+                              ? [
+                                  SizedBox(
+                                    width: 150,
+                                    child: Text(
+                                      'Indisponible',
+                                      style: GoogleFonts.nunito(
+                                        textStyle: const TextStyle(
+                                          color: AppColors.text,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ]
+                              : List.generate(
+                                  writers!.listWritersModel.length,
+                                  (index) => SizedBox(
+                                    width: 150,
+                                    child: Text(
+                                      writers?.listWritersModel[index].name ??
+                                          '',
+                                      style: GoogleFonts.nunito(
+                                        textStyle: const TextStyle(
+                                            color: AppColors.text,
+                                            fontSize: 20,
+                                            overflow: TextOverflow.ellipsis),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
                         ),
                       ),
                     ],
@@ -139,21 +155,39 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                       const SizedBox(width: 50),
                       Expanded(
                         child: Column(
-                          children: List.generate(
-                            producers!.listProducersModel.length,
-                            (index) => SizedBox(
-                              width: 150,
-                              child: Text(
-                                producers?.listProducersModel[index].name ?? '',
-                                style: GoogleFonts.nunito(
-                                  textStyle: const TextStyle(
-                                      color: AppColors.text,
-                                      fontSize: 20,
-                                      overflow: TextOverflow.ellipsis),
+                          children: (producers?.listProducersModel.isEmpty ==
+                                  true)
+                              ? [
+                                  SizedBox(
+                                    width: 150,
+                                    child: Text(
+                                      'Indisponible',
+                                      style: GoogleFonts.nunito(
+                                        textStyle: const TextStyle(
+                                          color: AppColors.text,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ]
+                              : List.generate(
+                                  producers!.listProducersModel.length,
+                                  (index) => SizedBox(
+                                    width: 150,
+                                    child: Text(
+                                      producers?.listProducersModel[index]
+                                              .name ??
+                                          '',
+                                      style: GoogleFonts.nunito(
+                                        textStyle: const TextStyle(
+                                            color: AppColors.text,
+                                            fontSize: 20,
+                                            overflow: TextOverflow.ellipsis),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
                         ),
                       )
                     ],
@@ -173,21 +207,37 @@ class SecondBlocDetailsMoviesInfos extends StatelessWidget {
                       const SizedBox(width: 101),
                       Expanded(
                         child: Column(
-                          children: List.generate(
-                            studios!.listStudiosModel.length,
-                            (index) => SizedBox(
-                              width: 150,
-                              child: Text(
-                                studios?.listStudiosModel[index].name ?? '',
-                                style: GoogleFonts.nunito(
-                                  textStyle: const TextStyle(
-                                      color: AppColors.text,
-                                      fontSize: 20,
-                                      overflow: TextOverflow.ellipsis),
+                          children: (studios?.listStudiosModel.isEmpty == true)
+                              ? [
+                                  SizedBox(
+                                    width: 150,
+                                    child: Text(
+                                      'Indisponible',
+                                      style: GoogleFonts.nunito(
+                                        textStyle: const TextStyle(
+                                          color: AppColors.text,
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ]
+                              : List.generate(
+                                  studios!.listStudiosModel.length,
+                                  (index) => SizedBox(
+                                    width: 150,
+                                    child: Text(
+                                      studios?.listStudiosModel[index].name ??
+                                          '',
+                                      style: GoogleFonts.nunito(
+                                        textStyle: const TextStyle(
+                                            color: AppColors.text,
+                                            fontSize: 20,
+                                            overflow: TextOverflow.ellipsis),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
                         ),
                       )
                     ],

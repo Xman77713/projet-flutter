@@ -53,5 +53,5 @@ class OFFSeries {
   SerieModel getSerie() => SerieModel(name, image?.getImageUrl(), id,
       count_of_episodes, publisher?.getPublisher(), date_added);
 
-  SerieModelHP getSerieHP() => SerieModelHP(name, image?.getImageUrl());
+  SerieModelHP getSerieHP() => SerieModelHP(name, image?.getImageUrl(), id);
 }

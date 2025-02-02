@@ -4,6 +4,8 @@ import 'package:flutter_projet_final/res/app_colors.dart';
 import 'package:go_router/go_router.dart';
 
 import 'interface/pages/blocs/HomePageBloc.dart';
+import 'interface/pages/detailsIssue.dart';
+import 'interface/pages/detailsSerie.dart';
 import 'interface/pages/first_bloc_details_movies.dart';
 import 'interface/pages/home_page.dart';
 
@@ -22,6 +24,18 @@ class MyApp extends StatelessWidget {
               child: const HomePage(),
             ),
         routes: [
+          GoRoute(
+              path: '/serie/:id',
+              builder: (BuildContext context, GoRouterState state) {
+                final serieId = int.parse(state.pathParameters['id']!);
+                return DetailsSerie(serieId: serieId);
+              }),
+          GoRoute(
+              path: '/issue/:id',
+              builder: (BuildContext context, GoRouterState state) {
+                final issueId = int.parse(state.pathParameters['id']!);
+                return DetailsIssue(issueId: issueId);
+              }),
           GoRoute(
               path: '/movie/:id',
               builder: (BuildContext context, GoRouterState state) {

@@ -31,6 +31,7 @@ class SeriesListModelHP {
 class SerieModelHP {
   final String? name;
   final ImageUrlModel? image;
+  final int? id;
 
-  SerieModelHP(this.name, this.image);
+  SerieModelHP(this.name, this.image, this.id);
 }
