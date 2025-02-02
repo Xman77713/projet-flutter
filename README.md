@@ -46,3 +46,4 @@ Ce qu'on aurait voulu faire :
   rédirigé grâce à une route)
 - Formatter les chiffres et les dates selon la maquette
 - Message d'erreur compréhensible ainsi que la possibilité de relancer une requête
+- L'appel API pour récupérer les épisodes d'une série
