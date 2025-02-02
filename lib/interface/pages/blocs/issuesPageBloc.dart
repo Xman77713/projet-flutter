@@ -22,7 +22,7 @@ class LoadDataIssuesListBloc
     try {
       final OFFServerResponseIssuesList responseIssuesList =
           await ComicVineAPIManager()
-              .getIssues('793241465e20a2c4efd78bcfaa9df4356b780449');
+              .getIssues('793241465e20a2c4efd78bcfaa9df4356b780449', '100');
       emit(IssuesListPageNotifierSuccessState(
           responseIssuesList.getIssuesList()));
     } catch (e) {

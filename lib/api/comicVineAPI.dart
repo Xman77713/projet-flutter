@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_projet_final/api/model/descr/responseAPIMovieDescr.dart';
+import 'package:flutter_projet_final/api/model/descr/responseAPISerieDescr.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPIIssuesList.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPIMoviesList.dart';
-import 'package:flutter_projet_final/api/model/descr/responseAPISerieDescr.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPISeriesList.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
@@ -21,18 +21,21 @@ abstract class ComicVineAPI {
   Future<OFFServerResponseSeriesList> getSeries(
     @Query('api_key') String apiKey,
     @Query('format') String format,
+    @Query('limit') String limit,
   );
 
   @GET('/movies/')
   Future<OFFServerResponseMoviesList> getMovies(
     @Query('api_key') String apiKey,
     @Query('format') String format,
+    @Query('limit') String limit,
   );
 
   @GET('/issues/')
   Future<OFFServerResponseIssuesList> getIssues(
     @Query('api_key') String apiKey,
     @Query('format') String format,
+    @Query('limit') String limit,
   );
 
   @GET('/series/{id}/')
@@ -87,16 +90,19 @@ class ComicVineAPIManager {
           baseUrl: 'https://comicvine.gamespot.com/api',
         );
 
-  Future<OFFServerResponseSeriesList> getSeries(String apiKey) async {
-    return api.getSeries(apiKey, 'json');
+  Future<OFFServerResponseSeriesList> getSeries(
+      String apiKey, String limit) async {
+    return api.getSeries(apiKey, 'json', limit);
   }
 
-  Future<OFFServerResponseMoviesList> getMovies(String apiKey) async {
-    return api.getMovies(apiKey, 'json');
+  Future<OFFServerResponseMoviesList> getMovies(
+      String apiKey, String limit) async {
+    return api.getMovies(apiKey, 'json', limit);
   }
 
-  Future<OFFServerResponseIssuesList> getIssues(String apiKey) async {
-    return api.getIssues(apiKey, 'json');
+  Future<OFFServerResponseIssuesList> getIssues(
+      String apiKey, String? limit) async {
+    return api.getIssues(apiKey, 'json', limit!);
   }
 
   Future<OFFServerResponseSerieDescr> getSerieDescr(

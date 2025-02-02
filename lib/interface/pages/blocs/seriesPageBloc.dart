@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_projet_final/api/comicVineAPI.dart';
 import 'package:flutter_projet_final/api/model/list/responseAPISeriesList.dart';
+
 import '../../model/list/seriesListModel.dart';
 
 abstract class SeriesListPageEvent {}
@@ -21,7 +22,7 @@ class LoadDataSeriesListBloc
     try {
       final OFFServerResponseSeriesList responseSeriesList =
           await ComicVineAPIManager()
-              .getSeries('793241465e20a2c4efd78bcfaa9df4356b780449');
+              .getSeries('793241465e20a2c4efd78bcfaa9df4356b780449', '100');
       emit(SeriesListPageNotifierSuccessState(
           responseSeriesList.getSeriesList()));
     } catch (e) {

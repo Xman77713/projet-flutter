@@ -22,7 +22,7 @@ class LoadDataMoviesListBloc
     try {
       final OFFServerResponseMoviesList responseMoviesList =
           await ComicVineAPIManager()
-              .getMovies('793241465e20a2c4efd78bcfaa9df4356b780449');
+              .getMovies('793241465e20a2c4efd78bcfaa9df4356b780449', '100');
       emit(MoviesListPageNotifierSuccessState(
           responseMoviesList.getMoviesList()));
     } catch (e) {
